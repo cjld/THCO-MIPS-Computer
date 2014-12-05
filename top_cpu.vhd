@@ -121,6 +121,7 @@ end component;
 component branch
 	port(
 		pc : in std_logic_vector(15 downto 0);
+		pc1 : in std_logic_vector(15 downto 0);
 		imm : in std_logic_vector(15 downto 0);
 		instruction	:	in std_logic_vector (15 downto 0);
 		A : in std_logic_vector(15 downto 0);
@@ -326,32 +327,28 @@ signal if_mem1, if_mem2, if_mem3, mem_read1, mem_read2, mem_read3, mem_write1, m
 signal mem_out1, mem_out2: std_logic_vector(15 downto 0);
 signal a_pc, pc_en, zero_en, t_en : std_logic;
 signal t_data : std_logic_vector(15 downto 0);
-
+signal ram_d : std_logic_vector(15 downto 0);
+signal ram_addr : std_logic_vector(17 downto 0);
 signal clk_count: std_logic;
-signal rst_1 : std_logic;
+--signal rst_1 : std_logic;
 
 begin
-	led(0) <= clk_man;
-	led(15 downto 12) <= instruction0(3 downto 0);
-	led(11 downto 1) <= alu_output3(10 downto 0);
+	led(15 downto 11) <= instruction0(15 downto 11);
+	led(10) <= b_or_imm2;
+	led(9 downto 8) <= back_data1;
+	led(7 downto 4) <= alu_output3(3 downto 0);
+	led(3 downto 0) <= imm1(3 downto 0);
+	ram1_addr(15 downto 0) <= pc0(15 downto 0);
+	ram1_addr(17) <= zero_en;
+	ram1_addr(16) <= t_en;
 	enable_all <= '1';
 	
 	process(clk_man, rst)
 	begin
 		if (rst = '0') then
 			clk_count <= '0';
-			rst_1 <= '0';
 		elsif (clk_man'event and clk_man = '1') then
 			clk_count <= not clk_count;
-		end if;
-	end process;
-	
-	process(clk_count)
-	begin
-		if(clk_count'event and clk_count = '1')then
-			if (rst_1 = '0')then
-				rst_1 <= '1';
-			end if;
 		end if;
 	end process;
 	
@@ -412,6 +409,7 @@ begin
 
 	branch_port: branch port map(
 		pc => pc_plus,
+		pc1 => pc1,
 		imm => imm1,
 		instruction	=> instruction1,
 		A => a,
@@ -518,7 +516,7 @@ begin
 		is_done => is_done,
 		clk_auto => clk_man,
 		clk_man => clk_man,
-		rst => rst_1,
+		rst => rst,
 		clk_auto_11 => clk_auto_11,
 		
 --		led => led,
@@ -537,7 +535,7 @@ begin
 		ram2_we => ram2_we,
 		
 		ram1_data => ram1_data,
-		ram1_addr => ram1_addr,
+		ram1_addr => ram_addr,
 		ram1_en => ram1_en, 
 		ram1_oe => ram1_oe,
 		ram1_we => ram1_we
@@ -590,7 +588,7 @@ begin
 		a0_out => a,
 		a_out => a_2,
 		b_out => b_2,
-		pause => data_pause
+		pause => pause
 	);
 	
 end Behavioral;

@@ -149,7 +149,7 @@ begin
 	write_back <= '0' when rxyz(3 downto 0) = empty
 					else '1'; 
 						
-	b_or_imm <= '1' when rxyz(3 downto 0) = empty
+	b_or_imm <= '1' when rxyz(7 downto 4) = empty
 								or instruction_in(15 downto 11) = "11011"
 								or instruction_in(15 downto 11) = "11010"
 						 else '0';

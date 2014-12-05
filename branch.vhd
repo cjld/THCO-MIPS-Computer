@@ -32,6 +32,7 @@ use ieee.std_logic_unsigned.all;
 entity branch is
 port (
 	pc : in std_logic_vector(15 downto 0);
+	pc1 : in std_logic_vector(15 downto 0);
 	imm : in std_logic_vector(15 downto 0);
 	instruction	:	in std_logic_vector (15 downto 0);
 	A : in std_logic_vector(15 downto 0);
@@ -46,16 +47,16 @@ signal pc_imm2 : std_logic_vector(15 downto 0);
 begin
 	with instruction(7 downto 0) select
 		pc_imm1 <=  a when "11000000" | "00000000" | "00100000",
-						pc when others;	
+						pc1 when others;	
 	
 	with instruction(10 downto 8) & zero_en select
 		pc_imm2 <= (pc + imm) when "0000" | "0011",
-						pc when others;
+						pc1 when others;
 						
 	with instruction(15 downto 11) & zero_en select
 		pc_next <= (pc + imm) when "001000" | "001011" | "000100" | "000101",
 					pc_imm1 when "111010" | "111011",
 					pc_imm2 when "011000" | "011001",
-					pc when others;
+					pc1 when others;
 end Behavioral;
 
