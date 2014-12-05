@@ -1,55 +1,59 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<document OS="nt" product="ISE" version="14.7">
+<document OS="nt64" product="ISE" version="14.7">
 
   <!--The data in this file is primarily intended for consumption by Xilinx tools.
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="NgdBuild" timeStamp="Fri Dec 05 21:56:21 2014">
+  <application stringID="NgdBuild" timeStamp="Fri Dec 05 22:33:34 2014">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
         <column stringID="value"/>
         <row stringID="row" value="0">
           <item stringID="variable" value="Path"/>
-          <item stringID="value" value="F:\14.7\ISE_DS\ISE\\lib\nt;F:\14.7\ISE_DS\ISE\\bin\nt;F:\14.7\ISE_DS\ISE\bin\nt;F:\14.7\ISE_DS\ISE\lib\nt;F:\14.7\ISE_DS\ISE\..\..\..\DocNav;F:\14.7\ISE_DS\PlanAhead\bin;F:\14.7\ISE_DS\EDK\bin\nt;F:\14.7\ISE_DS\EDK\lib\nt;F:\14.7\ISE_DS\EDK\gnu\microblaze\nt\bin;F:\14.7\ISE_DS\EDK\gnu\powerpc-eabi\nt\bin;F:\14.7\ISE_DS\EDK\gnuwin\bin;F:\14.7\ISE_DS\EDK\gnu\arm\nt\bin;F:\14.7\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt_be\bin;F:\14.7\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt_le\bin;F:\14.7\ISE_DS\common\bin\nt;F:\14.7\ISE_DS\common\lib\nt;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\OpenCL SDK\2.0\bin\x86;D:\maTHmU\bin;C:\Program Files\TortoiseSVN\bin;C:\Program Files\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\DTS\Binn\;D:\cmake\CMake 2.8\bin;c:\Program Files\Common Files\Ulead Systems\MPEG;C:\Program Files\QuickTime\QTSystem\;C:\Program Files\digieffects\bin;%QUARTUS_ROOTDIR%\bin;D:\opencv\opencv\build\include;D:\matlab\runtime\win32;D:\matlab\bin;C:\Program Files\nodejs\;D:\Devc++\DEV-CPP\Bin;D:\macap\Lib;D:\macap\boost_1_49_0\stage\lib;D:\pathon\2.7.4;D:\pathon\2.7.4\Scripts;D:\pathon\2.7.4\Lib;D:\opencv\opencv\build\x86\vc10\bin;C:\Program Files\Java\jdk1.7.0_40\bin;D:\modelsim\win32;D:\git\Git\bin;C:\Users\Administrator.LB-201207220922\AppData\Roaming\npm"/>
+          <item stringID="value" value="f:\Xilinx\14.7\ISE_DS\ISE\\lib\nt64;f:\Xilinx\14.7\ISE_DS\ISE\\bin\nt64;F:\Xilinx\14.7\ISE_DS\ISE\bin\nt64;F:\Xilinx\14.7\ISE_DS\ISE\lib\nt64;F:\Xilinx\14.7\ISE_DS\ISE\..\..\..\DocNav;F:\Xilinx\14.7\ISE_DS\PlanAhead\bin;F:\Xilinx\14.7\ISE_DS\EDK\bin\nt64;F:\Xilinx\14.7\ISE_DS\EDK\lib\nt64;F:\Xilinx\14.7\ISE_DS\EDK\gnu\microblaze\nt\bin;F:\Xilinx\14.7\ISE_DS\EDK\gnu\powerpc-eabi\nt\bin;F:\Xilinx\14.7\ISE_DS\EDK\gnuwin\bin;F:\Xilinx\14.7\ISE_DS\EDK\gnu\arm\nt\bin;F:\Xilinx\14.7\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_be\bin;F:\Xilinx\14.7\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_le\bin;F:\Xilinx\14.7\ISE_DS\common\bin\nt64;F:\Xilinx\14.7\ISE_DS\common\lib\nt64;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Gow\bin;E:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files\TortoiseGit\bin;C:\Program Files\MySQL\MySQL Server 5.6\bin;F:\Program Files\nodejs\;F:\Program Files\Java\jdk1.8.0_11\bin;C:\BlenderEnv\mingw64_471\bin;C:\BlenderEnv\CMake\bin;C:\BlenderEnv\BlenderDev\lib\win64_vc12\python\lib;C:\BlenderEnv\BlenderDev\lib\win64_vc12\openal\lib;C:\BlenderEnv\BlenderDev\lib\win64_vc12\sdl\lib;C:\BlenderEnv\BlenderDev\lib\win64_vc12\OpenColorIO\bin;C:\BlenderEnv\BlenderDev\lib\win64_vc12\pthreads\lib;C:\Python34\Scripts;C:\Python34;C:\Users\CJLD\AppData\Local\Pandoc\;E:\Program Files\swigwin-3.0.2;F:\Program Files\nodejs;F:\Program Files\phantomjs-1.9.8-windows;C:\Users\CJLD\AppData\Roaming\npm\node_modules\casperjs\bin;E:\matlab\R2013a\bin\win64;E:\matlab\R2013a\bin;F:\Dev\LIA_RAL\lib\Debug;F:\Dev\LIA_RAL\lib\Release;F:\Dev\ALIZE\lib\Debug;F:\Dev\ALIZE\lib\Release;F:\Dev\LIA_RAL\bin\Win32;F:\Desktop\VoicePrintReco\Demos\MyDemo\SproBin4.0;F:\FileZillaEnv\msys\home\CJLD\filezilla\src\myinstall\publish;F:\Xilinx\14.7\ISE_DS\ISE\bin\nt"/>
         </row>
         <row stringID="row" value="1">
-          <item stringID="variable" value="PATHEXT"/>
-          <item stringID="value" value=".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC"/>
+          <item stringID="variable" value="PathA"/>
+          <item stringID="value" value="C:\Python34\Scripts;C:\Python34;C:\Users\CJLD\AppData\Local\Pandoc\;E:\Program Files\swigwin-3.0.2"/>
         </row>
         <row stringID="row" value="2">
-          <item stringID="variable" value="XILINX"/>
-          <item stringID="value" value="F:\14.7\ISE_DS\ISE\"/>
+          <item stringID="variable" value="PATHEXT"/>
+          <item stringID="value" value=".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY"/>
         </row>
         <row stringID="row" value="3">
-          <item stringID="variable" value="XILINXD_LICENSE_FILE"/>
-          <item stringID="value" value="D:\Xilinx_ISE_DS_14.7_1015_1\xilinx_ise.lic"/>
+          <item stringID="variable" value="XILINX"/>
+          <item stringID="value" value="f:\Xilinx\14.7\ISE_DS\ISE\"/>
         </row>
         <row stringID="row" value="4">
-          <item stringID="variable" value="XILINX_DSP"/>
-          <item stringID="value" value="F:\14.7\ISE_DS\ISE"/>
+          <item stringID="variable" value="XILINXD_LICENSE_FILE"/>
+          <item stringID="value" value="E:\softPack\Xilinx_ISE_DS_14.7_1015_1"/>
         </row>
         <row stringID="row" value="5">
-          <item stringID="variable" value="XILINX_EDK"/>
-          <item stringID="value" value="F:\14.7\ISE_DS\EDK"/>
+          <item stringID="variable" value="XILINX_DSP"/>
+          <item stringID="value" value="F:\Xilinx\14.7\ISE_DS\ISE"/>
         </row>
         <row stringID="row" value="6">
+          <item stringID="variable" value="XILINX_EDK"/>
+          <item stringID="value" value="F:\Xilinx\14.7\ISE_DS\EDK"/>
+        </row>
+        <row stringID="row" value="7">
           <item stringID="variable" value="XILINX_PLANAHEAD"/>
-          <item stringID="value" value="F:\14.7\ISE_DS\PlanAhead"/>
+          <item stringID="value" value="F:\Xilinx\14.7\ISE_DS\PlanAhead"/>
         </row>
       </table>
       <item stringID="User_EnvOs" value="OS Information">
-        <item stringID="User_EnvOsname" value="Microsoft Windows 7 , 32-bit"/>
+        <item stringID="User_EnvOsname" value="Microsoft Windows 7 , 64-bit"/>
         <item stringID="User_EnvOsrelease" value="Service Pack 1  (build 7601)"/>
       </item>
-      <item stringID="User_EnvHost" value="LB-201207220922"/>
+      <item stringID="User_EnvHost" value="DPC"/>
       <table stringID="User_EnvCpu">
         <column stringID="arch"/>
         <column stringID="speed"/>
         <row stringID="row" value="0">
-          <item stringID="arch" value="Intel(R) Core(TM) i5-2520M CPU @ 2.50GHz"/>
-          <item stringID="speed" value="2494 MHz"/>
+          <item stringID="arch" value="Intel(R) Core(TM) i5-3230M CPU @ 2.60GHz"/>
+          <item stringID="speed" value="2594 MHz"/>
         </row>
       </table>
     </section>
@@ -58,6 +62,7 @@
         <item DEFAULT="None" label="-intstyle" stringID="NGDBUILD_intstyle" value="ise"/>
         <item DEFAULT="None" label="-dd" stringID="NGDBUILD_output_dir" value="_ngo"/>
         <item DEFAULT="None" label="-p" stringID="NGDBUILD_partname" value="xc3s1200e-fg320-4"/>
+        <item DEFAULT="None" label="-uc" stringID="NGDBUILD_ucf_file" value="top_cpu.ucf"/>
       </section>
     </task>
     <task stringID="NGDBUILD_REPORT">
@@ -97,7 +102,7 @@
         <item dataType="int" stringID="NGDBUILD_NUM_FDE_1" value="1"/>
         <item dataType="int" stringID="NGDBUILD_NUM_FDP_1" value="2"/>
         <item dataType="int" stringID="NGDBUILD_NUM_GND" value="1"/>
-        <item dataType="int" stringID="NGDBUILD_NUM_IBUF" value="4"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_IBUF" value="21"/>
         <item dataType="int" stringID="NGDBUILD_NUM_IBUFG" value="2"/>
         <item dataType="int" stringID="NGDBUILD_NUM_INV" value="4"/>
         <item dataType="int" stringID="NGDBUILD_NUM_LUT2" value="2"/>

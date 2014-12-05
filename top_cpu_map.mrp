@@ -1,4 +1,4 @@
-Release 14.7 Map P.20131013 (nt)
+Release 14.7 Map P.20131013 (nt64)
 Xilinx Mapping Report File for Design 'top_cpu'
 
 Design Information
@@ -9,12 +9,12 @@ Target Device  : xc3s1200e
 Target Package : fg320
 Target Speed   : -4
 Mapper Version : spartan3e -- $Revision: 1.55 $
-Mapped Date    : Fri Dec 05 21:56:25 2014
+Mapped Date    : Fri Dec 05 22:33:37 2014
 
 Design Summary
 --------------
 Number of errors:      0
-Number of warnings:   20
+Number of warnings:   37
 Logic Utilization:
   Number of Slice Flip Flops:             5 out of  17,344    1%
 Logic Distribution:
@@ -22,14 +22,14 @@ Logic Distribution:
     Number of Slices containing only related logic:       4 out of       4 100%
     Number of Slices containing unrelated logic:          0 out of       4   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Number of bonded IOBs:                 78 out of     250   31%
+  Number of bonded IOBs:                 95 out of     250   38%
   Number of BUFGMUXs:                     1 out of      24    4%
 
-Average Fanout of Non-Clock Nets:                5.00
+Average Fanout of Non-Clock Nets:                2.00
 
-Peak Memory Usage:  321 MB
-Total REAL time to MAP completion:  7 secs 
-Total CPU time to MAP completion:   3 secs 
+Peak Memory Usage:  271 MB
+Total REAL time to MAP completion:  1 secs 
+Total CPU time to MAP completion:   1 secs 
 
 NOTES:
 
@@ -110,13 +110,51 @@ WARNING:MapLib:701 - Signal ram2_data<0> connected to top level port
    ram2_data<0> has been removed.
 WARNING:MapLib:701 - Signal clk_auto_11 connected to top level port clk_auto_11
    has been removed.
+WARNING:PhysDesignRules:367 - The signal <switch<10>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <switch<11>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <switch<12>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <switch<13>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <switch<14>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <switch<15>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <switch<0>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <switch<1>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <switch<2>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <switch<3>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <switch<4>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <switch<5>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <switch<6>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <switch<7>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <switch<8>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <switch<9>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <clk_man_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
 
 Section 3 - Informational
 -------------------------
-INFO:LIT:243 - Logical network clk_man has no load.
-INFO:LIT:395 - The above info message is repeated 1 more times for the following
-   (max. 5 shown):
-   clock
+INFO:LIT:243 - Logical network clk_man_IBUF has no load.
+INFO:LIT:395 - The above info message is repeated 16 more times for the
+   following (max. 5 shown):
+   switch<15>_IBUF,
+   switch<14>_IBUF,
+   switch<13>_IBUF,
+   switch<12>_IBUF,
+   switch<11>_IBUF
    To see the details of these info messages, please use the -detail switch.
 INFO:MapLib:562 - No environment variables are currently set.
 INFO:LIT:244 - All of the single ended outputs in this design are using slew
@@ -163,7 +201,7 @@ removed.
           The signal "IO_port/serial_port/curr_state<6>" is sourceless and has been
 removed.
            Sourceless block "IO_port/serial_port/curr_state_5_mux00001_SW0" (ROM) removed.
-            The signal "N71" is sourceless and has been removed.
+            The signal "N73" is sourceless and has been removed.
              Sourceless block "IO_port/serial_port/curr_state_5_mux00001" (ROM) removed.
               The signal "IO_port/serial_port/curr_state_5_mux0000" is sourceless and has been
 removed.
@@ -176,7 +214,7 @@ removed.
 and has been removed.
                    Sourceless block "IO_port/serial_port/curr_state_4_mux000011_SW6_F/LUT4_L_BUF"
 (BUF) removed.
-                    The signal "N67" is sourceless and has been removed.
+                    The signal "N69" is sourceless and has been removed.
              Sourceless block "IO_port/serial_port/curr_state_4_mux00001" (ROM) removed.
               The signal "IO_port/serial_port/curr_state_4_mux0000" is sourceless and has been
 removed.
@@ -189,9 +227,9 @@ removed.
 and has been removed.
                    Sourceless block "IO_port/serial_port/curr_state_4_mux000011_SW8_F/LUT4_L_BUF"
 (BUF) removed.
-                    The signal "N69" is sourceless and has been removed.
+                    The signal "N71" is sourceless and has been removed.
            Sourceless block "IO_port/serial_port/curr_state_4_mux000011_SW0" (ROM) removed.
-            The signal "N9" is sourceless and has been removed.
+            The signal "N111" is sourceless and has been removed.
              Sourceless block "IO_port/serial_port/curr_state_0_mux00001" (ROM) removed.
               The signal "IO_port/serial_port/curr_state_0_mux0000" is sourceless and has been
 removed.
@@ -205,7 +243,7 @@ removed.
                     The signal "IO_port/serial_port/curr_state<1>" is sourceless and has been
 removed.
                      Sourceless block "IO_port/serial_port/curr_state_2_mux00001_SW0" (ROM) removed.
-                      The signal "N64" is sourceless and has been removed.
+                      The signal "N66" is sourceless and has been removed.
                        Sourceless block "IO_port/serial_port/curr_state_2_mux00001" (ROM) removed.
                         The signal "IO_port/serial_port/curr_state_2_mux0000" is sourceless and has been
 removed.
@@ -218,7 +256,7 @@ removed.
                        Sourceless block "IO_port/serial_port/rdn_mux0000111/LUT3_L_BUF" (BUF) removed.
                         The signal "N15" is sourceless and has been removed.
                      Sourceless block "IO_port/serial_port/curr_state_4_mux000011_SW4" (ROM) removed.
-                      The signal "N52" is sourceless and has been removed.
+                      The signal "N54" is sourceless and has been removed.
                        Sourceless block "IO_port/serial_port/curr_state_3_mux00001" (ROM) removed.
                         The signal "IO_port/serial_port/curr_state_3_mux0000" is sourceless and has been
 removed.
@@ -227,7 +265,7 @@ removed.
 removed.
                        Sourceless block "IO_port/serial_port/curr_state_4_mux000011_SW4/LUT4_D_BUF"
 (BUF) removed.
-                        The signal "N76" is sourceless and has been removed.
+                        The signal "N78" is sourceless and has been removed.
                      Sourceless block "IO_port/serial_port/curr_state_7_mux0000_SW2" (ROM) removed.
                       The signal "IO_port/serial_port/curr_state_7_mux0000_SW2/O" is sourceless and
 has been removed.
@@ -236,10 +274,10 @@ has been removed.
 has been removed.
                        Sourceless block "IO_port/serial_port/curr_state_2_mux00001_SW1/LUT4_L_BUF"
 (BUF) removed.
-                        The signal "N65" is sourceless and has been removed.
+                        The signal "N67" is sourceless and has been removed.
              Sourceless block "IO_port/serial_port/curr_state_4_mux000011_SW0/LUT2_D_BUF"
 (BUF) removed.
-              The signal "N75" is sourceless and has been removed.
+              The signal "N77" is sourceless and has been removed.
      Sourceless block "IO_port/serial_port/curr_state_4_mux000011_SW1" (ROM) removed.
       The signal "IO_port/serial_port/curr_state_4_mux000011_SW1/O" is sourceless and
 has been removed.
@@ -334,22 +372,23 @@ Section 6 - IOB Properties
 |                                    |                  |           |                      | Term  | Strength | Rate |              |          | Delay    |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------+
 | clk                                | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
-| dd<0>                              | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
-| dd<1>                              | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
-| dd<2>                              | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
-| dd<3>                              | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
-| dd<4>                              | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
-| dd<5>                              | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
-| dd<6>                              | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
-| dd<7>                              | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
-| dd<8>                              | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
-| dd<9>                              | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
-| dd<10>                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
-| dd<11>                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
-| dd<12>                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
-| dd<13>                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
-| dd<14>                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
-| dd<15>                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| clk_man                            | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
+| led<0>                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| led<1>                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| led<2>                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| led<3>                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| led<4>                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| led<5>                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| led<6>                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| led<7>                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| led<8>                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| led<9>                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| led<10>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| led<11>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| led<12>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| led<13>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| led<14>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| led<15>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
 | ram1_addr<0>                       | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
 | ram1_addr<1>                       | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
 | ram1_addr<2>                       | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
@@ -410,6 +449,22 @@ Section 6 - IOB Properties
 | ram2_we                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
 | rdn                                | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
 | rst                                | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
+| switch<0>                          | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
+| switch<1>                          | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
+| switch<2>                          | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
+| switch<3>                          | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
+| switch<4>                          | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
+| switch<5>                          | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
+| switch<6>                          | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
+| switch<7>                          | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
+| switch<8>                          | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
+| switch<9>                          | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
+| switch<10>                         | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
+| switch<11>                         | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
+| switch<12>                         | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
+| switch<13>                         | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
+| switch<14>                         | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
+| switch<15>                         | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
 | wrn                                | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------+
 

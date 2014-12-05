@@ -1,16 +1,16 @@
-Release 14.7 - xst P.20131013 (nt)
+Release 14.7 - xst P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.11 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.11 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Reading design: top_cpu.prj
 
@@ -104,39 +104,40 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
-Compiling vhdl file "E:/top_cup/Ram.vhd" in Library work.
+Compiling vhdl file "F:/Dev/VHDL/top_cup/Ram.vhd" in Library work.
 Architecture behavioral of Entity ram is up to date.
-Compiling vhdl file "E:/top_cup/SRam.vhd" in Library work.
+Compiling vhdl file "F:/Dev/VHDL/top_cup/SRam.vhd" in Library work.
 Architecture main of Entity sram is up to date.
-Compiling vhdl file "E:/top_cup/SerialPort.vhd" in Library work.
+Compiling vhdl file "F:/Dev/VHDL/top_cup/SerialPort.vhd" in Library work.
 Architecture behavioral of Entity serialport is up to date.
-Compiling vhdl file "E:/top_cup/pc.vhd" in Library work.
+Compiling vhdl file "F:/Dev/VHDL/top_cup/pc.vhd" in Library work.
 Architecture behavioral of Entity pc is up to date.
-Compiling vhdl file "E:/top_cup/phase1.vhd" in Library work.
+Compiling vhdl file "F:/Dev/VHDL/top_cup/phase1.vhd" in Library work.
 Architecture behavioral of Entity phase1 is up to date.
-Compiling vhdl file "E:/top_cup/transfer.vhd" in Library work.
+Compiling vhdl file "F:/Dev/VHDL/top_cup/transfer.vhd" in Library work.
 Architecture behavioral of Entity transfer is up to date.
-Compiling vhdl file "E:/top_cup/registers.vhd" in Library work.
+Compiling vhdl file "F:/Dev/VHDL/top_cup/registers.vhd" in Library work.
 Architecture behavioral of Entity registers is up to date.
-Compiling vhdl file "E:/top_cup/branch.vhd" in Library work.
+Compiling vhdl file "F:/Dev/VHDL/top_cup/branch.vhd" in Library work.
 Architecture behavioral of Entity branch is up to date.
-Compiling vhdl file "E:/top_cup/phase2.vhd" in Library work.
+Compiling vhdl file "F:/Dev/VHDL/top_cup/phase2.vhd" in Library work.
 Architecture behavioral of Entity phase2 is up to date.
-Compiling vhdl file "E:/top_cup/alu.vhd" in Library work.
+Compiling vhdl file "F:/Dev/VHDL/top_cup/alu.vhd" in Library work.
 Architecture behavioral of Entity alu is up to date.
-Compiling vhdl file "E:/top_cup/phase3.vhd" in Library work.
+Compiling vhdl file "F:/Dev/VHDL/top_cup/phase3.vhd" in Library work.
 Architecture behavioral of Entity phase3 is up to date.
-Compiling vhdl file "E:/top_cup/IOpass.vhd" in Library work.
+Compiling vhdl file "F:/Dev/VHDL/top_cup/IOpass.vhd" in Library work.
 Architecture behavioral of Entity iopass is up to date.
-Compiling vhdl file "E:/top_cup/IO.vhd" in Library work.
+Compiling vhdl file "F:/Dev/VHDL/top_cup/IO.vhd" in Library work.
 Architecture behavioral of Entity io is up to date.
-Compiling vhdl file "E:/top_cup/phase4.vhd" in Library work.
+Compiling vhdl file "F:/Dev/VHDL/top_cup/phase4.vhd" in Library work.
 Architecture behavioral of Entity phase4 is up to date.
-Compiling vhdl file "E:/top_cup/write_back.vhd" in Library work.
+Compiling vhdl file "F:/Dev/VHDL/top_cup/write_back.vhd" in Library work.
 Architecture behavioral of Entity write_back is up to date.
-Compiling vhdl file "E:/top_cup/forwarding.vhd" in Library work.
+ERROR:HDLParsers - Cannot rename dependency database for library "work", file is "xst/work/hdpdeps.ref", Temporary database file "F:\Dev\VHDL\top_cup\xst\work\xil_10620_22" will remain.  System error message is:  File exists
+Compiling vhdl file "F:/Dev/VHDL/top_cup/forwarding.vhd" in Library work.
 Architecture behavioral of Entity forwarding is up to date.
-Compiling vhdl file "E:/top_cup/top_cpu.vhd" in Library work.
+Compiling vhdl file "F:/Dev/VHDL/top_cup/top_cpu.vhd" in Library work.
 Entity <top_cpu> compiled.
 Entity <top_cpu> (Architecture <behavioral>) compiled.
 
@@ -182,15 +183,15 @@ Analyzing hierarchy for entity <SerialPort> in library <work> (architecture <beh
 *                            HDL Analysis                               *
 =========================================================================
 Analyzing Entity <top_cpu> in library <work> (Architecture <behavioral>).
-WARNING:Xst:753 - "E:/top_cup/top_cpu.vhd" line 485: Unconnected output port 'led' of component 'IO'.
-WARNING:Xst:752 - "E:/top_cup/top_cpu.vhd" line 485: Unconnected input port 'switch' of component 'IO' is tied to default value.
+WARNING:Xst:753 - "F:/Dev/VHDL/top_cup/top_cpu.vhd" line 492: Unconnected output port 'led' of component 'IO'.
+WARNING:Xst:752 - "F:/Dev/VHDL/top_cup/top_cpu.vhd" line 492: Unconnected input port 'switch' of component 'IO' is tied to default value.
 Entity <top_cpu> analyzed. Unit <top_cpu> generated.
 
 Analyzing Entity <pc> in library <work> (Architecture <behavioral>).
 Entity <pc> analyzed. Unit <pc> generated.
 
 Analyzing Entity <phase1> in library <work> (Architecture <behavioral>).
-WARNING:Xst:819 - "E:/top_cup/phase1.vhd" line 53: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+WARNING:Xst:819 - "F:/Dev/VHDL/top_cup/phase1.vhd" line 53: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
    <rst>
 Entity <phase1> analyzed. Unit <phase1> generated.
 
@@ -198,7 +199,7 @@ Analyzing Entity <transfer> in library <work> (Architecture <behavioral>).
 Entity <transfer> analyzed. Unit <transfer> generated.
 
 Analyzing Entity <registers> in library <work> (Architecture <behavioral>).
-WARNING:Xst:819 - "E:/top_cup/registers.vhd" line 63: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+WARNING:Xst:819 - "F:/Dev/VHDL/top_cup/registers.vhd" line 63: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
    <rst>
 Entity <registers> analyzed. Unit <registers> generated.
 
@@ -206,7 +207,7 @@ Analyzing Entity <branch> in library <work> (Architecture <behavioral>).
 Entity <branch> analyzed. Unit <branch> generated.
 
 Analyzing Entity <phase2> in library <work> (Architecture <behavioral>).
-WARNING:Xst:819 - "E:/top_cup/phase2.vhd" line 104: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+WARNING:Xst:819 - "F:/Dev/VHDL/top_cup/phase2.vhd" line 104: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
    <rst>
 Entity <phase2> analyzed. Unit <phase2> generated.
 
@@ -214,7 +215,7 @@ Analyzing Entity <alu> in library <work> (Architecture <behavioral>).
 Entity <alu> analyzed. Unit <alu> generated.
 
 Analyzing Entity <phase3> in library <work> (Architecture <behavioral>).
-WARNING:Xst:819 - "E:/top_cup/phase3.vhd" line 91: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+WARNING:Xst:819 - "F:/Dev/VHDL/top_cup/phase3.vhd" line 91: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
    <is_done>
 Entity <phase3> analyzed. Unit <phase3> generated.
 
@@ -232,12 +233,12 @@ Analyzing Entity <SRam> in library <work> (Architecture <main>).
 Entity <SRam> analyzed. Unit <SRam> generated.
 
 Analyzing Entity <SerialPort> in library <work> (Architecture <behavioral>).
-WARNING:Xst:819 - "E:/top_cup/SerialPort.vhd" line 68: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+WARNING:Xst:819 - "F:/Dev/VHDL/top_cup/SerialPort.vhd" line 68: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
    <is_read>
 Entity <SerialPort> analyzed. Unit <SerialPort> generated.
 
 Analyzing Entity <phase4> in library <work> (Architecture <behavioral>).
-WARNING:Xst:819 - "E:/top_cup/phase4.vhd" line 74: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+WARNING:Xst:819 - "F:/Dev/VHDL/top_cup/phase4.vhd" line 74: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
    <is_done>
 Entity <phase4> analyzed. Unit <phase4> generated.
 
@@ -255,7 +256,7 @@ Entity <forwarding> analyzed. Unit <forwarding> generated.
 Performing bidirectional port resolution...
 
 Synthesizing Unit <pc>.
-    Related source file is "E:/top_cup/pc.vhd".
+    Related source file is "F:/Dev/VHDL/top_cup/pc.vhd".
     Found 16-bit adder for signal <pc_plus>.
     Found 16-bit register for signal <pc>.
     Summary:
@@ -265,7 +266,7 @@ Unit <pc> synthesized.
 
 
 Synthesizing Unit <phase1>.
-    Related source file is "E:/top_cup/phase1.vhd".
+    Related source file is "F:/Dev/VHDL/top_cup/phase1.vhd".
     Found 16-bit register for signal <instruction>.
     Found 16-bit register for signal <pc>.
     Summary:
@@ -274,13 +275,13 @@ Unit <phase1> synthesized.
 
 
 Synthesizing Unit <transfer>.
-    Related source file is "E:/top_cup/transfer.vhd".
+    Related source file is "F:/Dev/VHDL/top_cup/transfer.vhd".
 WARNING:Xst:646 - Signal <exten_sign<3:0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 Unit <transfer> synthesized.
 
 
 Synthesizing Unit <registers>.
-    Related source file is "E:/top_cup/registers.vhd".
+    Related source file is "F:/Dev/VHDL/top_cup/registers.vhd".
 WARNING:Xst:1780 - Signal <t> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
     Found 16-bit 16-to-1 multiplexer for signal <B>.
     Found 256-bit register for signal <reg>.
@@ -293,7 +294,7 @@ Unit <registers> synthesized.
 
 
 Synthesizing Unit <branch>.
-    Related source file is "E:/top_cup/branch.vhd".
+    Related source file is "F:/Dev/VHDL/top_cup/branch.vhd".
     Found 16-bit adder for signal <pc_next$add0000> created at line 55.
     Summary:
 	inferred   1 Adder/Subtractor(s).
@@ -301,7 +302,7 @@ Unit <branch> synthesized.
 
 
 Synthesizing Unit <phase2>.
-    Related source file is "E:/top_cup/phase2.vhd".
+    Related source file is "F:/Dev/VHDL/top_cup/phase2.vhd".
     Found 16-bit register for signal <A>.
     Found 4-bit register for signal <alu_op>.
     Found 16-bit register for signal <B>.
@@ -323,7 +324,7 @@ Unit <phase2> synthesized.
 
 
 Synthesizing Unit <alu>.
-    Related source file is "E:/top_cup/alu.vhd".
+    Related source file is "F:/Dev/VHDL/top_cup/alu.vhd".
     Found 16-bit comparator equal for signal <eq$cmp_eq0000> created at line 68.
     Found 16-bit comparator less for signal <lessS$cmp_lt0000> created at line 69.
     Found 1-bit xor2 for signal <lessS$xor0000> created at line 69.
@@ -338,7 +339,7 @@ Unit <alu> synthesized.
 
 
 Synthesizing Unit <phase3>.
-    Related source file is "E:/top_cup/phase3.vhd".
+    Related source file is "F:/Dev/VHDL/top_cup/phase3.vhd".
     Found 16-bit register for signal <A_value>.
     Found 16-bit register for signal <alu_output>.
     Found 16-bit register for signal <B_value>.
@@ -354,14 +355,14 @@ Unit <phase3> synthesized.
 
 
 Synthesizing Unit <IOpass>.
-    Related source file is "E:/top_cup/IOpass.vhd".
+    Related source file is "F:/Dev/VHDL/top_cup/IOpass.vhd".
 WARNING:Xst:647 - Input <addr<0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <data> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 Unit <IOpass> synthesized.
 
 
 Synthesizing Unit <phase4>.
-    Related source file is "E:/top_cup/phase4.vhd".
+    Related source file is "F:/Dev/VHDL/top_cup/phase4.vhd".
     Found 16-bit register for signal <alu_output>.
     Found 2-bit register for signal <back_data>.
     Found 4-bit register for signal <back_reg>.
@@ -373,12 +374,12 @@ Unit <phase4> synthesized.
 
 
 Synthesizing Unit <write_back>.
-    Related source file is "E:/top_cup/write_back.vhd".
+    Related source file is "F:/Dev/VHDL/top_cup/write_back.vhd".
 Unit <write_back> synthesized.
 
 
 Synthesizing Unit <forwarding>.
-    Related source file is "E:/top_cup/forwarding.vhd".
+    Related source file is "F:/Dev/VHDL/top_cup/forwarding.vhd".
     Found 16-bit 4-to-1 multiplexer for signal <b_out>.
     Found 16-bit 4-to-1 multiplexer for signal <a0_out>.
     Found 16-bit 4-to-1 multiplexer for signal <a_out>.
@@ -396,7 +397,7 @@ Unit <forwarding> synthesized.
 
 
 Synthesizing Unit <Ram>.
-    Related source file is "E:/top_cup/Ram.vhd".
+    Related source file is "F:/Dev/VHDL/top_cup/Ram.vhd".
     Found 16-bit tristate buffer for signal <data>.
     Summary:
 	inferred  16 Tristate(s).
@@ -404,7 +405,7 @@ Unit <Ram> synthesized.
 
 
 Synthesizing Unit <SRam>.
-    Related source file is "E:/top_cup/SRam.vhd".
+    Related source file is "F:/Dev/VHDL/top_cup/SRam.vhd".
     Found finite state machine <FSM_0> for signal <switch_flag>.
     -----------------------------------------------------------------------
     | States             | 4                                              |
@@ -435,7 +436,7 @@ Unit <SRam> synthesized.
 
 
 Synthesizing Unit <SerialPort>.
-    Related source file is "E:/top_cup/SerialPort.vhd".
+    Related source file is "F:/Dev/VHDL/top_cup/SerialPort.vhd".
 WARNING:Xst:647 - Input <clk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:1780 - Signal <clk_count> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
     Using one-hot encoding for signal <curr_state>.
@@ -454,7 +455,7 @@ Unit <SerialPort> synthesized.
 
 
 Synthesizing Unit <IO>.
-    Related source file is "E:/top_cup/IO.vhd".
+    Related source file is "F:/Dev/VHDL/top_cup/IO.vhd".
 WARNING:Xst:647 - Input <clk_man> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <need_int> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <switch> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -476,7 +477,8 @@ Unit <IO> synthesized.
 
 
 Synthesizing Unit <top_cpu>.
-    Related source file is "E:/top_cup/top_cpu.vhd".
+    Related source file is "F:/Dev/VHDL/top_cup/top_cpu.vhd".
+WARNING:Xst:647 - Input <switch> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:646 - Signal <rz1> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <pc2> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:653 - Signal <pause> is used but never assigned. This sourceless signal will be automatically connected to value 0.
@@ -484,6 +486,9 @@ WARNING:Xst:646 - Signal <instruction2> is assigned but never used. This unconne
 WARNING:Xst:646 - Signal <data_pause> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:653 - Signal <back_reg1> is used but never assigned. This sourceless signal will be automatically connected to value 0000.
 WARNING:Xst:646 - Signal <a3> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 1-bit register for signal <clk_count>.
+    Summary:
+	inferred   1 D-type flip-flop(s).
 Unit <top_cpu> synthesized.
 
 INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
@@ -495,8 +500,8 @@ Macro Statistics
 # Adders/Subtractors                                   : 3
  16-bit adder                                          : 2
  16-bit addsub                                         : 1
-# Registers                                            : 71
- 1-bit register                                        : 28
+# Registers                                            : 72
+ 1-bit register                                        : 29
  16-bit register                                       : 31
  2-bit register                                        : 3
  4-bit register                                        : 7
@@ -947,8 +952,8 @@ Macro Statistics
 # Adders/Subtractors                                   : 3
  16-bit adder                                          : 2
  16-bit addsub                                         : 1
-# Registers                                            : 572
- Flip-Flops                                            : 572
+# Registers                                            : 573
+ Flip-Flops                                            : 573
 # Comparators                                          : 9
  16-bit comparator equal                               : 1
  16-bit comparator less                                : 1
@@ -1017,8 +1022,6 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <instruction_2> (wit
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <instruction_1> (without init value) has a constant value of 0 in block <phase1>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <instruction_0> (without init value) has a constant value of 0 in block <phase1>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <back_reg_0> (without init value) has a constant value of 0 in block <phase2>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:2677 - Node <IO_port/ram2/ram_done> of sequential type is unconnected in block <top_cpu>.
-WARNING:Xst:2677 - Node <IO_port/my_done> of sequential type is unconnected in block <top_cpu>.
 WARNING:Xst:2677 - Node <IO_port/ram2/data_ro_0> of sequential type is unconnected in block <top_cpu>.
 WARNING:Xst:2677 - Node <IO_port/ram2/data_ro_1> of sequential type is unconnected in block <top_cpu>.
 WARNING:Xst:2677 - Node <IO_port/ram2/data_ro_2> of sequential type is unconnected in block <top_cpu>.
@@ -1054,148 +1057,153 @@ Optimizing unit <phase3> ...
 Optimizing unit <phase4> ...
 
 Optimizing unit <forwarding> ...
-WARNING:Xst:1710 - FF/Latch <registers_port/reg_13_1> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_13_2> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_13_3> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_13_4> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_13_5> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_13_6> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_13_7> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_13_8> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_13_9> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_13_10> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_13_11> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_13_12> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_13_13> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/A_9> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/A_10> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/A_11> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/A_12> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/A_13> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/A_14> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/A_15> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/mem_read> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/imm_0> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/imm_1> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/imm_2> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/imm_3> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/imm_4> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/imm_5> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/imm_6> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/imm_7> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/imm_8> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/imm_9> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/imm_10> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/imm_11> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/imm_12> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/imm_13> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/write_back> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase3_port/back_reg_0> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase3_port/back_reg_1> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase3_port/back_reg_2> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase3_port/back_reg_3> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/imm_15> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/imm_14> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/mem_write> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/back_data_0> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/A_0> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/A_1> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/A_2> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/A_3> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/A_4> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/A_5> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/A_6> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/A_7> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase2_port/A_8> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_13_14> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_13_13> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_13_12> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_13_11> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_13_10> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_13_15> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_3_0> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_3_1> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_1_15> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_0> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_1> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_2> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_3> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_4> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_5> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_6> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_7> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_8> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_9> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_10> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_11> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_12> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_13> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_14> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_15> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_13_0> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_14_4> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_14_5> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_14_6> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_14_7> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_14_8> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_14_9> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_14_10> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_14_11> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_14_12> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_14_13> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_14_14> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_14_15> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_4_0> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_4_1> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_4_2> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_4_3> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_4_4> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_4_5> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_3_2> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_3_3> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_3_4> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_3_5> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_3_6> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_3_7> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_3_8> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_3_9> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_3_10> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_3_11> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_3_12> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_3_13> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_3_14> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_3_15> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_14_0> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_14_1> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_14_2> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_13_9> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_13_8> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_13_7> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_13_6> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_13_5> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_13_4> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_13_3> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_13_2> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_13_1> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_13_0> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_15> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_14> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_13> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_4_1> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_4_0> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_14_15> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_14_14> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_14_13> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_14_12> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_14_11> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_14_10> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_14_9> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_14_8> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_14_7> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_14_6> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_14_5> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_14_4> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_14_3> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase3_port/back_reg_3> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase3_port/back_reg_2> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase3_port/back_reg_1> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase3_port/back_reg_0> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/mem_read> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/imm_0> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/imm_1> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/imm_2> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/imm_3> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/imm_4> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/imm_5> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/imm_6> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/imm_7> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/imm_8> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/imm_9> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/imm_10> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/imm_11> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/A_6> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/A_7> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/A_8> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/A_9> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/A_10> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/A_11> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/A_12> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/A_13> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/A_14> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/A_15> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/A_5> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/A_4> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/A_3> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/A_2> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/A_1> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/A_0> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/back_data_0> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/mem_write> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_2_13> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_2_14> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_2_15> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_1_0> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_14_2> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_14_1> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_14_0> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_3_15> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_3_14> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_3_13> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_3_12> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_3_11> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_3_10> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_3_9> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_3_8> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_3_7> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_1_1> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_1_2> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_1_3> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_1_4> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_1_5> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_1_6> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_1_7> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_1_8> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_1_9> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_1_10> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_1_11> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_1_12> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_1_13> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_1_14> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/imm_12> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/imm_13> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/imm_14> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/imm_15> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/write_back> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_2_0> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_2_1> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_2_2> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_2_3> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_2_4> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_2_5> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_2_6> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_2_7> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_2_8> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_2_9> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_2_10> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_2_11> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_1_0> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_2_15> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_2_14> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_2_13> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_2_12> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_2_11> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_2_10> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_2_9> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_2_8> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_2_7> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_2_6> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_2_5> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_2_4> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_2_3> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_2_2> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_2_1> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_2_0> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase3_port/if_writeback> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase3_port/mem_read> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase3_port/mem_write> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase3_port/back_data_0> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase4_port/back_reg_3> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase4_port/back_reg_2> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase4_port/back_reg_1> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase4_port/back_reg_0> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_12> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_11> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_10> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_9> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_8> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_7> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_6> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_5> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_4> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_3> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_2> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_1> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_12_0> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_1_15> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_1_14> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_1_13> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_1_12> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_1_11> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_1_10> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_1_9> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_1_8> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_1_7> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_1_6> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_1_5> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_1_4> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_1_3> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_1_2> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_7_12> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_7_13> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_7_14> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_7_15> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
@@ -1212,7 +1220,8 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_9_10> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_9_11> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_9_12> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_9_13> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_6_10> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_6_11> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_6_12> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_6_13> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_6_14> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
@@ -1229,7 +1238,7 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_7_9> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_7_10> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_7_11> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_7_12> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_10_15> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_0_0> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_0_1> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_0_2> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
@@ -1247,6 +1256,7 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_0_14> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_0_15> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <IO_port/ram2/switch_flag_FSM_FFd2> has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_9_13> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_9_14> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_9_15> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_10_0> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
@@ -1264,11 +1274,14 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_10_12> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_10_13> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_10_14> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_10_15> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_15_8> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_15_9> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_15_10> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_15_11> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_4_9> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_4_8> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_4_7> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_4_6> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_4_5> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_4_4> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_4_3> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_4_2> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_15_12> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_15_13> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_15_14> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
@@ -1279,17 +1292,6 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_5_3> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_5_4> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_5_5> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_5_6> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_5_7> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_5_8> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_4_6> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_4_7> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_4_8> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_4_9> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_4_10> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_4_11> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_4_12> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_4_13> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_4_14> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_4_15> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_15_0> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
@@ -1300,6 +1302,18 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_15_5> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_15_6> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_15_7> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_15_8> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_15_9> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_15_10> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_15_11> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_4_13> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_4_12> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_4_11> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_4_10> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_8_6> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_8_7> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_8_8> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_8_9> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_8_10> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_8_11> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_8_12> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
@@ -1316,8 +1330,10 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_6_7> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_6_8> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_6_9> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_6_10> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_6_11> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_5_6> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_5_7> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_5_8> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_5_9> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_5_10> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_5_11> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_5_12> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
@@ -1330,20 +1346,9 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_8_3> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_8_4> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_8_5> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_8_6> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_5_9> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_8_7> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_8_8> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <registers_port/reg_8_9> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase4_port/back_reg_2> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase4_port/back_reg_1> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase4_port/back_reg_0> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase4_port/back_reg_3> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase3_port/if_writeback> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase3_port/mem_read> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase3_port/back_data_0> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase3_port/mem_write> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <IO_port/ram2/tmp_state_3> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase4_port/back_data_0> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase4_port/if_writeback> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <IO_port/ram2/switch_flag_FSM_FFd1> has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/B_15> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/B_14> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
@@ -1364,8 +1369,6 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase2_port/B_0> (w
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase3_port/B_value_1> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase3_port/B_value_2> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase3_port/B_value_14> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase4_port/if_writeback> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase4_port/back_data_0> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <IO_port/serial_port/Mtridata_ram1data_2> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <IO_port/serial_port/Mtridata_ram1data_1> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2677 - Node <phase2_port/pc_15> of sequential type is unconnected in block <top_cpu>.
@@ -1438,6 +1441,23 @@ WARNING:Xst:1898 - Due to constant pushing, FF/Latch <registers_port/reg_11_11> 
 WARNING:Xst:1898 - Due to constant pushing, FF/Latch <registers_port/reg_11_10> is unconnected in block <top_cpu>.
 WARNING:Xst:1898 - Due to constant pushing, FF/Latch <registers_port/reg_11_0> is unconnected in block <top_cpu>.
 WARNING:Xst:1898 - Due to constant pushing, FF/Latch <phase2_port/b_or_imm> is unconnected in block <top_cpu>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <phase3_port/alu_output_0> is unconnected in block <top_cpu>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <phase4_port/alu_output_0> is unconnected in block <top_cpu>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <phase4_port/alu_output_10> is unconnected in block <top_cpu>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <phase4_port/alu_output_11> is unconnected in block <top_cpu>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <phase4_port/alu_output_12> is unconnected in block <top_cpu>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <phase4_port/alu_output_13> is unconnected in block <top_cpu>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <phase4_port/alu_output_14> is unconnected in block <top_cpu>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <phase4_port/alu_output_15> is unconnected in block <top_cpu>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <phase4_port/alu_output_1> is unconnected in block <top_cpu>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <phase4_port/alu_output_2> is unconnected in block <top_cpu>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <phase4_port/alu_output_3> is unconnected in block <top_cpu>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <phase4_port/alu_output_4> is unconnected in block <top_cpu>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <phase4_port/alu_output_5> is unconnected in block <top_cpu>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <phase4_port/alu_output_6> is unconnected in block <top_cpu>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <phase4_port/alu_output_8> is unconnected in block <top_cpu>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <phase4_port/alu_output_9> is unconnected in block <top_cpu>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <phase4_port/alu_output_7> is unconnected in block <top_cpu>.
 WARNING:Xst:1898 - Due to constant pushing, FF/Latch <phase2_port/ry_1> is unconnected in block <top_cpu>.
 WARNING:Xst:1898 - Due to constant pushing, FF/Latch <phase2_port/ry_0> is unconnected in block <top_cpu>.
 WARNING:Xst:1898 - Due to constant pushing, FF/Latch <phase2_port/ry_3> is unconnected in block <top_cpu>.
@@ -1447,18 +1467,18 @@ WARNING:Xst:1898 - Due to constant pushing, FF/Latch <phase2_port/rx_0> is uncon
 WARNING:Xst:1898 - Due to constant pushing, FF/Latch <phase2_port/rx_3> is unconnected in block <top_cpu>.
 WARNING:Xst:1898 - Due to constant pushing, FF/Latch <phase2_port/rx_2> is unconnected in block <top_cpu>.
 WARNING:Xst:1710 - FF/Latch <phase3_port/B_value_0> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase3_port/B_value_3> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase3_port/B_value_4> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase3_port/B_value_5> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase3_port/B_value_6> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase3_port/B_value_7> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase3_port/B_value_8> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase3_port/B_value_9> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase3_port/B_value_10> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase3_port/B_value_11> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase3_port/B_value_12> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase3_port/B_value_13> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <phase3_port/B_value_15> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase3_port/B_value_3> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase3_port/B_value_4> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase3_port/B_value_5> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase3_port/B_value_6> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase3_port/B_value_7> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase3_port/B_value_8> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase3_port/B_value_9> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase3_port/B_value_10> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase3_port/B_value_11> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase3_port/B_value_12> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase3_port/B_value_13> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <phase3_port/B_value_15> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <IO_port/serial_port/Mtridata_ram1data_7> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <IO_port/serial_port/Mtridata_ram1data_6> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <IO_port/serial_port/Mtridata_ram1data_5> (without init value) has a constant value of 0 in block <top_cpu>. This FF/Latch will be trimmed during the optimization process.
@@ -1517,7 +1537,10 @@ WARNING:Xst:1293 - FF/Latch <IO_port/ram2/we> has a constant value of 1 in block
 Building and optimizing final netlist ...
 INFO:Xst:2261 - The FF/Latch <phase2_port/alu_op_3> in Unit <top_cpu> is equivalent to the following 4 FFs/Latches, which will be removed : <phase2_port/alu_op_2> <phase2_port/alu_op_1> <phase2_port/alu_op_0> <phase2_port/back_data_1> 
 Found area constraint ratio of 100 (+ 5) on block top_cpu, actual ratio is 0.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <IO_port/my_done> is unconnected in block <top_cpu>.
+WARNING:Xst:2677 - Node <clk_count> of sequential type is unconnected in block <top_cpu>.
 WARNING:Xst:2677 - Node <IO_port/serial_port/Mtrien_ram1data> of sequential type is unconnected in block <top_cpu>.
+WARNING:Xst:2677 - Node <IO_port/ram2/ram_done> of sequential type is unconnected in block <top_cpu>.
 WARNING:Xst:2677 - Node <phase2_port/alu_op_3> of sequential type is unconnected in block <top_cpu>.
 
 Final Macro Processing ...
@@ -1553,7 +1576,7 @@ Optimization Goal                  : Speed
 Keep Hierarchy                     : No
 
 Design Statistics
-# IOs                              : 100
+# IOs                              : 115
 
 Cell Usage :
 # BELS                             : 27
@@ -1589,7 +1612,7 @@ Selected Device : 3s1200efg320-4
  Number of Slices:                       12  out of   8672     0%  
  Number of Slice Flip Flops:             15  out of  17344     0%  
  Number of 4 input LUTs:                 25  out of  17344     0%  
- Number of IOs:                         100
+ Number of IOs:                         115
  Number of bonded IOBs:                  98  out of    250    39%  
  Number of GCLKs:                         2  out of     24     8%  
 
@@ -1626,7 +1649,7 @@ Control Signal                                         | Buffer(FF name)        
 IO_port/serial_port/curr_state_0_and0000(XST_VCC:P)    | NONE(IO_port/serial_port/curr_state_0)| 10    |
 IO_port/serial_port/Mtrien_ram1data(XST_GND:G)         | NONE(IO_port/serial_port/curr_state_0)| 9     |
 IO_port/my_rst_mux0000(IO_port/my_rst_mux00001_INV_0:O)| NONE(IO_port/ram2/oe)                 | 3     |
-IO_port/rst_inv(phase4_port/rst_inv1_INV_0:O)          | NONE(IO_port/my_rst)                  | 1     |
+IO_port/rst_inv(phase3_port/rst_inv1_INV_0:O)          | NONE(IO_port/my_rst)                  | 1     |
 -------------------------------------------------------+---------------------------------------+-------+
 
 Timing Summary:
@@ -1636,7 +1659,7 @@ Speed Grade: -4
    Minimum period: 3.593ns (Maximum Frequency: 278.319MHz)
    Minimum input arrival time before clock: 4.277ns
    Maximum output required time after clock: 6.055ns
-   Maximum combinational path delay: No path found
+   Maximum combinational path delay: 5.541ns
 
 Timing Detail:
 --------------
@@ -1658,7 +1681,7 @@ Delay:               3.593ns (Levels of Logic = 2)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FDCP:C->Q             7   0.591   0.787  IO_port/serial_port/curr_state_1 (IO_port/serial_port/curr_state_1)
-     LUT2:I1->O            1   0.704   0.499  IO_port/serial_port/curr_state_2_mux00001_SW0 (N64)
+     LUT2:I1->O            1   0.704   0.499  IO_port/serial_port/curr_state_2_mux00001_SW0 (N66)
      LUT4:I1->O            1   0.704   0.000  IO_port/serial_port/curr_state_2_mux00001 (IO_port/serial_port/curr_state_2_mux0000)
      FDCP:D                    0.308          IO_port/serial_port/curr_state_2
     ----------------------------------------
@@ -1700,7 +1723,7 @@ Offset:              4.277ns (Levels of Logic = 3)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      IBUF:I->O             6   1.218   0.844  data_ready_IBUF (data_ready_IBUF)
-     LUT2:I0->O            1   0.704   0.499  IO_port/serial_port/curr_state_2_mux00001_SW0 (N64)
+     LUT2:I0->O            1   0.704   0.499  IO_port/serial_port/curr_state_2_mux00001_SW0 (N66)
      LUT4:I1->O            1   0.704   0.000  IO_port/serial_port/curr_state_2_mux00001 (IO_port/serial_port/curr_state_2_mux0000)
      FDCP:D                    0.308          IO_port/serial_port/curr_state_2
     ----------------------------------------
@@ -1728,16 +1751,34 @@ Offset:              6.055ns (Levels of Logic = 2)
                                        (75.4% logic, 24.6% route)
 
 =========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 16 / 16
+-------------------------------------------------------------------------
+Delay:               5.541ns (Levels of Logic = 2)
+  Source:            rst (PAD)
+  Destination:       led<15> (PAD)
+
+  Data Path: rst to led<15>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            17   1.218   1.051  rst_IBUF (led_0_OBUF)
+     OBUF:I->O                 3.272          led_15_OBUF (led<15>)
+    ----------------------------------------
+    Total                      5.541ns (4.490ns logic, 1.051ns route)
+                                       (81.0% logic, 19.0% route)
+
+=========================================================================
 
 
-Total REAL time to Xst completion: 15.00 secs
-Total CPU time to Xst completion: 14.90 secs
+Total REAL time to Xst completion: 11.00 secs
+Total CPU time to Xst completion: 10.53 secs
  
 --> 
 
-Total memory usage is 222732 kilobytes
+Total memory usage is 284472 kilobytes
 
-Number of errors   :    0 (   0 filtered)
-Number of warnings :  964 (   0 filtered)
+Number of errors   :    1 (   0 filtered)
+Number of warnings :  983 (   0 filtered)
 Number of infos    :    5 (   0 filtered)
 

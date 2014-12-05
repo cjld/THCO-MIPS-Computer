@@ -32,12 +32,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity top_cpu is
 port(
 		clk : in std_logic;
-		clock : in std_logic;
 		rst : in std_logic;
 		clk_man, clk_auto_11 : in std_logic;
 		
---		led	:	out std_logic_vector (15 downto 0);
---		switch 	:	in std_logic_vector (15 downto 0);
+		led	:	out std_logic_vector (15 downto 0);
+		switch 	:	in std_logic_vector (15 downto 0);
 		
 	   data_ready, tbre, tsre : in  STD_LOGIC;
 	   rdn, wrn : out  STD_LOGIC;
@@ -48,8 +47,7 @@ port(
 		
 		ram1_data	:	inout std_logic_vector(15 downto 0);
 		ram1_addr	:	out std_logic_vector(17 downto 0);
-		ram1_en, ram1_oe, ram1_we	:	out std_logic;
-		dd : out std_logic_vector(15 downto 0)
+		ram1_en, ram1_oe, ram1_we	:	out std_logic
 );
 end top_cpu;
 
@@ -329,14 +327,23 @@ signal mem_out1, mem_out2: std_logic_vector(15 downto 0);
 signal a_pc, pc_en, zero_en, t_en : std_logic;
 signal t_data : std_logic_vector(15 downto 0);
 
-begin
-	
-	dd <= data;
-	enable_all <= '1';
-	is_done <= '1';
+signal clk_count: std_logic;
 
+begin
+	led <= (others => rst);
+	enable_all <= '1';
+	
+	process(clk, rst)
+	begin
+		if (rst = '0') then
+			clk_count <= '0';
+		elsif (clk'event and clk = '1') then
+			clk_count <= not clk_count;
+		end if;
+	end process;
+	
 	pc_port: pc port map(
-		clk => clock,
+		clk => clk_count,
 		rst => rst,
 		enable => pause,
 		is_done => is_done,
@@ -346,7 +353,7 @@ begin
 	);
 
 	phase1_port: phase1 port map(
-		clk => clock,
+		clk => clk_count,
 		rst => rst,
 		enable => pause,
 		is_done => is_done,
@@ -400,7 +407,7 @@ begin
 	);
 
 	phase2_port: phase2 port map(
-		clk => clock,
+		clk => clk_count,
 		rst => rst,
 		enable => enable_all,
 		is_done => is_done,
@@ -449,7 +456,7 @@ begin
 	);
 	
 	phase3_port: phase3 port map(
-		clk => clock,
+		clk => clk_count,
 		rst => rst,
 		enable => enable_all,
 		is_done => is_done,
@@ -475,11 +482,11 @@ begin
 		
 	IOpass_port: IOpass port map(
 		addr => alu_output2,
-      data => b3,
-      is_read => mem_read3,
+		data => b3,
+		is_read => mem_read3,
 		is_write => mem_write3,
-      is_sp => is_sp,
-      need_int => need_int
+		is_sp => is_sp,
+		need_int => need_int
 	);
 	
 	IO_port: IO port map(
@@ -522,7 +529,7 @@ begin
 	);
 	
 	phase4_port: phase4 port map(
-		clk => clock,
+		clk => clk_count,
 		rst => rst,
 		enable => enable_all,
 		is_done => is_done,

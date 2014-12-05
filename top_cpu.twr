@@ -1,9 +1,10 @@
 --------------------------------------------------------------------------------
-Release 14.7 Trace  (nt)
+Release 14.7 Trace  (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-F:\14.7\ISE_DS\ISE\bin\nt\unwrapped\trce.exe -intstyle ise -v 3 -s 4 -n 3
--fastpaths -xml top_cpu.twx top_cpu.ncd -o top_cpu.twr top_cpu.pcf
+f:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\trce.exe -intstyle ise -v 3 -s 4
+-n 3 -fastpaths -xml top_cpu.twx top_cpu.ncd -o top_cpu.twr top_cpu.pcf -ucf
+top_cpu.ucf
 
 Design file:              top_cpu.ncd
 Physical constraint file: top_cpu.pcf
@@ -44,25 +45,25 @@ Clock clk to Pad
              | clk (edge) |                  | Clock  |
 Destination  |   to PAD   |Internal Clock(s) | Phase  |
 -------------+------------+------------------+--------+
-ram2_addr<0> |    9.584(F)|clk_BUFGP         |   0.000|
-ram2_addr<1> |    9.251(F)|clk_BUFGP         |   0.000|
-ram2_addr<2> |    9.253(F)|clk_BUFGP         |   0.000|
-ram2_addr<3> |    9.861(F)|clk_BUFGP         |   0.000|
-ram2_addr<4> |    8.974(F)|clk_BUFGP         |   0.000|
-ram2_addr<5> |    8.631(F)|clk_BUFGP         |   0.000|
-ram2_addr<6> |    8.886(F)|clk_BUFGP         |   0.000|
-ram2_addr<7> |    8.908(F)|clk_BUFGP         |   0.000|
-ram2_addr<8> |    8.883(F)|clk_BUFGP         |   0.000|
-ram2_addr<9> |    8.879(F)|clk_BUFGP         |   0.000|
-ram2_addr<10>|    8.557(F)|clk_BUFGP         |   0.000|
-ram2_addr<11>|    8.887(F)|clk_BUFGP         |   0.000|
-ram2_addr<12>|    9.197(F)|clk_BUFGP         |   0.000|
-ram2_addr<13>|    9.166(F)|clk_BUFGP         |   0.000|
-ram2_addr<14>|    9.752(F)|clk_BUFGP         |   0.000|
-ram2_addr<15>|    9.477(F)|clk_BUFGP         |   0.000|
-ram2_addr<16>|    9.477(F)|clk_BUFGP         |   0.000|
-ram2_addr<17>|    9.162(F)|clk_BUFGP         |   0.000|
-ram2_oe      |    8.375(F)|clk_BUFGP         |   0.000|
+ram2_addr<0> |   11.394(F)|clk_BUFGP         |   0.000|
+ram2_addr<1> |   11.404(F)|clk_BUFGP         |   0.000|
+ram2_addr<2> |   12.697(F)|clk_BUFGP         |   0.000|
+ram2_addr<3> |   11.143(F)|clk_BUFGP         |   0.000|
+ram2_addr<4> |   12.160(F)|clk_BUFGP         |   0.000|
+ram2_addr<5> |   12.196(F)|clk_BUFGP         |   0.000|
+ram2_addr<6> |   10.640(F)|clk_BUFGP         |   0.000|
+ram2_addr<7> |   10.631(F)|clk_BUFGP         |   0.000|
+ram2_addr<8> |   10.650(F)|clk_BUFGP         |   0.000|
+ram2_addr<9> |   10.901(F)|clk_BUFGP         |   0.000|
+ram2_addr<10>|   10.626(F)|clk_BUFGP         |   0.000|
+ram2_addr<11>|   10.904(F)|clk_BUFGP         |   0.000|
+ram2_addr<12>|   11.475(F)|clk_BUFGP         |   0.000|
+ram2_addr<13>|    9.558(F)|clk_BUFGP         |   0.000|
+ram2_addr<14>|    9.831(F)|clk_BUFGP         |   0.000|
+ram2_addr<15>|    9.883(F)|clk_BUFGP         |   0.000|
+ram2_addr<16>|   11.196(F)|clk_BUFGP         |   0.000|
+ram2_addr<17>|   11.475(F)|clk_BUFGP         |   0.000|
+ram2_oe      |    9.784(F)|clk_BUFGP         |   0.000|
 -------------+------------+------------------+--------+
 
 Clock to Setup on destination clock clk
@@ -70,18 +71,40 @@ Clock to Setup on destination clock clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk            |    1.860|         |    1.860|    1.564|
+clk            |    1.942|         |    1.911|    1.561|
 ---------------+---------+---------+---------+---------+
 
+Pad to Pad
+---------------+---------------+---------+
+Source Pad     |Destination Pad|  Delay  |
+---------------+---------------+---------+
+rst            |led<0>         |   10.926|
+rst            |led<1>         |   10.724|
+rst            |led<2>         |   11.182|
+rst            |led<3>         |   10.999|
+rst            |led<4>         |   10.926|
+rst            |led<5>         |   10.718|
+rst            |led<6>         |   11.200|
+rst            |led<7>         |   10.713|
+rst            |led<8>         |   11.497|
+rst            |led<9>         |   11.480|
+rst            |led<10>        |   11.501|
+rst            |led<11>        |   11.789|
+rst            |led<12>        |   11.778|
+rst            |led<13>        |   11.786|
+rst            |led<14>        |   13.180|
+rst            |led<15>        |   12.075|
+---------------+---------------+---------+
 
-Analysis completed Fri Dec 05 21:56:56 2014 
+
+Analysis completed Fri Dec 05 22:33:56 2014 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 128 MB
+Peak Memory Usage: 174 MB
 
 
 
