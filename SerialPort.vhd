@@ -65,7 +65,7 @@ begin
 	--clk_fp <= clk_count(2);
 	clk_fp <= clk_11;
 
-	main: process(rst,clk,clk_fp,enable)
+	main: process(rst,clk,clk_fp,enable,is_read)
 	begin
 		if (enable = '0') then
 			rdn <= '1'; 

@@ -252,8 +252,8 @@ begin
 	out_data <=
 		(others => '1') when (is_sp_label = '1') else my_out_data;
 			
-	ram_write <= is_write and not is_sp;
-	ram_read <= is_read and not is_sp;
+	ram_write <= is_write and not is_sp and not is_refrash_vga;
+	ram_read <= (is_read and not is_sp) or is_refrash_vga;
 
 	sp_enable <= '1';
 	sp_rst <= rst and is_sp and my_rst;
