@@ -19,6 +19,8 @@
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use ieee.std_logic_unsigned.all;
+use ieee.std_logic_arith.all;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -93,8 +95,18 @@ end component;
 
 	signal is_done: std_logic;
 	signal out_cmd, out_data: std_logic_vector(15 downto 0);
+	signal clk_count: std_logic_vector(2 downto 0);
 
 begin
+
+	process(clk, rst)
+	begin
+		if (rst = '0') then
+			clk_count <= "000";
+		elsif (clk'event and clk = '1') then
+			clk_count <= clk_count + '1';
+		end if;
+	end process;
 
 	IO_port: IO port map(
 		pc => (others => '0'),
@@ -110,7 +122,7 @@ begin
 		out_cmd => out_cmd,
 		out_data => out_data,
 		is_done => is_done,
-		clk_auto => clk,
+		clk_auto => clk,--clk_count(2),
 		clk_man => clk_man,
 		rst => rst,
 		clk_auto_11 => clk_auto_11,
@@ -139,6 +151,7 @@ begin
 		hs => hs, vs => vs,
 		r=>r ,g=>g, b=>b
 	);
+	
 
 end Behavioral;
 

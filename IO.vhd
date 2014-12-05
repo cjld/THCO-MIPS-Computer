@@ -19,6 +19,8 @@
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use ieee.std_logic_unsigned.all;
+use ieee.std_logic_arith.all;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -276,7 +278,7 @@ begin
 		
 	out_cmd <= ram_data_out_ro;
 
-	clk <= clk_auto when (switch(15) = '0') else clk_man;
+	clk <= clk_auto;-- when (switch(15) = '0') else clk_man;
 	--led(0) <= my_done;
 	--led(1) <= clk;
 	process(clk, rst)
