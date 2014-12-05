@@ -1,0 +1,79 @@
+V3 67
+FL E:/top_cup/alu.vhd 2014/12/04.22:05:10 P.20131013
+EN work/alu 1417787777 FL E:/top_cup/alu.vhd PB ieee/std_logic_1164 1381692176 \
+      PB ieee/STD_LOGIC_UNSIGNED 1381692179 PB ieee/std_logic_arith 1381692177
+AR work/alu/Behavioral 1417787778 \
+      FL E:/top_cup/alu.vhd EN work/alu 1417787777
+FL E:/top_cup/branch.vhd 2014/12/04.19:05:09 P.20131013
+EN work/branch 1417787773 FL E:/top_cup/branch.vhd PB ieee/std_logic_1164 1381692176 \
+      PB ieee/STD_LOGIC_UNSIGNED 1381692179
+AR work/branch/Behavioral 1417787774 \
+      FL E:/top_cup/branch.vhd EN work/branch 1417787773
+FL E:/top_cup/forwarding.vhd 2014/12/05.20:43:11 P.20131013
+EN work/forwarding 1417787789 FL E:/top_cup/forwarding.vhd PB ieee/std_logic_1164 1381692176 \
+      PB ieee/STD_LOGIC_UNSIGNED 1381692179
+AR work/forwarding/Behavioral 1417787790 \
+      FL E:/top_cup/forwarding.vhd EN work/forwarding 1417787789
+FL E:/top_cup/IO.vhd 2014/12/04.22:03:31 P.20131013
+EN work/IO 1417787783 FL E:/top_cup/IO.vhd PB ieee/std_logic_1164 1381692176
+AR work/IO/Behavioral 1417787784 \
+      FL E:/top_cup/IO.vhd EN work/IO 1417787783 CP Ram CP SRam CP SerialPort
+FL E:/top_cup/IOpass.vhd 2014/12/05.19:53:15 P.20131013
+EN work/IOpass 1417787781 FL E:/top_cup/IOpass.vhd PB ieee/std_logic_1164 1381692176
+AR work/IOpass/Behavioral 1417787782 \
+      FL E:/top_cup/IOpass.vhd EN work/IOpass 1417787781
+FL E:/top_cup/pc.vhd 2014/12/05.21:38:37 P.20131013
+EN work/pc 1417787765 FL E:/top_cup/pc.vhd PB ieee/std_logic_1164 1381692176 \
+      PB ieee/STD_LOGIC_UNSIGNED 1381692179
+AR work/pc/Behavioral 1417787766 \
+      FL E:/top_cup/pc.vhd EN work/pc 1417787765
+FL E:/top_cup/phase1.vhd 2014/12/05.21:40:56 P.20131013
+EN work/phase1 1417787767 FL E:/top_cup/phase1.vhd PB ieee/std_logic_1164 1381692176
+AR work/phase1/Behavioral 1417787768 \
+      FL E:/top_cup/phase1.vhd EN work/phase1 1417787767
+FL E:/top_cup/phase2.vhd 2014/12/05.21:54:15 P.20131013
+EN work/phase2 1417787775 FL E:/top_cup/phase2.vhd PB ieee/std_logic_1164 1381692176
+AR work/phase2/Behavioral 1417787776 \
+      FL E:/top_cup/phase2.vhd EN work/phase2 1417787775
+FL E:/top_cup/phase3.vhd 2014/12/05.21:45:27 P.20131013
+EN work/phase3 1417787779 FL E:/top_cup/phase3.vhd PB ieee/std_logic_1164 1381692176
+AR work/phase3/Behavioral 1417787780 \
+      FL E:/top_cup/phase3.vhd EN work/phase3 1417787779
+FL E:/top_cup/phase4.vhd 2014/12/05.21:46:25 P.20131013
+EN work/phase4 1417787785 FL E:/top_cup/phase4.vhd PB ieee/std_logic_1164 1381692176
+AR work/phase4/Behavioral 1417787786 \
+      FL E:/top_cup/phase4.vhd EN work/phase4 1417787785
+FL E:/top_cup/Ram.vhd 2014/12/04.20:07:00 P.20131013
+EN work/Ram 1417787759 FL E:/top_cup/Ram.vhd PB ieee/std_logic_1164 1381692176
+AR work/Ram/Behavioral 1417787760 \
+      FL E:/top_cup/Ram.vhd EN work/Ram 1417787759
+FL E:/top_cup/registers.vhd 2014/12/05.21:52:18 P.20131013
+EN work/registers 1417787771 FL E:/top_cup/registers.vhd PB ieee/std_logic_1164 1381692176 \
+      PB ieee/STD_LOGIC_UNSIGNED 1381692179
+AR work/registers/Behavioral 1417787772 \
+      FL E:/top_cup/registers.vhd EN work/registers 1417787771
+FL E:/top_cup/SerialPort.vhd 2014/12/04.04:46:20 P.20131013
+EN work/SerialPort 1417787763 FL E:/top_cup/SerialPort.vhd PB ieee/std_logic_1164 1381692176 \
+      PB ieee/std_logic_arith 1381692177 PB ieee/STD_LOGIC_UNSIGNED 1381692179
+AR work/SerialPort/Behavioral 1417787764 \
+      FL E:/top_cup/SerialPort.vhd EN work/SerialPort 1417787763
+FL E:/top_cup/SRam.vhd 2014/12/04.21:58:54 P.20131013
+EN work/SRam 1417787761 FL E:/top_cup/SRam.vhd PB ieee/std_logic_1164 1381692176 \
+      PB ieee/STD_LOGIC_UNSIGNED 1381692179
+AR work/SRam/main 1417787762 \
+      FL E:/top_cup/SRam.vhd EN work/SRam 1417787761
+FL E:/top_cup/top_cpu.vhd 2014/12/05.21:55:55 P.20131013
+EN work/top_cpu 1417787791 FL E:/top_cup/top_cpu.vhd PB ieee/std_logic_1164 1381692176
+AR work/top_cpu/Behavioral 1417787792 \
+      FL E:/top_cup/top_cpu.vhd EN work/top_cpu 1417787791 CP pc CP phase1 \
+      CP transfer CP registers CP branch CP phase2 CP alu CP phase3 CP IOpass CP IO \
+      CP phase4 CP write_back CP forwarding
+FL E:/top_cup/transfer.vhd 2014/12/04.19:58:28 P.20131013
+EN work/transfer 1417787769 FL E:/top_cup/transfer.vhd PB ieee/std_logic_1164 1381692176 \
+      PB ieee/STD_LOGIC_UNSIGNED 1381692179
+AR work/transfer/Behavioral 1417787770 \
+      FL E:/top_cup/transfer.vhd EN work/transfer 1417787769
+FL E:/top_cup/write_back.vhd 2014/12/04.19:38:05 P.20131013
+EN work/write_back 1417787787 FL E:/top_cup/write_back.vhd PB ieee/std_logic_1164 1381692176
+AR work/write_back/Behavioral 1417787788 \
+      FL E:/top_cup/write_back.vhd EN work/write_back 1417787787
