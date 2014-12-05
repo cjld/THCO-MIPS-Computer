@@ -328,17 +328,29 @@ signal a_pc, pc_en, zero_en, t_en : std_logic;
 signal t_data : std_logic_vector(15 downto 0);
 
 signal clk_count: std_logic;
+signal rst_1 : std_logic;
 
 begin
-	led <= (others => rst);
+	led(0) <= clk_man;
+	led(15 downto 12) <= instruction0(3 downto 0);
 	enable_all <= '1';
 	
-	process(clk, rst)
+	process(clk_man, rst)
 	begin
 		if (rst = '0') then
 			clk_count <= '0';
-		elsif (clk'event and clk = '1') then
+			rst_1 <= '0';
+		elsif (clk_man'event and clk_man = '1') then
 			clk_count <= not clk_count;
+		end if;
+	end process;
+	
+	process(clk_count)
+	begin
+		if(clk_count'event and clk_count = '1')then
+			if (rst_1 = '0')then
+				rst_1 <= '1';
+			end if;
 		end if;
 	end process;
 	
@@ -381,7 +393,7 @@ begin
 	);
 
 	registers_port: registers port map(
-		clk => clk,
+		clk => clk_man,
 		rst => rst,
 		enable => write_back4,
 		data =>  data,
@@ -501,9 +513,9 @@ begin
 		out_cmd => instruction0,
 		out_data => mem_out1,
 		is_done => is_done,
-		clk_auto => clk,
+		clk_auto => clk_man,
 		clk_man => clk_man,
-		rst => rst,
+		rst => rst_1,
 		clk_auto_11 => clk_auto_11,
 		
 --		led => led,

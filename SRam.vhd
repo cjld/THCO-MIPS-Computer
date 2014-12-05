@@ -90,7 +90,7 @@ begin
 			switch_flag <= RO;
 			oe <= '1';
 			we <= '1';
-			ram_done <= '0';
+			ram_done <= '1';
 		elsif clk_high'event and clk_high = '0' then
 			
 			case( switch_flag ) is
