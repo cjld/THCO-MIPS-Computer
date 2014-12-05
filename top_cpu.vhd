@@ -333,6 +333,7 @@ signal rst_1 : std_logic;
 begin
 	led(0) <= clk_man;
 	led(15 downto 12) <= instruction0(3 downto 0);
+	led(11 downto 1) <= alu_output3(10 downto 0);
 	enable_all <= '1';
 	
 	process(clk_man, rst)

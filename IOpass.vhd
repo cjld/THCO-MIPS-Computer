@@ -39,7 +39,7 @@ entity IOpass is
 end IOpass;
 
 architecture Behavioral of IOpass is
-	signal t1: std_logic;
+	signal my_is_sp: std_logic;
 begin
 	
 	my_is_sp <= '1' when 

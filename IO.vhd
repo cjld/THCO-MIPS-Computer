@@ -141,7 +141,7 @@ architecture Behavioral of IO is
 	end component ; -- SRam
 	
 	signal ram_write, ram_read, ram2_done: std_logic;
-	signal out_ram_data: std_logic_vector(15 downto 0);
+	signal out_ram_data, my_out_data: std_logic_vector(15 downto 0);
 	 
 begin
 	
@@ -213,10 +213,11 @@ begin
 	
 	ram1_enable <= '0';
 	
+	my_out_data <= out_ram_data when (is_sp = '0')
+			else sp_output_data_ex;
 	out_data <=
-		(others => '1') when (is_sp_label = '1') else
-			(out_ram_data when (is_sp = '0')
-			else sp_output_data_ex);
+		(others => '1') when (is_sp_label = '1') else my_out_data;
+			
 	ram_write <= is_write and not is_sp;
 	ram_read <= is_read and not is_sp;
 
