@@ -136,7 +136,7 @@ begin
 		ram1_oe => ram1_oe,
 		ram1_we => ram1_we,
 		
-		hs => hs,vs => vs,
+		hs => hs, vs => vs,
 		r=>r ,g=>g, b=>b
 	);
 

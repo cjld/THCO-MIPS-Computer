@@ -148,6 +148,9 @@ architecture Behavioral of IO is
 			clk	:	in std_logic;
 			rst	:	in std_logic;
 			
+			led: out std_logic_vector(15 downto 0);
+			switch: in std_logic_vector(15 downto 0);
+			
 			read_mem_done: in std_logic;
 			vga_refresh_done: out std_logic;
 			
@@ -229,6 +232,8 @@ begin
 			clk => clk,
 			rst => vga_rst,
 			
+			led => led, switch => switch,
+			
 			read_mem_done => ram2_done,
 			vga_refresh_done => vga_refresh_done,
 			
@@ -253,7 +258,7 @@ begin
 		(others => '1') when (is_sp_label = '1') else my_out_data;
 			
 	ram_write <= is_write and not is_sp and not is_refrash_vga;
-	ram_read <= (is_read and not is_sp) or is_refrash_vga;
+	ram_read <= (is_read and not is_sp) and not is_refrash_vga;
 
 	sp_enable <= '1';
 	sp_rst <= rst and is_sp and my_rst;
@@ -271,7 +276,9 @@ begin
 		
 	out_cmd <= ram_data_out_ro;
 
-	clk <= clk_auto;
+	clk <= clk_auto when (switch(15) = '0') else clk_man;
+	--led(0) <= my_done;
+	--led(1) <= clk;
 	process(clk, rst)
 	begin
 		if (rst = '0') then
