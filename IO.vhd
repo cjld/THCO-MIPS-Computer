@@ -34,7 +34,7 @@ entity IO is
 Port ( 
 	pc, addr, data : in  STD_LOGIC_vector(15 downto 0);
 	is_read, is_write : in  STD_LOGIC;
-	is_sp : in  STD_LOGIC;
+	is_sp, is_sp_label : in  STD_LOGIC;
 	need_int : in  STD_LOGIC;
 	
 	out_cmd, out_data: out std_logic_vector(15 downto 0);
@@ -214,11 +214,12 @@ begin
 	ram1_enable <= '0';
 	
 	out_data <=
-		out_ram_data when (is_sp = '0')
-		else sp_output_data_ex;
+		(others => '1') when (is_sp_label = '1') else
+			(out_ram_data when (is_sp = '0')
+			else sp_output_data_ex);
 	ram_write <= is_write and not is_sp;
 	ram_read <= is_read and not is_sp;
-		
+
 	sp_enable <= '1';
 	sp_rst <= rst and is_sp and my_rst;
 	sp_is_read <= is_read;
