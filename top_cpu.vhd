@@ -244,7 +244,7 @@ component IOpass
         addr : in  STD_LOGIC_vector(15 downto 0);
         data : in  STD_LOGIC_vector(15 downto 0);
         is_read, is_write : in  STD_LOGIC;
-        is_sp : out  STD_LOGIC;
+        is_sp, is_sp_label : out  STD_LOGIC;
         need_int : out  STD_LOGIC
 	);
 end component;
@@ -309,7 +309,7 @@ component forwarding
 	);
 end component;
 
-signal enable_all, data_pause, pause, is_sp, need_int, is_done : std_logic;
+signal enable_all, data_pause, pause, is_sp, is_sp_label, need_int, is_done : std_logic;
 signal pc_next, pc_plus, pc0, pc1, pc2 : std_logic_vector(15 downto 0);
 signal instruction0, instruction1, instruction2 : std_logic_vector(15 downto 0);
 signal imm1, imm2 : std_logic_vector(15 downto 0);
