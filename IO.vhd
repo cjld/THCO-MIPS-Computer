@@ -56,7 +56,10 @@ Port (
 		
 		ram1_data	:	inout std_logic_vector(15 downto 0);
 		ram1_addr	:	out std_logic_vector(17 downto 0);
-		ram1_en, ram1_oe, ram1_we	:	out std_logic
+		ram1_en, ram1_oe, ram1_we	:	out std_logic;
+		
+		hs,vs : out STD_LOGIC;
+		r,g,b : out STD_LOGIC_VECTOR(2 downto 0)
 	
 );
 end IO;
@@ -75,7 +78,7 @@ architecture Behavioral of IO is
 	 
 	 signal sp_enable, sp_rst, sp_is_read: std_logic;
 	 signal sp_input_data, sp_output_data, sp_bus: STD_LOGIC_VECTOR (7 downto 0);
-	 signal sp_is_done: std_logic;
+	 signal sp_is_done, vga_refresh_done: std_logic;
 	 
 	 component Ram
 		port(
@@ -140,9 +143,27 @@ architecture Behavioral of IO is
 	);
 	end component ; -- SRam
 	
+	component VGA is
+	port (
+			clk	:	in std_logic;
+			rst	:	in std_logic;
+			
+			read_mem_done: in std_logic;
+			vga_refresh_done: out std_logic;
+			
+			mem_addr: out std_logic_vector(15 downto 0);
+			mem_data: in std_logic_vector(15 downto 0);
+			
+			hs,vs : out STD_LOGIC;
+			r,g,b : out STD_LOGIC_VECTOR(2 downto 0)
+		);
+	end component;
+	
 	signal ram_write, ram_read, ram2_done: std_logic;
-	signal out_ram_data, my_out_data: std_logic_vector(15 downto 0);
-	 
+	signal out_ram_data, my_out_data, disp_mem_addr, ram_addr_ro, ram_data_out_ro
+		: std_logic_vector(15 downto 0);
+	signal vga_rst: std_logic;
+	
 begin
 	
 	ram1: Ram port map (
@@ -179,9 +200,9 @@ begin
 		ram_data => ram2_data,
 
 		ram_data_in => data,
-		ram_addr_ro => pc,
+		ram_addr_ro => ram_addr_ro,
 		ram_addr_wr	=> addr, --:	in std_logic_vector (15 downto 0); -- read and write memory
-		ram_data_out_ro => out_cmd, 
+		ram_data_out_ro => ram_data_out_ro, 
 		ram_data_out_wr	=> out_ram_data, --:	out std_logic_vector (15 downto 0);
 		ram_done => ram2_done,
 
@@ -203,6 +224,19 @@ begin
 			tbre => tbre,
 			tsre => tsre,
 			wrn => wrn
+	);
+	my_vga: VGA port map(
+			clk => clk,
+			rst => vga_rst,
+			
+			read_mem_done => ram2_done,
+			vga_refresh_done => vga_refresh_done,
+			
+			mem_addr => disp_mem_addr,
+			mem_data => ram_data_out_ro,
+			
+			hs => hs,vs => vs,
+			r => r, g => g, b => b
 	);
 	
 	ram1_data(15 downto 8) <= ram1_bus(15 downto 8);
@@ -226,10 +260,17 @@ begin
 	sp_is_read <= is_read;
 	sp_input_data <= data(7 downto 0);
 	
+	vga_rst <= rst and is_refrash_vga and my_rst;
+	
+	ram_addr_ro <= pc when (is_refrash_vga = '0')
+		else disp_mem_addr;
+	
 	is_done <=
-		my_done when (is_sp = '1') 
+		my_done when (is_sp = '1')
 		else ram2_done;
 		
+	out_cmd <= ram_data_out_ro;
+
 	clk <= clk_auto;
 	process(clk, rst)
 	begin
@@ -241,7 +282,7 @@ begin
 			if (my_rst = '0') then
 				my_rst <= '1';
 				my_done <= '0';
-			elsif (sp_is_done = '1') then
+			elsif (sp_is_done = '1' or vga_refresh_done = '1') then
 				my_rst <= '0';
 				my_done <= '1';
 			end if;
