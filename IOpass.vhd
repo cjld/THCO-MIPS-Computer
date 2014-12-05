@@ -34,17 +34,20 @@ entity IOpass is
            addr : in  STD_LOGIC_vector(15 downto 0);
            data : in  STD_LOGIC_vector(15 downto 0);
            is_read, is_write : in  STD_LOGIC;
-           is_sp : out  STD_LOGIC;
+           is_sp, is_sp_label : out  STD_LOGIC;
            need_int : out  STD_LOGIC);
 end IOpass;
 
 architecture Behavioral of IOpass is
 	signal t1: std_logic;
 begin
-	t1 <= '1' when 
-		addr(15 downto 1) = "101111110000000" else '0';--BF0x
+	
+	my_is_sp <= '1' when 
+		addr(15 downto 0) = "1011111100000000" else '0';--BF00
+	is_sp_label <= '1' when 
+		addr(15 downto 0) = "1011111100000001" else '0';--BF01
 		
-	need_int <= t1 or is_read or is_write;
-	is_sp <= t1;
+	need_int <= my_is_sp or is_read or is_write;
+	is_sp <= my_is_sp;
 end Behavioral;
 
