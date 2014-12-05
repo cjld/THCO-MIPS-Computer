@@ -51,7 +51,7 @@ architecture Behavioral of vga_test is
 begin
 	process (clk,rst) 
 	begin
-		if (clk'event and clk = '1') then
+		if (clk'event and clk = '1') then	
 			clk_2 <= not clk_2;
 			count <= count + 1;
 			int <= conv_integer(count(3 downto 0));

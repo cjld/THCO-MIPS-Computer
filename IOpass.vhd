@@ -34,20 +34,23 @@ entity IOpass is
            addr : in  STD_LOGIC_vector(15 downto 0);
            data : in  STD_LOGIC_vector(15 downto 0);
            is_read, is_write : in  STD_LOGIC;
-           is_sp, is_sp_label : out  STD_LOGIC;
+           is_sp, is_sp_label, is_refrash_vga : out  STD_LOGIC;
            need_int : out  STD_LOGIC);
 end IOpass;
 
 architecture Behavioral of IOpass is
-	signal my_is_sp: std_logic;
+	signal my_is_sp, my_is_refrash_vga: std_logic;
 begin
 	
 	my_is_sp <= '1' when 
 		addr(15 downto 0) = "1011111100000000" else '0';--BF00
 	is_sp_label <= '1' when 
 		addr(15 downto 0) = "1011111100000001" else '0';--BF01
-		
-	need_int <= my_is_sp or is_read or is_write;
+	my_is_refrash_vga <= '1' when 
+		addr(15 downto 0) = "1011111100000100" else '0';--BF04
+
+	need_int <= my_is_sp or is_read or is_write or my_is_refrash_vga;
 	is_sp <= my_is_sp;
+	is_refrash_vga <= my_is_refrash_vga;
 end Behavioral;
 
