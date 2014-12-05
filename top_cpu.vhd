@@ -216,7 +216,7 @@ component IO
 	port(
 		pc, addr, data : in  STD_LOGIC_vector(15 downto 0);
 		is_read, is_write : in  STD_LOGIC;
-		is_sp : in  STD_LOGIC;
+		is_sp, is_sp_label : in  STD_LOGIC;
 		need_int : in  STD_LOGIC;
 		
 		out_cmd, out_data: out std_logic_vector(15 downto 0);
@@ -498,6 +498,7 @@ begin
 		is_read => mem_read3,
 		is_write => mem_write3,
 		is_sp => is_sp,
+		is_sp_label => is_sp_label,
 		need_int => need_int
 	);
 	
@@ -508,6 +509,7 @@ begin
 		is_read => mem_read3, 
 		is_write => mem_write3,
 		is_sp => is_sp,
+		is_sp_label => is_sp_label,
 		need_int => need_int,
 		
 		out_cmd => instruction0,
