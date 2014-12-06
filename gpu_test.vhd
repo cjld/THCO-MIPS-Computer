@@ -96,27 +96,19 @@ end component;
 	signal is_done, my_clk: std_logic;
 	signal out_cmd, out_data: std_logic_vector(15 downto 0);
 	signal clk_count: std_logic_vector(16 downto 0);
-	signal vga_open: std_logic;
 
 begin
 	my_clk <= clk;
 
-	led(15) <= vga_open;
-	led(14) <= is_done;
-	led(13 downto 0) <= clk_count(13 downto 0);
+	led(15) <= is_done;
+	led(14 downto 0) <= clk_count(13 downto 0);
 
 	process(my_clk, rst)
 	begin
 		if (rst = '0') then
 			clk_count <= (others => '0');
-			vga_open <= '0';
 		elsif (my_clk'event and my_clk = '1') then
 			if (is_done = '1') then
-				vga_open <= '0';
-			elsif (clk_count > switch) then
-				vga_open <= '1';
-				clk_count <= (others => '0');
-			else
 				clk_count <= clk_count + '1';
 			end if;
 		end if;

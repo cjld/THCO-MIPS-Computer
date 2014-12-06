@@ -284,10 +284,9 @@ begin
 	process(clk, rst)
 	begin
 		if (rst = '0') then
-			is_get_cmd <= '1';
 			my_done <= '0';
 			my_rst <= '0';
-			is_refrash_vga <= '1';
+			is_refrash_vga <= '0';
 		elsif (clk'event and clk = '1') then
 			if (vga_refresh_run = '1') then
 				my_rst <= '1';
