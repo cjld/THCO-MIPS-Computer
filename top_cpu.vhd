@@ -47,7 +47,10 @@ port(
 		
 		ram1_data	:	inout std_logic_vector(15 downto 0);
 		ram1_addr	:	out std_logic_vector(17 downto 0);
-		ram1_en, ram1_oe, ram1_we	:	out std_logic
+		ram1_en, ram1_oe, ram1_we	:	out std_logic;
+		
+		hs,vs : out STD_LOGIC;
+		r,g,b : out STD_LOGIC_VECTOR(2 downto 0)
 );
 end top_cpu;
 
@@ -213,21 +216,25 @@ component phase3
 end component;
 
 component IO
-	port(
-		pc, addr, data : in  STD_LOGIC_vector(15 downto 0);
-		is_read, is_write : in  STD_LOGIC;
-		is_sp, is_sp_label : in  STD_LOGIC;
-		need_int : in  STD_LOGIC;
-		
-		out_cmd, out_data: out std_logic_vector(15 downto 0);
-		is_done: out std_logic;
+
+Port ( 
+	pc, addr, data : in  STD_LOGIC_vector(15 downto 0);
+	is_read, is_write : in  STD_LOGIC;
+	is_sp, is_sp_label, need_vga : in  STD_LOGIC;
+	need_int : in  STD_LOGIC;
+	
+	out_cmd, out_data: out std_logic_vector(15 downto 0);
+	is_done: out std_logic;
+	
+	
 		clk_auto, rst, clk_man, clk_auto_11 : in std_logic;
 		
---		led	:	out std_logic_vector (15 downto 0);
---		switch 	:	in std_logic_vector (15 downto 0);
+		led	:	out std_logic_vector (15 downto 0);
+		switch 	:	in std_logic_vector (15 downto 0);
 		
-	   data_ready, tbre, tsre : in  STD_LOGIC;
-	   rdn, wrn : out  STD_LOGIC;
+		-- ´®¿Ú
+	    data_ready, tbre, tsre : in  STD_LOGIC;
+	    rdn, wrn : out  STD_LOGIC;
 		
 		ram2_data	:	inout std_logic_vector(15 downto 0);
 		ram2_addr	:	out std_logic_vector(17 downto 0);
@@ -235,8 +242,12 @@ component IO
 		
 		ram1_data	:	inout std_logic_vector(15 downto 0);
 		ram1_addr	:	out std_logic_vector(17 downto 0);
-		ram1_en, ram1_oe, ram1_we	:	out std_logic
-	);
+		ram1_en, ram1_oe, ram1_we	:	out std_logic;
+		
+		hs,vs : out STD_LOGIC;
+		r,g,b : out STD_LOGIC_VECTOR(2 downto 0)
+	
+);
 end component;
 
 component IOpass
@@ -503,6 +514,7 @@ begin
 		is_write => mem_write3,
 		is_sp => is_sp,
 		is_sp_label => is_sp_label,
+		need_vga => '0',
 		need_int => need_int,
 		
 		out_cmd => instruction0,
@@ -514,7 +526,7 @@ begin
 		clk_auto_11 => clk_auto_11,
 		
 --		led => led,
---		switch 	:	in std_logic_vector (15 downto 0);
+		switch => switch,
 		
 	   data_ready => data_ready,
 		tbre => tbre, 
@@ -532,7 +544,10 @@ begin
 		ram1_addr => ram_addr,
 		ram1_en => ram1_en, 
 		ram1_oe => ram1_oe,
-		ram1_we => ram1_we
+		ram1_we => ram1_we,
+		
+		hs=>hs ,vs=>vs,
+		r=>r, g=>g ,b=>b
 	);
 	
 	phase4_port: phase4 port map(
