@@ -63,7 +63,7 @@ component IO
 Port ( 
 	pc, addr, data : in  STD_LOGIC_vector(15 downto 0);
 	is_read, is_write : in  STD_LOGIC;
-	is_sp, is_sp_label, is_refrash_vga : in  STD_LOGIC;
+	is_sp, is_sp_label, need_vga : in  STD_LOGIC;
 	need_int : in  STD_LOGIC;
 	
 	out_cmd, out_data: out std_logic_vector(15 downto 0);
@@ -99,7 +99,7 @@ end component;
 	signal vga_open: std_logic;
 
 begin
-	my_clk <= clk_man;
+	my_clk <= clk;
 
 	led(15) <= vga_open;
 	led(14) <= is_done;
@@ -130,7 +130,7 @@ begin
 		is_write => '0',
 		is_sp => '0',
 		is_sp_label => '0',
-		is_refrash_vga => vga_open,
+		need_vga => '1',
 		need_int => '0',
 		
 		out_cmd => out_cmd,

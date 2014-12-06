@@ -36,7 +36,7 @@ entity IO is
 Port ( 
 	pc, addr, data : in  STD_LOGIC_vector(15 downto 0);
 	is_read, is_write : in  STD_LOGIC;
-	is_sp, is_sp_label, is_refrash_vga : in  STD_LOGIC;
+	is_sp, is_sp_label, need_vga : in  STD_LOGIC;
 	need_int : in  STD_LOGIC;
 	
 	out_cmd, out_data: out std_logic_vector(15 downto 0);
@@ -154,7 +154,7 @@ architecture Behavioral of IO is
 			switch: in std_logic_vector(15 downto 0);
 			
 			read_mem_done: in std_logic;
-			vga_refresh_done: out std_logic;
+			vga_refresh_run: out std_logic;
 			
 			mem_addr: out std_logic_vector(15 downto 0);
 			mem_data: in std_logic_vector(15 downto 0);
@@ -164,10 +164,9 @@ architecture Behavioral of IO is
 		);
 	end component;
 	
-	signal ram_write, ram_read, ram2_done: std_logic;
+	signal ram_write, ram_read, ram2_done, is_refrash_vga, vga_refresh_run, vga_rst: std_logic;
 	signal out_ram_data, my_out_data, disp_mem_addr, ram_addr_ro, ram_data_out_ro
 		: std_logic_vector(15 downto 0);
-	signal vga_rst: std_logic;
 	
 begin
 	
@@ -237,7 +236,7 @@ begin
 			led => led, switch => switch,
 			
 			read_mem_done => ram2_done,
-			vga_refresh_done => vga_refresh_done,
+			vga_refresh_run => vga_refresh_run,
 			
 			mem_addr => disp_mem_addr,
 			mem_data => ram_data_out_ro,
@@ -267,8 +266,6 @@ begin
 	sp_is_read <= is_read;
 	sp_input_data <= data(7 downto 0);
 	
-	vga_rst <= rst and is_refrash_vga and my_rst;
-	
 	ram_addr_ro <= pc when (is_refrash_vga = '0')
 		else disp_mem_addr;
 	
@@ -281,17 +278,25 @@ begin
 	clk <= clk_auto;-- when (switch(15) = '0') else clk_man;
 	--led(0) <= my_done;
 	--led(1) <= clk;
+	
+	vga_rst <= need_vga and rst;
+	
 	process(clk, rst)
 	begin
 		if (rst = '0') then
 			is_get_cmd <= '1';
 			my_done <= '0';
 			my_rst <= '0';
+			is_refrash_vga <= '1';
 		elsif (clk'event and clk = '1') then
-			if (my_rst = '0') then
+			if (vga_refresh_run = '1') then
+				my_rst <= '1';
+				is_refrash_vga <= '1';
+			elsif (my_rst = '0') then
+				is_refrash_vga <= '0';
 				my_rst <= '1';
 				my_done <= '0';
-			elsif (sp_is_done = '1' or vga_refresh_done = '1') then
+			elsif (sp_is_done = '1') then
 				my_rst <= '0';
 				my_done <= '1';
 			end if;

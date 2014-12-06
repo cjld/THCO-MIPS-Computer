@@ -40,7 +40,7 @@ entity VGA is
 			switch: in std_logic_vector(15 downto 0);
 			
 			read_mem_done: in std_logic;
-			vga_refresh_done: out std_logic;
+			vga_refresh_run: out std_logic;
 			
 			mem_addr: out std_logic_vector(15 downto 0);
 			mem_data: in std_logic_vector(15 downto 0);
@@ -52,7 +52,6 @@ end VGA;
 
 architecture Behavioral of VGA is
 	signal read_addr, next_addr, tmp_addr: std_logic_vector(15 downto 0);
-	signal my_done: std_logic;
 	
 	signal clk_2 : std_logic;
 	signal vx, tvx : std_logic_vector(9 downto 0);
@@ -62,7 +61,6 @@ begin
 
 	mem_addr <= read_addr;
 	--next_addr <= read_addr + '1';
-	vga_refresh_done <= my_done;
 	
 	--led(3 downto 0) <= vx(3 downto 0);
 	--led(7 downto 4) <= vy(3 downto 0);
@@ -79,22 +77,20 @@ begin
 	tmp_addr(12 downto 7) <= tvy(7 downto 2);
 	tmp_addr(15 downto 13) <= "111";
 	next_addr <= tmp_addr;-- + '1';
+	vga_refresh_run <= '1' when (vy >= 100) and ( vy < 100 + 256) else '0';
 
 	process(clk, rst)
 	begin
 		if (rst = '0') then
 			read_addr(15 downto 13) <= "111";
 			read_addr(12 downto 0) <= (others => '0');
-			my_done <= '0';
 			vx <= (others => '0');
 			vy <= (others => '0');
 			--vs <= '1';
 			--hs <= '1';
 			led(15) <= '0';
 		elsif (clk'event and clk = '1') then
-			if (my_done = '1') then
-				my_done <= '0';
-			elsif (read_mem_done = '1') then
+			if (read_mem_done = '1') then
 				if ((vx >= 60) and (vx < 60 + 512) and (vy >= 100) and ( vy < 100 + 256)) then
 					read_addr <= next_addr;
 					r <= mem_data(8 downto 6);
@@ -106,7 +102,6 @@ begin
 					b <= "000";
 					if (vx = 799) then
 						if (vy = 524) then
-							my_done <= '1';
 							read_addr(15 downto 13) <= "111";
 							read_addr(12 downto 0) <= (others => '0');
 						end if;
