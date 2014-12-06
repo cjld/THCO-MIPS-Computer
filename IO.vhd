@@ -40,7 +40,7 @@ Port (
 	out_cmd, out_data: out std_logic_vector(15 downto 0);
 	is_done: out std_logic;
 	
-	
+		clock : in std_logic;
 		clk_auto, rst, clk_man, clk_auto_11 : in std_logic;
 		
 		led	:	out std_logic_vector (15 downto 0);
@@ -63,7 +63,7 @@ end IO;
 
 architecture Behavioral of IO is
 
-	 signal clk, is_get_cmd, my_done, my_rst: std_logic;
+	 signal clk, is_get_cmd, my_done, my_rst, sram_rst: std_logic;
 	 
 	 signal ram1_enable, ram1_is_read: std_logic;
 	 signal ram2_enable, ram2_is_read: std_logic;
@@ -74,7 +74,7 @@ architecture Behavioral of IO is
 	 signal ram1_bus, sp_output_data_ex: std_logic_vector(15 downto 0);
 	 
 	 signal sp_enable, sp_rst, sp_is_read: std_logic;
-	 signal sp_input_data, sp_output_data, sp_bus: STD_LOGIC_VECTOR (7 downto 0);
+	 signal sp_input_data, sp_output_data: STD_LOGIC_VECTOR (7 downto 0);
 	 signal sp_is_done: std_logic;
 	 
 	 component Ram
@@ -108,6 +108,7 @@ architecture Behavioral of IO is
 
 			input_data: in STD_LOGIC_VECTOR (7 downto 0);
 			output_data: out STD_LOGIC_VECTOR (7 downto 0);
+		    led: out std_logic_vector(15 downto 0);
 
 			is_done: out std_logic;
 
@@ -172,7 +173,7 @@ begin
 --	);
 	
 	ram2: SRam port map(
-		clk_high => clk, rst => my_rst,
+		clk_high => clk, rst => sram_rst,
 
 		ram_en => ram2_en, ram_we => ram2_we, ram_oe => ram2_oe,
 		ram_addr => ram2_addr,
@@ -189,15 +190,16 @@ begin
 	);
 	
 	serial_port: SerialPort port map (
-			clk => clk, clk_11 => clk_auto_11,
+			clk => clk, clk_11 => clk_man,--clk_auto_11,
 			rst => sp_rst, is_read => sp_is_read, enable => sp_enable,
 
 			input_data => sp_input_data,
 			output_data => sp_output_data,
+			led => led,
 
 			is_done => sp_is_done,
 
-			ram1data => sp_bus,
+			ram1data => ram1_data(7 downto 0),
 			data_ready => data_ready,
 			rdn => rdn,
 			tbre => tbre,
@@ -205,8 +207,8 @@ begin
 			wrn => wrn
 	);
 	
-	ram1_data(15 downto 8) <= ram1_bus(15 downto 8);
-	ram1_data(7 downto 0) <= sp_bus when ram1_enable = '0' else ram1_bus(7 downto 0);
+	--ram1_data(15 downto 8) <= ram1_bus(15 downto 8);
+	--ram1_data(7 downto 0) <= sp_bus when ram1_enable = '0' else ram1_bus(7 downto 0);
 	sp_output_data_ex(15 downto 8) <= (others => '0');
 	sp_output_data_ex(7 downto 0) <= sp_output_data;
 	
@@ -227,7 +229,7 @@ begin
 	sp_input_data <= data(7 downto 0);
 	
 	is_done <=
-		my_done when (is_sp = '1') 
+		(ram2_done and my_done) when (is_sp = '1') 
 		else ram2_done;
 		
 	clk <= clk_auto;
@@ -237,12 +239,16 @@ begin
 			is_get_cmd <= '1';
 			my_done <= '0';
 			my_rst <= '0';
+			sram_rst <= '0';
 		elsif (clk'event and clk = '1') then
 			if (my_rst = '0') then
 				my_rst <= '1';
+				sram_rst <= '1';
 				my_done <= '0';
 			elsif (sp_is_done = '1') then
-				my_rst <= '0';
+				if (ram2_done = '1') then
+					my_rst <= '0';
+				end if;
 				my_done <= '1';
 			end if;
 		end if;

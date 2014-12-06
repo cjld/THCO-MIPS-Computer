@@ -195,7 +195,7 @@ begin
 		last5 <= "0010" when "01100", --AND
 					"0011" when "01101", -- OR
 					"0100" when "01010", -- CMP
-					"0000" when others; -- JALR, JR, JRRA, MFPC
+					"1111" when others; -- JALR, JR, JRRA, MFPC
 					
 	last3 <= "0001" when instruction_in(10 downto 8)= "011" 
 					else "0000";

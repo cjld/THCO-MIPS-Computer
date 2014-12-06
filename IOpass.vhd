@@ -43,9 +43,11 @@ architecture Behavioral of IOpass is
 begin
 	
 	my_is_sp <= '1' when 
-		addr(15 downto 0) = "1011111100000000" else '0';--BF00
+		(addr(15 downto 0) = "1011111100000000" and 
+		(is_read = '1' or is_write = '1')) else '0';--BF00
 	is_sp_label <= '1' when 
-		addr(15 downto 0) = "1011111100000001" else '0';--BF01
+		(addr(15 downto 0) = "1011111100000001" and 
+		(is_read = '1' or is_write = '1')) else '0';--BF01
 		
 	need_int <= my_is_sp or is_read or is_write;
 	is_sp <= my_is_sp;

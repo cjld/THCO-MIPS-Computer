@@ -120,7 +120,24 @@ begin
 			mem_read <= '0';
 			mem_write <= '0';
 		elsif (clk'event and clk = '1')then
-			if (enable = '1' and is_done = '1') then
+			if (is_done = '0') then
+			elsif (enable = '0') then
+				pc <= (others => '0');
+				instruction <= (others => '0');
+				A <= (others => '0');
+				B <= (others => '0');
+				imm <= (others => '0');
+				write_back <= '0';
+				b_or_imm <= '0';
+				alu_op <= (others => '0');
+				back_data <= (others => '0');
+				back_reg <= (others => '0');
+				rx <= (others => '0');
+				ry <= (others => '0');
+				if_mem <= '0';
+				mem_read <= '0';
+				mem_write <= '0';
+			else
 				pc <= pc_in;
 				instruction <= instruction_in;
 				A <= A_in;

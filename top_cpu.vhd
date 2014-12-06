@@ -107,7 +107,7 @@ component registers
 		data : in std_logic_vector(15 downto 0);
 		rx : in std_logic_vector(3 downto 0);
 		ry : in std_logic_vector(3 downto 0);
---		seg : out std_logic_vector(15 downto 0);
+		--seg : out std_logic_vector(7 downto 0);
 		back_reg : in std_logic_vector(3 downto 0);
 		pc : in std_logic_vector(15 downto 0);
 		pc_en : in std_logic;
@@ -222,8 +222,8 @@ component IO
 		out_cmd, out_data: out std_logic_vector(15 downto 0);
 		is_done: out std_logic;
 		clk_auto, rst, clk_man, clk_auto_11 : in std_logic;
-		
---		led	:	out std_logic_vector (15 downto 0);
+		clock : in std_logic;
+		led	:	out std_logic_vector (15 downto 0);
 --		switch 	:	in std_logic_vector (15 downto 0);
 		
 	   data_ready, tbre, tsre : in  STD_LOGIC;
@@ -333,15 +333,11 @@ signal clock : std_logic;
 --signal rst_1 : std_logic;
 
 begin
-	led <= alu_output1;
-	ram1_addr(17) <= a_pc;
-	ram1_addr(16) <= t_en;
-	ram1_addr(15 downto 0) <= pc0(15 downto 0);
+	--led <= b3;
 	
 	enable_all <= '1';
 	
-	clock <= clk when switch(0) = '0'
-					else clk_man;
+	clock <= clk when switch(0) = '0' else clk_man;
 	
 	process(clock, rst)
 	begin
@@ -397,7 +393,7 @@ begin
 		data =>  data,
 		rx => rx1,
 		ry => ry1,
---		seg => ram1_addr(15 downto 0),
+		--seg => ram1_data(7 downto 0),
 		back_reg => back_reg4,
 		pc => pc1,
 		pc_en => pc_en,
@@ -419,7 +415,7 @@ begin
 	phase2_port: phase2 port map(
 		clk => clk_count,
 		rst => rst,
-		enable => enable_all,
+		enable => pause,
 		is_done => is_done,
 		pc_in => pc1,
 		pc_out => pc2,
@@ -517,8 +513,8 @@ begin
 		clk_man => clk_man,
 		rst => rst,
 		clk_auto_11 => clk_auto_11,
-		
---		led => led,
+		clock => clk_count,
+		led => led,
 --		switch 	:	in std_logic_vector (15 downto 0);
 		
 	   data_ready => data_ready,
@@ -534,7 +530,7 @@ begin
 		ram2_we => ram2_we,
 		
 		ram1_data => ram1_data,
-		ram1_addr => ram_addr,
+		ram1_addr => ram1_addr,
 		ram1_en => ram1_en, 
 		ram1_oe => ram1_oe,
 		ram1_we => ram1_we
