@@ -289,7 +289,7 @@ begin
 			is_refrash_vga <= '0';
 		elsif (clk'event and clk = '1') then
 			if (vga_refresh_run = '1') then
-				my_rst <= '1';
+				my_rst <= '0';
 				is_refrash_vga <= '1';
 			elsif (my_rst = '0') then
 				is_refrash_vga <= '0';
