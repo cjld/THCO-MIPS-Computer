@@ -36,6 +36,7 @@ entity SerialPort is
 		   
 		   input_data: in STD_LOGIC_VECTOR (7 downto 0);
 		   output_data: out STD_LOGIC_VECTOR (7 downto 0);
+		   led: out std_logic_vector(15 downto 0);
 		   
 		   is_done: out std_logic;
 		   
@@ -49,7 +50,7 @@ end SerialPort;
 
 architecture Behavioral of SerialPort is
 	
-	type state is (rdnA,rdnB,rdnC,wrn_zero,wrnA,wrnB,wrnC,wrnD,idle);
+	type state is (start,rdnA,rdnB,rdnC,wrn_zero,wrnA,wrnB,wrnC,wrnD,idle);
 	signal curr_state : state;
 	signal clk_fp: std_logic;
 	signal clk_count: STD_LOGIC_VECTOR(2 downto 0);
@@ -76,21 +77,32 @@ begin
 --			ram1EN <= '1';
 --			ram1OE <= '1';
 --			ram1WE <= '1';
+			--rdn <= '1'; 
+			--wrn <= '1';
 			is_done <= '0';
-			if (is_read = '1') then
-				curr_state <= rdnA;
-			else
-				curr_state <= wrn_zero;
-			end if;
+			curr_state <= start;
+			led(15 downto 8) <= "11110000";
 		elsif (clk_fp'event and clk_fp = '1') then
 			case curr_state is
 			
+			when start =>
+				led(15 downto 8) <= "00000000";
+				rdn <= '1'; 
+				wrn <= '1';
+				if (is_read = '1') then
+					curr_state <= rdnA;
+				else
+					curr_state <= wrn_zero;
+				end if;
+			
 			when rdnA =>
+				led(15 downto 8) <= "00000001";
 				--output_data <= "00000000";
 				rdn <= '1';
 				ram1data <= "ZZZZZZZZ";
 				curr_state <= rdnB;
 			when rdnB =>
+				led(15 downto 8) <= "00000011";
 				--output_data <= "00000001";
 				if (data_ready = '1') then 
 					rdn <= '0';
@@ -99,34 +111,40 @@ begin
 					--curr_state <= rdnA;
 				end if;
 			when rdnC =>
+				led(15 downto 8) <= "00000111";
+				rdn <= '0';
 				output_data <= ram1data;
 				curr_state <= idle;
 				
 			when wrn_zero =>
 				--output_data <= "00000011";
+				led(15 downto 8) <= "00001111";
 				rdn <= '1'; 
 				wrn <= '1';
 				curr_state <= wrnA;
 			when wrnA =>
 				--output_data <= "00000111";
+				led(15 downto 8) <= "00011111";
 				ram1data <= input_data;
+				led(7 downto 0) <= input_data;
 				wrn <= '0';
 				curr_state <= wrnB;
 			when wrnB =>
-				--output_data <= "00001111";
+				led(15 downto 8) <= "00111111";
 				wrn <= '1';
 				curr_state <= wrnC; 
 			when wrnC =>
-				--output_data <= "00011111";
+				led(15 downto 8) <= "01111111";
 				if (tbre = '1') then
 					curr_state <= wrnD;
 				end if;
 			when wrnD =>
-				--output_data <= "00111111";
+				led(15 downto 8) <= "11111111";
 				if (tsre = '1') then
 					curr_state <= idle;
 				end if;
 			when idle =>
+				led(15 downto 8) <= "10101010";
 				is_done <= '1';
 			end case;
 		end if;

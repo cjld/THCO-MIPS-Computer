@@ -37,6 +37,7 @@ port (
 	instruction	:	in std_logic_vector (15 downto 0);
 	A : in std_logic_vector(15 downto 0);
 	pc_next : out std_logic_vector(15 downto 0)
+	--if_branch : out std_logic
 );
 end branch;
 
@@ -44,6 +45,7 @@ architecture Behavioral of branch is
 signal pc_imm1 : std_logic_vector(15 downto 0);
 signal pc_imm2 : std_logic_vector(15 downto 0);
 signal zero_en : std_logic;
+signal br : std_logic;
 begin
 	zero_en <= '0' when a = "0000000000000000"
 					else '1';

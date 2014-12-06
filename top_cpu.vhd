@@ -110,7 +110,7 @@ component registers
 		data : in std_logic_vector(15 downto 0);
 		rx : in std_logic_vector(3 downto 0);
 		ry : in std_logic_vector(3 downto 0);
---		seg : out std_logic_vector(15 downto 0);
+		--seg : out std_logic_vector(7 downto 0);
 		back_reg : in std_logic_vector(3 downto 0);
 		pc : in std_logic_vector(15 downto 0);
 		pc_en : in std_logic;
@@ -228,9 +228,9 @@ Port (
 	
 	
 		clk_auto, rst, clk_man, clk_auto_11 : in std_logic;
-		
+		clock : in std_logic;
 		led	:	out std_logic_vector (15 downto 0);
-		switch 	:	in std_logic_vector (15 downto 0);
+--		switch 	:	in std_logic_vector (15 downto 0);
 		
 		-- ´®¿Ú
 	    data_ready, tbre, tsre : in  STD_LOGIC;
@@ -340,20 +340,21 @@ signal t_data : std_logic_vector(15 downto 0);
 signal ram_d : std_logic_vector(15 downto 0);
 signal ram_addr : std_logic_vector(17 downto 0);
 signal clk_count: std_logic;
+signal clock : std_logic;
 --signal rst_1 : std_logic;
 
 begin
-	led <= alu_output1;
-	ram1_addr(17) <= a_pc;
-	ram1_addr(16) <= t_en;
-	ram1_addr(15 downto 0) <= pc0(15 downto 0);
+	--led <= b3;
+	
 	enable_all <= '1';
 	
-	process(clk, rst)
+	clock <= clk when switch(0) = '0' else clk_man;
+	
+	process(clock, rst)
 	begin
 		if (rst = '0') then
 			clk_count <= '0';
-		elsif (clk'event and clk = '1') then
+		elsif (clock'event and clock = '1') then
 			clk_count <= not clk_count;
 		end if;
 	end process;
@@ -397,13 +398,13 @@ begin
 	);
 
 	registers_port: registers port map(
-		clk => clk,
+		clk => clock,
 		rst => rst,
 		enable => write_back4,
 		data =>  data,
 		rx => rx1,
 		ry => ry1,
---		seg => ram1_addr(15 downto 0),
+		--seg => ram1_data(7 downto 0),
 		back_reg => back_reg4,
 		pc => pc1,
 		pc_en => pc_en,
@@ -425,7 +426,7 @@ begin
 	phase2_port: phase2 port map(
 		clk => clk_count,
 		rst => rst,
-		enable => enable_all,
+		enable => pause,
 		is_done => is_done,
 		pc_in => pc1,
 		pc_out => pc2,
@@ -520,12 +521,12 @@ begin
 		out_cmd => instruction0,
 		out_data => mem_out1,
 		is_done => is_done,
-		clk_auto => clk,
+		clk_auto => clock,
 		clk_man => clk_man,
 		rst => rst,
 		clk_auto_11 => clk_auto_11,
-		
---		led => led,
+		clock => clk_count,
+		led => led,
 		switch => switch,
 		
 	   data_ready => data_ready,
@@ -541,7 +542,7 @@ begin
 		ram2_we => ram2_we,
 		
 		ram1_data => ram1_data,
-		ram1_addr => ram_addr,
+		ram1_addr => ram1_addr,
 		ram1_en => ram1_en, 
 		ram1_oe => ram1_oe,
 		ram1_we => ram1_we,

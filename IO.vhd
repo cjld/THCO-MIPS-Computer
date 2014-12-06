@@ -42,7 +42,7 @@ Port (
 	out_cmd, out_data: out std_logic_vector(15 downto 0);
 	is_done: out std_logic;
 	
-	
+		clock : in std_logic;
 		clk_auto, rst, clk_man, clk_auto_11 : in std_logic;
 		
 		led	:	out std_logic_vector (15 downto 0);
@@ -68,7 +68,7 @@ end IO;
 
 architecture Behavioral of IO is
 
-	 signal clk, is_get_cmd, my_done, my_rst: std_logic;
+	 signal clk, is_get_cmd, my_done, my_rst, sram_rst: std_logic;
 	 
 	 signal ram1_enable, ram1_is_read: std_logic;
 	 signal ram2_enable, ram2_is_read: std_logic;
@@ -79,7 +79,7 @@ architecture Behavioral of IO is
 	 signal ram1_bus, sp_output_data_ex: std_logic_vector(15 downto 0);
 	 
 	 signal sp_enable, sp_rst, sp_is_read: std_logic;
-	 signal sp_input_data, sp_output_data, sp_bus: STD_LOGIC_VECTOR (7 downto 0);
+	 signal sp_input_data, sp_output_data: STD_LOGIC_VECTOR (7 downto 0);
 	 signal sp_is_done, vga_refresh_done: std_logic;
 	 
 	 component Ram
@@ -113,6 +113,7 @@ architecture Behavioral of IO is
 
 			input_data: in STD_LOGIC_VECTOR (7 downto 0);
 			output_data: out STD_LOGIC_VECTOR (7 downto 0);
+		    led: out std_logic_vector(15 downto 0);
 
 			is_done: out std_logic;
 
@@ -170,6 +171,9 @@ architecture Behavioral of IO is
 	
 begin
 	
+	ram1_addr(15 downto 0) <= pc;
+	ram1_addr(17 downto 16) <= "00";
+	
 	ram1: Ram port map (
 		clk => clk, rst => rst,
 		is_read => ram1_is_read,
@@ -177,7 +181,7 @@ begin
 		input_addr => ram1_input_addr,
 		input_data => ram1_input_data,
 		data => ram1_bus,
-		addr => ram1_addr,
+		addr => ram1_addr_tmp,
 		en => ram1_en, 
 		oe => ram1_oe,
 		we => ram1_we
@@ -197,7 +201,7 @@ begin
 --	);
 	
 	ram2: SRam port map(
-		clk_high => clk, rst => my_rst,
+		clk_high => clk, rst => sram_rst,
 
 		ram_en => ram2_en, ram_we => ram2_we, ram_oe => ram2_oe,
 		ram_addr => ram2_addr,
@@ -219,10 +223,11 @@ begin
 
 			input_data => sp_input_data,
 			output_data => sp_output_data,
+			led => led,
 
 			is_done => sp_is_done,
 
-			ram1data => sp_bus,
+			ram1data => ram1_data(7 downto 0),
 			data_ready => data_ready,
 			rdn => rdn,
 			tbre => tbre,
@@ -245,8 +250,8 @@ begin
 			r => r, g => g, b => b
 	);
 	
-	ram1_data(15 downto 8) <= ram1_bus(15 downto 8);
-	ram1_data(7 downto 0) <= sp_bus when ram1_enable = '0' else ram1_bus(7 downto 0);
+	--ram1_data(15 downto 8) <= ram1_bus(15 downto 8);
+	--ram1_data(7 downto 0) <= sp_bus when ram1_enable = '0' else ram1_bus(7 downto 0);
 	sp_output_data_ex(15 downto 8) <= (others => '0');
 	sp_output_data_ex(7 downto 0) <= sp_output_data;
 	
@@ -270,7 +275,7 @@ begin
 		else disp_mem_addr;
 	
 	is_done <=
-		my_done when (is_sp = '1' or is_refrash_vga = '1')
+		(ram2_done and my_done) when (is_sp = '1' or is_refrash_vga = '1') 
 		else ram2_done;
 		
 	out_cmd <= ram_data_out_ro;
@@ -286,22 +291,25 @@ begin
 		if (rst = '0') then
 			my_done <= '0';
 			my_rst <= '0';
+			sram_rst <= '0';
 			is_refrash_vga <= '0';
 		elsif (clk'event and clk = '1') then
 			if (vga_refresh_run = '1') then
-				if (is_sp = '0') then
-					my_rst <= '0';
-				else
-					my_done <= '0';
-				end if;
+				my_done <= '0';
 				is_refrash_vga <= '1';
 			elsif (my_rst = '0') then
 				is_refrash_vga <= '0';
 				my_rst <= '1';
+				sram_rst <= '1';
 				my_done <= '0';
 			elsif (sp_is_done = '1') then
-				my_rst <= '0';
+				is_refrash_vga <= '0';
+				if (ram2_done = '1' and my_done = '1') then
+					my_rst <= '0';
+				end if;
 				my_done <= '1';
+			else
+				is_refrash_vga <= '0';
 			end if;
 		end if;
 	end process;

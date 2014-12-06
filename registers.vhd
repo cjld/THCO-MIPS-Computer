@@ -37,7 +37,7 @@ port(
 	data : in std_logic_vector(15 downto 0);
 	rx : in std_logic_vector(3 downto 0);
 	ry : in std_logic_vector(3 downto 0);
-	--seg : out std_logic_vector(15 downto 0);
+	--seg : out std_logic_vector(7 downto 0);
 	back_reg : in std_logic_vector(3 downto 0);
 	pc : in std_logic_vector(15 downto 0);
 	pc_en : in std_logic;
@@ -58,7 +58,7 @@ begin
 				else reg(conv_integer(rx));
 	B <= reg(conv_integer(ry));
 	
-	--seg <= reg(3);
+	--seg <= reg(7)(7 downto 0);
 	process(clk)
 	begin
 		if (rst = '0') then
