@@ -329,6 +329,7 @@ signal t_data : std_logic_vector(15 downto 0);
 signal ram_d : std_logic_vector(15 downto 0);
 signal ram_addr : std_logic_vector(17 downto 0);
 signal clk_count: std_logic;
+signal clock : std_logic;
 --signal rst_1 : std_logic;
 
 begin
@@ -336,13 +337,17 @@ begin
 	ram1_addr(17) <= a_pc;
 	ram1_addr(16) <= t_en;
 	ram1_addr(15 downto 0) <= pc0(15 downto 0);
+	
 	enable_all <= '1';
 	
-	process(clk, rst)
+	clock <= clk when switch(0) = '0'
+					else clk_man;
+	
+	process(clock, rst)
 	begin
 		if (rst = '0') then
 			clk_count <= '0';
-		elsif (clk'event and clk = '1') then
+		elsif (clock'event and clock = '1') then
 			clk_count <= not clk_count;
 		end if;
 	end process;
@@ -386,7 +391,7 @@ begin
 	);
 
 	registers_port: registers port map(
-		clk => clk,
+		clk => clock,
 		rst => rst,
 		enable => write_back4,
 		data =>  data,
@@ -508,7 +513,7 @@ begin
 		out_cmd => instruction0,
 		out_data => mem_out1,
 		is_done => is_done,
-		clk_auto => clk,
+		clk_auto => clock,
 		clk_man => clk_man,
 		rst => rst,
 		clk_auto_11 => clk_auto_11,
