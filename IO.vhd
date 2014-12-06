@@ -143,8 +143,12 @@ architecture Behavioral of IO is
 	
 	signal ram_write, ram_read, ram2_done: std_logic;
 	signal out_ram_data, my_out_data: std_logic_vector(15 downto 0);
+	signal ram1_addr_tmp: std_logic_vector(17 downto 0);
 	 
 begin
+	
+	ram1_addr(15 downto 0) <= pc;
+	ram1_addr(17 downto 16) <= "00";
 	
 	ram1: Ram port map (
 		clk => clk, rst => rst,
@@ -153,7 +157,7 @@ begin
 		input_addr => ram1_input_addr,
 		input_data => ram1_input_data,
 		data => ram1_bus,
-		addr => ram1_addr,
+		addr => ram1_addr_tmp,
 		en => ram1_en, 
 		oe => ram1_oe,
 		we => ram1_we
@@ -190,7 +194,7 @@ begin
 	);
 	
 	serial_port: SerialPort port map (
-			clk => clk, clk_11 => clk_man,--clk_auto_11,
+			clk => clk, clk_11 => clk_auto_11,
 			rst => sp_rst, is_read => sp_is_read, enable => sp_enable,
 
 			input_data => sp_input_data,
@@ -246,7 +250,7 @@ begin
 				sram_rst <= '1';
 				my_done <= '0';
 			elsif (sp_is_done = '1') then
-				if (ram2_done = '1') then
+				if (ram2_done = '1' and my_done = '1') then
 					my_rst <= '0';
 				end if;
 				my_done <= '1';
