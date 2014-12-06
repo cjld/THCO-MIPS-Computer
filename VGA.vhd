@@ -88,7 +88,7 @@ begin
 			vy <= (others => '0');
 			--vs <= '1';
 			--hs <= '1';
-			led(15) <= '0';
+			--led(15) <= '0';
 		elsif (clk'event and clk = '1') then
 			if (read_mem_done = '1') then
 				if ((vx >= 60) and (vx < 60 + 512) and (vy >= 100) and ( vy < 100 + 256)) then
