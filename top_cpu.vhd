@@ -515,7 +515,7 @@ begin
 		is_write => mem_write3,
 		is_sp => is_sp,
 		is_sp_label => is_sp_label,
-		need_vga => '0',
+		need_vga => switch(14),
 		need_int => need_int,
 		
 		out_cmd => instruction0,
@@ -527,7 +527,7 @@ begin
 		clk_auto_11 => clk_auto_11,
 		clock => clk_count,
 		led => led,
-		switch => switch,
+--		switch => switch,
 		
 	   data_ready => data_ready,
 		tbre => tbre, 

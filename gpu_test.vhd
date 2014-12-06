@@ -101,7 +101,7 @@ begin
 	my_clk <= clk;
 
 	led(15) <= is_done;
-	led(14 downto 0) <= clk_count(13 downto 0);
+	led(14 downto 0) <= clk_count(14 downto 0);
 
 	process(my_clk, rst)
 	begin

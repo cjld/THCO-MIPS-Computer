@@ -40,7 +40,7 @@ entity VGA is
 			switch: in std_logic_vector(15 downto 0);
 			
 			read_mem_done: in std_logic;
-			vga_refresh_run: out std_logic;
+			vga_refresh_run, vga_refresh_edge: out std_logic;
 			
 			mem_addr: out std_logic_vector(15 downto 0);
 			mem_data: in std_logic_vector(15 downto 0);
@@ -78,19 +78,28 @@ begin
 	tmp_addr(15 downto 13) <= "111";
 	next_addr <= tmp_addr;-- + '1';
 	vga_refresh_run <= '1' when (vy >= 100) and ( vy < 100 + 256) else '0';
-
+	vga_refresh_edge <= '0' when ((vy >= 50) and ( vy < 150 + 256)) else '1';
+	
 	process(clk, rst)
 	begin
 		if (rst = '0') then
-			read_addr(15 downto 13) <= "111";
-			read_addr(12 downto 0) <= (others => '0');
+			clk_2 <= '0';
+		elsif (clk'event and clk = '1') then
+			clk_2 <= not clk_2;
+		end if;
+	end process;
+
+	process(clk_2, rst)
+	begin
+		if (rst = '0') then
+			read_addr(15 downto 12) <= "1110";
+			read_addr(11 downto 0) <= (others => '0');
 			vx <= (others => '0');
 			vy <= (others => '0');
 			--vs <= '1';
 			--hs <= '1';
 			--led(15) <= '0';
-		elsif (clk'event and clk = '1') then
-			if (read_mem_done = '1') then
+		elsif (clk_2'event and clk_2 = '1') then
 				if ((vx >= 60) and (vx < 60 + 512) and (vy >= 100) and ( vy < 100 + 256)) then
 					read_addr <= next_addr;
 					r <= mem_data(8 downto 6);
@@ -102,8 +111,8 @@ begin
 					b <= "000";
 					if (vx = 799) then
 						if (vy = 524) then
-							read_addr(15 downto 13) <= "111";
-							read_addr(12 downto 0) <= (others => '0');
+							read_addr(15 downto 12) <= "1110";
+							read_addr(11 downto 0) <= (others => '0');
 						end if;
 					end if;
 				end if;
@@ -133,8 +142,6 @@ begin
 				end if;
 			
 			end if;
-			
-		end if;
 	end process;
 
 end Behavioral;

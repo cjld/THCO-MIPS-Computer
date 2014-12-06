@@ -155,7 +155,7 @@ architecture Behavioral of IO is
 			switch: in std_logic_vector(15 downto 0);
 			
 			read_mem_done: in std_logic;
-			vga_refresh_run: out std_logic;
+			vga_refresh_run, vga_refresh_edge: out std_logic;
 			
 			mem_addr: out std_logic_vector(15 downto 0);
 			mem_data: in std_logic_vector(15 downto 0);
@@ -165,11 +165,15 @@ architecture Behavioral of IO is
 		);
 	end component;
 	
-	signal ram_write, ram_read, ram2_done, is_refrash_vga, vga_refresh_run, vga_rst: std_logic;
+	signal ram_write, ram_read, ram2_done, 
+		is_refrash_vga, vga_refresh_run, vga_rst, vga_refresh_edge,use_vga_addr: std_logic;
 	signal out_ram_data, my_out_data, disp_mem_addr, ram_addr_ro, ram_data_out_ro
 		: std_logic_vector(15 downto 0);
+	signal ram1_addr_tmp : std_logic_vector(17 downto 0);
 	
 begin
+	
+	use_vga_addr <= is_refrash_vga and not vga_refresh_edge;
 	
 	ram1_addr(15 downto 0) <= pc;
 	ram1_addr(17 downto 16) <= "00";
@@ -223,7 +227,7 @@ begin
 
 			input_data => sp_input_data,
 			output_data => sp_output_data,
-			led => led,
+			--led => led,
 
 			is_done => sp_is_done,
 
@@ -242,6 +246,7 @@ begin
 			
 			read_mem_done => ram2_done,
 			vga_refresh_run => vga_refresh_run,
+			vga_refresh_edge => vga_refresh_edge,
 			
 			mem_addr => disp_mem_addr,
 			mem_data => ram_data_out_ro,
@@ -263,15 +268,15 @@ begin
 	out_data <=
 		(others => '1') when (is_sp_label = '1') else my_out_data;
 			
-	ram_write <= is_write and not is_sp and not is_refrash_vga;
-	ram_read <= (is_read and not is_sp) and not is_refrash_vga;
+	ram_write <= (is_write and not is_sp) and not use_vga_addr;
+	ram_read <= (is_read and not is_sp) and not use_vga_addr;
 
 	sp_enable <= '1';
 	sp_rst <= rst and is_sp and my_rst;
 	sp_is_read <= is_read;
 	sp_input_data <= data(7 downto 0);
 	
-	ram_addr_ro <= pc when (is_refrash_vga = '0')
+	ram_addr_ro <= pc when (use_vga_addr = '0')
 		else disp_mem_addr;
 	
 	is_done <=
