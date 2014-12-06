@@ -107,12 +107,12 @@ component registers
 		data : in std_logic_vector(15 downto 0);
 		rx : in std_logic_vector(3 downto 0);
 		ry : in std_logic_vector(3 downto 0);
+--		seg : out std_logic_vector(15 downto 0);
 		back_reg : in std_logic_vector(3 downto 0);
 		pc : in std_logic_vector(15 downto 0);
 		pc_en : in std_logic;
 		A : out std_logic_vector(15 downto 0);
 		B : out std_logic_vector(15 downto 0);
-		zero_en: out std_logic;
 		t_en : in std_logic;
 		t_data : in std_logic_vector
 	);
@@ -121,10 +121,10 @@ end component;
 component branch
 	port(
 		pc : in std_logic_vector(15 downto 0);
+		pc1 : in std_logic_vector(15 downto 0);
 		imm : in std_logic_vector(15 downto 0);
 		instruction	:	in std_logic_vector (15 downto 0);
 		A : in std_logic_vector(15 downto 0);
-		zero_en : in std_logic;
 		pc_next : out std_logic_vector(15 downto 0)
 	);
 end component;
@@ -313,7 +313,7 @@ signal enable_all, data_pause, pause, is_sp, is_sp_label, need_int, is_done : st
 signal pc_next, pc_plus, pc0, pc1, pc2 : std_logic_vector(15 downto 0);
 signal instruction0, instruction1, instruction2 : std_logic_vector(15 downto 0);
 signal imm1, imm2 : std_logic_vector(15 downto 0);
-signal rx1, ry1, rz1, rx2, ry2 : std_logic_vector(3 downto 0);
+signal rx1, ry1, rx2, ry2 : std_logic_vector(3 downto 0);
 signal a, a1, b1, a2, b2, a_2, b_2,  a3, b3 : std_logic_vector(15 downto 0);
 signal write_back1, write_back2, write_back3, write_back4 : std_logic;
 signal back_data1, back_data2, back_data3, back_data4: std_logic_vector(1 downto 0);
@@ -324,34 +324,26 @@ signal alu_op1, alu_op2 : std_logic_vector(3 downto 0);
 signal alu_output1, alu_output2 , alu_output3: std_logic_vector(15 downto 0);
 signal if_mem1, if_mem2, if_mem3, mem_read1, mem_read2, mem_read3, mem_write1, mem_write2, mem_write3 : std_logic;
 signal mem_out1, mem_out2: std_logic_vector(15 downto 0);
-signal a_pc, pc_en, zero_en, t_en : std_logic;
+signal a_pc, pc_en, t_en : std_logic;
 signal t_data : std_logic_vector(15 downto 0);
-
+signal ram_d : std_logic_vector(15 downto 0);
+signal ram_addr : std_logic_vector(17 downto 0);
 signal clk_count: std_logic;
-signal rst_1 : std_logic;
+--signal rst_1 : std_logic;
 
 begin
-	led(0) <= clk_man;
-	led(15 downto 12) <= instruction0(3 downto 0);
-	led(11 downto 1) <= alu_output3(10 downto 0);
+	led <= alu_output1;
+	ram1_addr(17) <= a_pc;
+	ram1_addr(16) <= t_en;
+	ram1_addr(15 downto 0) <= pc0(15 downto 0);
 	enable_all <= '1';
 	
-	process(clk_man, rst)
+	process(clk, rst)
 	begin
 		if (rst = '0') then
 			clk_count <= '0';
-			rst_1 <= '0';
-		elsif (clk_man'event and clk_man = '1') then
+		elsif (clk'event and clk = '1') then
 			clk_count <= not clk_count;
-		end if;
-	end process;
-	
-	process(clk_count)
-	begin
-		if(clk_count'event and clk_count = '1')then
-			if (rst_1 = '0')then
-				rst_1 <= '1';
-			end if;
 		end if;
 	end process;
 	
@@ -381,7 +373,7 @@ begin
 		imm => imm1,
 		rx => rx1,
 		ry => ry1,
-		rz => rz1,
+		rz => back_reg1,
 		write_back => write_back1,
 		back_data => back_data1,
 		b_or_imm => b_or_imm1,
@@ -394,28 +386,28 @@ begin
 	);
 
 	registers_port: registers port map(
-		clk => clk_man,
+		clk => clk,
 		rst => rst,
 		enable => write_back4,
 		data =>  data,
 		rx => rx1,
 		ry => ry1,
+--		seg => ram1_addr(15 downto 0),
 		back_reg => back_reg4,
 		pc => pc1,
 		pc_en => pc_en,
 		A => a1,
 		B => b1,
-		zero_en => zero_en,
 		t_en => t_en,
 		t_data => t_data	
 	);
 
 	branch_port: branch port map(
 		pc => pc_plus,
+		pc1 => pc1,
 		imm => imm1,
 		instruction	=> instruction1,
 		A => a,
-		zero_en => zero_en,
 		pc_next => pc_next
 	);
 
@@ -485,9 +477,9 @@ begin
 		back_reg_out => back_reg3,
 		alu_output_in => alu_output1,
 		alu_output_out => alu_output2,
-		A_value_in => a2,
+		A_value_in => a_2,
 		A_value_out => a3,
-		B_value_in => b2,
+		B_value_in => b_2,
 		B_value_out => b3,
 		back_data_in => back_data2,
 		back_data_out => back_data3	
@@ -516,9 +508,9 @@ begin
 		out_cmd => instruction0,
 		out_data => mem_out1,
 		is_done => is_done,
-		clk_auto => clk_man,
+		clk_auto => clk,
 		clk_man => clk_man,
-		rst => rst_1,
+		rst => rst,
 		clk_auto_11 => clk_auto_11,
 		
 --		led => led,
@@ -537,7 +529,7 @@ begin
 		ram2_we => ram2_we,
 		
 		ram1_data => ram1_data,
-		ram1_addr => ram1_addr,
+		ram1_addr => ram_addr,
 		ram1_en => ram1_en, 
 		ram1_oe => ram1_oe,
 		ram1_we => ram1_we
@@ -590,7 +582,7 @@ begin
 		a0_out => a,
 		a_out => a_2,
 		b_out => b_2,
-		pause => data_pause
+		pause => pause
 	);
 	
 end Behavioral;

@@ -43,18 +43,20 @@ port(
 end pc;
 
 architecture Behavioral of pc is
-signal pc : std_logic_vector(15 downto 0);
+signal pc0, pc1 : std_logic_vector(15 downto 0);
 begin
 	
-	pc_out <= pc;
-	pc_plus <= pc + 1; 
+	pc_out <= pc0;
+	pc_plus <= pc1; 
 	process(clk, rst)
 	begin
 		if (rst = '0')then
-			pc <= (others => '0');
+			pc0 <= (others => '0');
+			pc1 <= (others => '0');
 		elsif (clk'event and clk = '1')then
 			if (enable = '1' and is_done = '1')then
-				pc <= pc_in;
+				pc0 <= pc_in;
+				pc1 <= pc_in + 1;
 			end if;
 		end if;
 	end process;

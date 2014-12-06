@@ -105,6 +105,6 @@ begin
 					 sum when "10",
 					 a0 when others;
 					 
-	pause <= '1' when pause1 = '1' or pause2 = '1'
-						else '0';
+	pause <= '0' when pause1 = '1' or pause2 = '1'
+						else '1';
 end Behavioral;
