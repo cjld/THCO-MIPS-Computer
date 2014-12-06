@@ -144,8 +144,9 @@ begin
 					 
 	with instruction_in(15 downto 11) select
 		a_pc <=  a_pc_0 when "11101",
+				 '1' when "00100" | "00101",
 					'0' when others;
-	
+
 	write_back <= '0' when rxyz(3 downto 0) = empty
 					else '1'; 
 						

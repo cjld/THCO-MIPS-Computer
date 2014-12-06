@@ -37,12 +37,12 @@ port(
 	data : in std_logic_vector(15 downto 0);
 	rx : in std_logic_vector(3 downto 0);
 	ry : in std_logic_vector(3 downto 0);
+	--seg : out std_logic_vector(15 downto 0);
 	back_reg : in std_logic_vector(3 downto 0);
 	pc : in std_logic_vector(15 downto 0);
 	pc_en : in std_logic;
 	A : out std_logic_vector(15 downto 0);
 	B : out std_logic_vector(15 downto 0);
-	zero_en: out std_logic;
 	t_en : in std_logic;
 	t_data : in std_logic_vector(15 downto 0)
 );
@@ -57,9 +57,8 @@ begin
 	A <= pc when pc_en = '1'
 				else reg(conv_integer(rx));
 	B <= reg(conv_integer(ry));
-	zero_en <= '1' when reg(conv_integer(rx)) = 0
-		else '0';
-		
+	
+	--seg <= reg(3);
 	process(clk)
 	begin
 		if (rst = '0') then
