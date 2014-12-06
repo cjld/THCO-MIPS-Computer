@@ -88,14 +88,14 @@ begin
 			my_done <= '0';
 			vx <= (others => '0');
 			vy <= (others => '0');
-			vs <= '1';
-			hs <= '1';
+			--vs <= '1';
+			--hs <= '1';
 			led(15) <= '0';
 		elsif (clk'event and clk = '1') then
 			if (my_done = '1') then
 				my_done <= '0';
 			elsif (read_mem_done = '1') then
-			if ((vx >= 60) and (vx < 60 + 512) and (vy >= 100) and ( vy < 100 + 256)) then
+				if ((vx >= 60) and (vx < 60 + 512) and (vy >= 100) and ( vy < 100 + 256)) then
 					read_addr <= next_addr;
 					r <= mem_data(8 downto 6);
 					g <= mem_data(5 downto 3);

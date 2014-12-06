@@ -93,18 +93,32 @@ Port (
 );
 end component;
 
-	signal is_done: std_logic;
+	signal is_done, my_clk: std_logic;
 	signal out_cmd, out_data: std_logic_vector(15 downto 0);
-	signal clk_count: std_logic_vector(2 downto 0);
+	signal clk_count: std_logic_vector(16 downto 0);
+	signal vga_open: std_logic;
 
 begin
+	my_clk <= clk_man;
 
-	process(clk, rst)
+	led(15) <= vga_open;
+	led(14) <= is_done;
+	led(13 downto 0) <= clk_count(13 downto 0);
+
+	process(my_clk, rst)
 	begin
 		if (rst = '0') then
-			clk_count <= "000";
-		elsif (clk'event and clk = '1') then
-			clk_count <= clk_count + '1';
+			clk_count <= (others => '0');
+			vga_open <= '0';
+		elsif (my_clk'event and my_clk = '1') then
+			if (is_done = '1') then
+				vga_open <= '0';
+			elsif (clk_count > switch) then
+				vga_open <= '1';
+				clk_count <= (others => '0');
+			else
+				clk_count <= clk_count + '1';
+			end if;
 		end if;
 	end process;
 
@@ -116,18 +130,18 @@ begin
 		is_write => '0',
 		is_sp => '0',
 		is_sp_label => '0',
-		is_refrash_vga => '1',
+		is_refrash_vga => vga_open,
 		need_int => '0',
 		
 		out_cmd => out_cmd,
 		out_data => out_data,
 		is_done => is_done,
-		clk_auto => clk,--clk_count(2),
+		clk_auto => my_clk,--clk_count(2),
 		clk_man => clk_man,
 		rst => rst,
 		clk_auto_11 => clk_auto_11,
 		
-		led => led,
+		--led => led,
 		switch => switch,
 		
 	   data_ready => data_ready,
@@ -151,7 +165,6 @@ begin
 		hs => hs, vs => vs,
 		r=>r ,g=>g, b=>b
 	);
-	
 
 end Behavioral;
 

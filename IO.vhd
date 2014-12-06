@@ -273,7 +273,7 @@ begin
 		else disp_mem_addr;
 	
 	is_done <=
-		my_done when (is_sp = '1')
+		my_done when (is_sp = '1' or is_refrash_vga = '1')
 		else ram2_done;
 		
 	out_cmd <= ram_data_out_ro;
