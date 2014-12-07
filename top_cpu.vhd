@@ -58,6 +58,7 @@ component pc
 		rst : in std_logic;
 		enable : in std_logic;
 		is_done : in std_logic;
+		is_interrupt : in std_logic;
 		pc_in : in std_logic_vector(15 downto 0);
 		pc_plus : out std_logic_vector(15 downto 0);
 		pc_out : out std_logic_vector(15 downto 0)
@@ -71,6 +72,8 @@ component phase1
 		rst : in std_logic;
 		enable : in std_logic;
 		is_done : in std_logic;
+		is_interrupt : in std_logic;
+		is_end : out std_logic;
 		pc_in : in std_logic_vector(15 downto 0);
 		instruction_in : in std_logic_vector(15 downto 0);
 		pc_out : out std_logic_vector(15 downto 0);
@@ -93,6 +96,9 @@ component transfer
 		--t_choose : out std_logic;
 		alu_op : out std_logic_vector(3 downto 0);
 		pc_en : out std_logic;
+		j_en : out std_logic;
+		is_interrupt : out std_logic;
+		is_end : in std_logic;
 		if_mem : out std_logic;
 		mem_read : out std_logic;
 		mem_write : out std_logic
@@ -111,6 +117,7 @@ component registers
 		back_reg : in std_logic_vector(3 downto 0);
 		pc : in std_logic_vector(15 downto 0);
 		pc_en : in std_logic;
+		j_en : in std_logic;
 		A : out std_logic_vector(15 downto 0);
 		B : out std_logic_vector(15 downto 0);
 		t_en : in std_logic;
@@ -309,7 +316,7 @@ component forwarding
 	);
 end component;
 
-signal enable_all, data_pause, pause, is_sp, is_sp_label, need_int, is_done : std_logic;
+signal enable_all, data_pause, pause, is_sp, is_sp_label, need_int, is_done, is_interrupt, is_end : std_logic;
 signal pc_next, pc_plus, pc0, pc1, pc2 : std_logic_vector(15 downto 0);
 signal instruction0, instruction1, instruction2 : std_logic_vector(15 downto 0);
 signal imm1, imm2 : std_logic_vector(15 downto 0);
@@ -324,7 +331,7 @@ signal alu_op1, alu_op2 : std_logic_vector(3 downto 0);
 signal alu_output1, alu_output2 , alu_output3: std_logic_vector(15 downto 0);
 signal if_mem1, if_mem2, if_mem3, mem_read1, mem_read2, mem_read3, mem_write1, mem_write2, mem_write3 : std_logic;
 signal mem_out1, mem_out2: std_logic_vector(15 downto 0);
-signal a_pc, pc_en, t_en : std_logic;
+signal a_pc, pc_en, t_en, j_en : std_logic;
 signal t_data : std_logic_vector(15 downto 0);
 signal ram_d : std_logic_vector(15 downto 0);
 signal ram_addr : std_logic_vector(17 downto 0);
@@ -353,6 +360,7 @@ begin
 		rst => rst,
 		enable => pause,
 		is_done => is_done,
+		is_interrupt => is_interrupt,
 		pc_in => pc_next,
 		pc_plus => pc_plus,
 		pc_out => pc0
@@ -363,6 +371,8 @@ begin
 		rst => rst,
 		enable => pause,
 		is_done => is_done,
+		is_interrupt => is_interrupt,
+		is_end => is_end,
 		pc_in => pc_plus,
 		pc_out => pc1,
 		instruction_in => instruction0,
@@ -381,6 +391,9 @@ begin
 		a_pc => a_pc,
 		alu_op => alu_op1,
 		pc_en => pc_en,
+		j_en => j_en,
+		is_interrupt => is_interrupt,
+		is_end => is_end,
 		if_mem => if_mem1,
 		mem_read => mem_read1,
 		mem_write => mem_write1
@@ -397,6 +410,7 @@ begin
 		back_reg => back_reg4,
 		pc => pc1,
 		pc_en => pc_en,
+		j_en => j_en,
 		A => a1,
 		B => b1,
 		t_en => t_en,
