@@ -37,8 +37,8 @@ entity keyboard is
            ps2clk : in  STD_LOGIC;
            ps2data_in : in  STD_LOGIC;
 			  prev_data : in STD_LOGIC_VECTOR(7 downto 0);
-			  is_press : out STD_LOGIC;
-           led : out  STD_LOGIC_VECTOR (7 downto 0));
+			  is_press : out STD_LOGIC
+          );
 end keyboard;
 
 architecture Behavioral of keyboard is

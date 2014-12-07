@@ -49,6 +49,9 @@ port(
 		ram1_addr	:	out std_logic_vector(17 downto 0);
 		ram1_en, ram1_oe, ram1_we	:	out std_logic;
 		
+		ps2clk : in STD_LOGIC;
+		ps2data_in : in STD_LOGIC;
+		
 		k1 : in std_logic;
 		hs,vs : out STD_LOGIC;
 		r,g,b : out STD_LOGIC_VECTOR(2 downto 0)
@@ -342,6 +345,16 @@ component forwarding
 		pause: out std_logic
 	);
 end component;
+
+component keyboard
+	port(
+	clk_auto : in  STD_LOGIC;
+      rst : in  STD_LOGIC;
+      ps2clk : in  STD_LOGIC;
+      ps2data_in : in  STD_LOGIC;
+		prev_data : in STD_LOGIC_VECTOR(7 downto 0);
+		is_press : out STD_LOGIC
+	
 
 signal enable_all, data_pause, pause, is_sp, is_sp_label, need_int, is_done, is_end : std_logic;
 signal is_interrupt, soft_interrupt, clock_interrupt : std_logic;
