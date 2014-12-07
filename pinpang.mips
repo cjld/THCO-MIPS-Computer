@@ -213,7 +213,7 @@ ADDU r1 r3 r5
 	is_ok:
 	LI r2 0x00
 	SW r0 r2 0x0
-	
+
 	BEQZ r1 not_ok4
 	NOP
 
@@ -246,8 +246,10 @@ NOP
 	LW r5 r4 0x04
 
 ; next_x = x + vx
-	ADDU r0 r2 r4
-	ADDU r1 r3 r5
+	;ADDU r0 r2 r4
+	;ADDU r1 r3 r5
+	MOVE r4 r0
+	MOVE r5 r1
 
 	; erase mem(r4,r5)
 	LI r2 0x60
@@ -294,12 +296,14 @@ b_x_eq_o:
 
 ; read r4
 	LI r5 0x90
-	SW r5 r4 0x04
+	SLL r5 r5 0x00
+	LW r5 r2 0x04
+	MOVE r4 r2 ; rx ry # rx ← ry
 
 	; erase mem(r4,r5)
 	LI r5 0x60
-	SLL r2 r2 0x00
-	ADDU r2 r4 r2 ; rx ry rz # rz ← rx + ry
+	SLL r5 r5 0x00
+	ADDU r2 r5 r2 ; rx ry rz # rz ← rx + ry
 	; r2 is addr
 
 LI r0 0x0
@@ -312,7 +316,7 @@ SW r2 r0 0x5
 SW r2 r0 0x6
 SW r2 r0 0x7
 
-; press l
+; press
 LI r5 0xBF
 SLL r5 r5 0x00
 ADDIU r5 0x02
@@ -345,7 +349,7 @@ NOP
 
 	LI r5 0x90
 	SLL r5 r5 0x00
-	SW r5 r4 0x04
+	LW r5 r4 0x04
 	LI r0 0x1
 	SUBU r4 r0 r4
 	B is_press
@@ -354,7 +358,7 @@ NOP
 	
 	LI r5 0x90
 	SLL r5 r5 0x00
-	SW r5 r4 0x04
+	LW r5 r4 0x04
 	LI r0 0x1
 	ADDU r4 r0 r4
 	B is_press
@@ -369,13 +373,24 @@ NOP
     ; save board pos
 	LI r5 0x90
 	SLL r5 r5 0x00
-	LW r5 r4 0x04
-
-
-
-    
+	SW r5 r4 0x04
 
 not_press:
+
+LI r5 0x90
+SLL r5 r5 0x00
+ADDU r5 r4 r2
+
+LI r0 0xFF
+SW r2 r0 0x0
+SW r2 r0 0x1
+SW r2 r0 0x2
+SW r2 r0 0x3
+SW r2 r0 0x4
+SW r2 r0 0x5
+SW r2 r0 0x6
+SW r2 r0 0x7
+
 B start
 NOP
 
