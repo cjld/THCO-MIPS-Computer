@@ -1,0 +1,34 @@
+# pin pang pox x [0~127] r1
+# pin pang pox y [0~ 63] r2
+# pin pang v x r3 
+# pin pang v y r4
+
+reset:
+
+LI r0 0x01
+LI r1 0x01
+LI r2 0x01
+LI r3 0x01
+LI r5 0x00
+
+save_state:
+	LI r5 0x08
+	SLL r5 r5 0x00
+	SW r5 r0 0x00
+	SW r5 r1 0x01
+	SW r5 r2 0x02
+	SW r5 r3 0x03
+	SW r5 r4 0x04
+	JRRA ; # PC ← RA
+	NOP
+
+load_state:
+	LI r5 0x08
+	SLL r5 r5 0x00
+	LW r5 r0 0x00
+	LW r5 r1 0x01
+	LW r5 r2 0x02
+	LW r5 r3 0x03
+	LW r5 r4 0x04
+	JRRA ; # PC ← RA
+	NOP
