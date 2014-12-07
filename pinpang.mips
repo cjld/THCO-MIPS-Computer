@@ -9,10 +9,380 @@ LI r0 0x01
 LI r1 0x01
 LI r2 0x01
 LI r3 0x01
-LI r5 0x00
+LI r4 0x00
+
+	LI r5 0x90
+	SLL r5 r5 0x00
+	SW r5 r0 0x00
+	SW r5 r1 0x01
+	SW r5 r2 0x02
+	SW r5 r3 0x03
+	SW r5 r4 0x04
+
+start:
+
+	LI r5 0x90
+	SLL r5 r5 0x00
+	LW r5 r0 0x00
+	LW r5 r1 0x01
+	LW r5 r2 0x02
+	LW r5 r3 0x03
+	LW r5 r4 0x04
+
+ADDU r0 r2 r4
+ADDU r1 r3 r5
+
+	SRA r1 r4 7
+	NOT r1 r1
+	BEQZ r1 not_ok
+	NOP ; # 空指令
+	SRA r1 r5 6
+	NOT r1 r1
+	BEQZ r1 not_ok
+	NOP
+
+	LI r0 0x60
+	SLL r0 r0 0x00
+	ADDU r0 r4 r0 ; rx ry rz # rz ← rx + ry
+	SLL r5 r5 7
+	ADDU r0 r5 r0
+	; r0 is addr
+	LW r0 r1 0x00
+	NOT r1 r1
+
+	is_ok:
+	LI r2 0x00
+	SW r0 r2 0x0
+
+	BEQZ r1 not_ok
+	NOP
+
+B all_ok
+NOP
+
+not_ok:
+
+	LI r5 0x90
+	SLL r5 r5 0x00
+	LW r5 r0 0x00
+	LW r5 r1 0x01
+	LW r5 r2 0x02
+	LW r5 r3 0x03
+	LW r5 r4 0x04
+
+; vx = -vx
+ADDIU3 r2 r5 0x00
+SUBU r5 r2 r5
+SUBU r5 r2 r2
+
+	LI r5 0x90
+	SLL r5 r5 0x00
+	LW r5 r2 0x02
+	LW r5 r3 0x03
+; next_x = x + vx
+ADDU r0 r2 r4
+ADDU r1 r3 r5
+
+	SRA r1 r4 7
+	NOT r1 r1
+	BEQZ r1 not_ok2
+	NOP ; # 空指令
+	SRA r1 r5 6
+	NOT r1 r1
+	BEQZ r1 not_ok2
+	NOP
+
+	LI r0 0x60
+	SLL r0 r0 0x00
+	ADDU r0 r4 r0 ; rx ry rz # rz ← rx + ry
+	SLL r5 r5 7
+	ADDU r0 r5 r0
+	; r0 is addr
+	LW r0 r1 0x00
+	NOT r1 r1
+
+	is_ok:
+	LI r2 0x00
+	SW r0 r2 0x0
+
+	BEQZ r1 not_ok2
+	NOP
+
+
+B all_ok
+NOP
+
+not_ok2:
+
+	LI r5 0x90
+	SLL r5 r5 0x00
+	LW r5 r0 0x00
+	LW r5 r1 0x01
+	LW r5 r2 0x02
+	LW r5 r3 0x03
+	LW r5 r4 0x04
+
+; vy = -vy
+ADDIU3 r3 r5 0x00
+SUBU r5 r3 r5
+SUBU r5 r3 r3
+
+	LI r5 0x90
+	SLL r5 r5 0x00
+	LW r5 r2 0x02
+	LW r5 r3 0x03
+
+; next_x = x + vx
+ADDU r0 r2 r4
+ADDU r1 r3 r5
+
+	SRA r1 r4 7
+	NOT r1 r1
+	BEQZ r1 not_ok3
+	NOP ; # 空指令
+	SRA r1 r5 6
+	NOT r1 r1
+	BEQZ r1 not_ok3
+	NOP
+
+	LI r0 0x60
+	SLL r0 r0 0x00
+	ADDU r0 r4 r0 ; rx ry rz # rz ← rx + ry
+	SLL r5 r5 7
+	ADDU r0 r5 r0
+	; r0 is addr
+	LW r0 r1 0x00
+	NOT r1 r1
+
+	is_ok:
+	LI r2 0x00
+	SW r0 r2 0x0
+
+	BEQZ r1 not_ok3
+	NOP
+
+B all_ok
+NOP
+
+not_ok3:
+
+	LI r5 0x90
+	SLL r5 r5 0x00
+	LW r5 r0 0x00
+	LW r5 r1 0x01
+	LW r5 r2 0x02
+	LW r5 r3 0x03
+	LW r5 r4 0x04
+
+; vx = -vx
+ADDIU3 r2 r5 0x00
+SUBU r5 r2 r5
+SUBU r5 r2 r2
+
+
+	LI r5 0x90
+	SLL r5 r5 0x00
+	LW r5 r2 0x02
+	LW r5 r3 0x03
+
+; next_x = x + vx
+ADDU r0 r2 r4
+ADDU r1 r3 r5
+
+
+
+	SRA r1 r4 7
+	NOT r1 r1
+	BEQZ r1 not_ok4
+	NOP ; # 空指令
+	SRA r1 r5 6
+	NOT r1 r1
+	BEQZ r1 not_ok4
+	NOP
+
+	LI r0 0x60
+	SLL r0 r0 0x00
+	ADDU r0 r4 r0 ; rx ry rz # rz ← rx + ry
+	SLL r5 r5 7
+	ADDU r0 r5 r0
+	; r0 is addr
+	LW r0 r1 0x00
+	NOT r1 r1
+
+
+	is_ok:
+	LI r2 0x00
+	SW r0 r2 0x0
+	
+	BEQZ r1 not_ok4
+	NOP
+
+B all_ok
+NOP
+
+not_ok4:
+all_ok:
+
+
+	LI r5 0x90
+	SLL r5 r5 0x00
+	LW r5 r0 0x00
+	LW r5 r1 0x01
+	LW r5 r2 0x02
+	LW r5 r3 0x03
+	LW r5 r4 0x04
+
+; if x != 0
+BEQZ r0 b_x_eq_o
+NOP
+
+
+	LI r5 0x90
+	SLL r5 r5 0x00
+	LW r5 r0 0x00
+	LW r5 r1 0x01
+	LW r5 r2 0x02
+	LW r5 r3 0x03
+	LW r5 r4 0x04
+
+; next_x = x + vx
+	ADDU r0 r2 r4
+	ADDU r1 r3 r5
+
+	; erase mem(r4,r5)
+	LI r2 0x60
+	SLL r2 r2 0x00
+	ADDU r2 r4 r2 ; rx ry rz # rz ← rx + ry
+	SLL r5 r5 7
+	ADDU r2 r5 r2
+	; r2 is addr
+	;LW r2 r1 0x00
+	LI r3 0x00
+	SW r2 r3 0x00
+
+	LI r5 0x90
+	SLL r5 r5 0x00
+	LW r5 r0 0x00
+	LW r5 r1 0x01
+	LW r5 r2 0x02
+	LW r5 r3 0x03
+	LW r5 r4 0x04
+
+
+; next_x = x + vx
+	ADDU r0 r2 r0
+	ADDU r1 r3 r1
+
+	SW r5 r0 0x00
+	SW r5 r1 0x01
+
+	MOVE r4 r0
+	MOVE r5 r1
+
+	; erase mem(r4,r5)
+	LI r2 0x60
+	SLL r2 r2 0x00
+	ADDU r2 r4 r2 ; rx ry rz # rz ← rx + ry
+	SLL r5 r5 7
+	ADDU r2 r5 r2
+	; r2 is addr
+	;LW r2 r1 0x00
+	LI r3 0xFF
+	SW r2 r3 0x00
+
+b_x_eq_o:
+
+; read r4
+	LI r5 0x90
+	SW r5 r4 0x04
+
+	; erase mem(r4,r5)
+	LI r5 0x60
+	SLL r2 r2 0x00
+	ADDU r2 r4 r2 ; rx ry rz # rz ← rx + ry
+	; r2 is addr
+
+LI r0 0x0
+SW r2 r0 0x0
+SW r2 r0 0x1
+SW r2 r0 0x2
+SW r2 r0 0x3
+SW r2 r0 0x4
+SW r2 r0 0x5
+SW r2 r0 0x6
+SW r2 r0 0x7
+
+; press l
+LI r5 0xBF
+SLL r5 r5 0x00
+ADDIU r5 0x02
+LW r5 r2 0x00
+SRA r0 r2 0x05
+BEQZ r0 not_press
+NOP
+
+    LI r0 0x01
+    SLL r0 r0 0x05
+    SUBU r2 r0 r0
+
+    BEQZ r0 press_a
+    NOP
+
+    LI r0 0x03
+    SUBU r2 r0 r0
+    BEQZ r0 press_d
+    NOP
+
+    LI r0 0x02
+    SUBU r2 r0 r0
+    BEQZ r0 press_c
+    NOP
+
+    B not_press
+    NOP
+
+    press_a:
+
+	LI r5 0x90
+	SLL r5 r5 0x00
+	SW r5 r4 0x04
+	LI r0 0x1
+	SUBU r4 r0 r4
+	B is_press
+
+    press_d:
+	
+	LI r5 0x90
+	SLL r5 r5 0x00
+	SW r5 r4 0x04
+	LI r0 0x1
+	ADDU r4 r0 r4
+	B is_press
+	NOP 
+
+	press_c:
+	B reset
+	NOP
+
+    is_press:
+
+    ; save board pos
+	LI r5 0x90
+	SLL r5 r5 0x00
+	LW r5 r4 0x04
+
+
+
+    
+
+not_press:
+B start
+NOP
+
+
 
 save_state:
-	LI r5 0x08
+	LI r5 0x90
 	SLL r5 r5 0x00
 	SW r5 r0 0x00
 	SW r5 r1 0x01
@@ -23,7 +393,7 @@ save_state:
 	NOP
 
 load_state:
-	LI r5 0x08
+	LI r5 0x90
 	SLL r5 r5 0x00
 	LW r5 r0 0x00
 	LW r5 r1 0x01
