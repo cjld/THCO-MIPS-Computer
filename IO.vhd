@@ -173,7 +173,7 @@ architecture Behavioral of IO is
 	
 begin
 	
-	use_vga_addr <= is_refrash_vga and not vga_refresh_edge;
+	use_vga_addr <= vga_refresh_run; --<= is_refrash_vga and not vga_refresh_edge;
 	
 	ram1_addr(15 downto 0) <= pc;
 	ram1_addr(17 downto 16) <= "00";
@@ -227,7 +227,7 @@ begin
 
 			input_data => sp_input_data,
 			output_data => sp_output_data,
-			--led => led,
+			led => led,
 
 			is_done => sp_is_done,
 
@@ -242,7 +242,8 @@ begin
 			clk => clk,
 			rst => vga_rst,
 			
-			led => led, switch => switch,
+			--led => led, 
+			switch => switch,
 			
 			read_mem_done => ram2_done,
 			vga_refresh_run => vga_refresh_run,
@@ -280,7 +281,7 @@ begin
 		else disp_mem_addr;
 	
 	is_done <=
-		(ram2_done and my_done) when (is_sp = '1' or is_refrash_vga = '1') 
+		(ram2_done and my_done and not is_refrash_vga) when (is_sp = '1' or is_refrash_vga = '1') 
 		else ram2_done;
 		
 	out_cmd <= ram_data_out_ro;
@@ -299,7 +300,7 @@ begin
 			sram_rst <= '0';
 			is_refrash_vga <= '0';
 		elsif (clk'event and clk = '1') then
-			if (vga_refresh_run = '1') then
+			if (vga_refresh_edge = '1') then
 				my_done <= '0';
 				is_refrash_vga <= '1';
 			elsif (my_rst = '0') then

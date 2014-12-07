@@ -340,7 +340,7 @@ signal t_data : std_logic_vector(15 downto 0);
 signal ram_d : std_logic_vector(15 downto 0);
 signal ram_addr : std_logic_vector(17 downto 0);
 signal clk_count: std_logic;
-signal clock : std_logic;
+signal clock,clock_11 : std_logic;
 --signal rst_1 : std_logic;
 
 begin
@@ -349,6 +349,7 @@ begin
 	enable_all <= '1';
 	
 	clock <= clk when switch(0) = '0' else clk_man;
+	clock_11 <= clk_auto_11 when switch(15) = '0' else clk_man;
 	
 	process(clock, rst)
 	begin
@@ -524,7 +525,7 @@ begin
 		clk_auto => clock,
 		clk_man => clk_man,
 		rst => rst,
-		clk_auto_11 => clk_auto_11,
+		clk_auto_11 => clock_11,
 		clock => clk_count,
 		led => led,
 --		switch => switch,

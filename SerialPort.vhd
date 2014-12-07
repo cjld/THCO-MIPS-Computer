@@ -112,14 +112,14 @@ begin
 				end if;
 			when rdnC =>
 				led(15 downto 8) <= "00000111";
-				rdn <= '0';
+				rdn <= '1';
 				output_data <= ram1data;
 				curr_state <= idle;
 				
 			when wrn_zero =>
 				--output_data <= "00000011";
 				led(15 downto 8) <= "00001111";
-				rdn <= '1'; 
+				--rdn <= '1'; 
 				wrn <= '1';
 				curr_state <= wrnA;
 			when wrnA =>

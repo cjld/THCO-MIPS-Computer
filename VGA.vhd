@@ -56,9 +56,10 @@ architecture Behavioral of VGA is
 	signal clk_2 : std_logic;
 	signal vx, tvx : std_logic_vector(9 downto 0);
 	signal vy, tvy : std_logic_vector(9 downto 0);
+	signal start_addr : std_logic_vector(3 downto 0);
 
 begin
-
+	start_addr <= "0110";
 	mem_addr <= read_addr;
 	--next_addr <= read_addr + '1';
 	
@@ -75,10 +76,11 @@ begin
 	--tvy <= vy - 100;
 	tmp_addr(6 downto 0) <= tvx(8 downto 2);
 	tmp_addr(12 downto 7) <= tvy(7 downto 2);
-	tmp_addr(15 downto 13) <= "111";
+	tmp_addr(15 downto 13) <= start_addr(3 downto 1);
 	next_addr <= tmp_addr;-- + '1';
 	vga_refresh_run <= '1' when (vy >= 100) and ( vy < 100 + 256) else '0';
-	vga_refresh_edge <= '0' when ((vy >= 50) and ( vy < 150 + 256)) else '1';
+	vga_refresh_edge <= '1' when (vy >= 90) and ( vy < 110 + 256) else '0';
+	--vga_refresh_edge <= '0' when ((vy >= 50) and ( vy < 150 + 256)) else '1';
 	
 	process(clk, rst)
 	begin
@@ -92,7 +94,7 @@ begin
 	process(clk_2, rst)
 	begin
 		if (rst = '0') then
-			read_addr(15 downto 12) <= "1110";
+			read_addr(15 downto 12) <= start_addr;
 			read_addr(11 downto 0) <= (others => '0');
 			vx <= (others => '0');
 			vy <= (others => '0');
@@ -111,7 +113,7 @@ begin
 					b <= "000";
 					if (vx = 799) then
 						if (vy = 524) then
-							read_addr(15 downto 12) <= "1110";
+							read_addr(15 downto 12) <= start_addr;
 							read_addr(11 downto 0) <= (others => '0');
 						end if;
 					end if;
