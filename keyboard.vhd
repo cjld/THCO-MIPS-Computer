@@ -37,6 +37,7 @@ entity keyboard is
            ps2clk : in  STD_LOGIC;
            ps2data_in : in  STD_LOGIC;
 			  prev_data : in STD_LOGIC_VECTOR(7 downto 0);
+			  curr_key : out STD_LOGIC_VECTOR(3 downto 0);
 			  is_press : out STD_LOGIC
           );
 end keyboard;
@@ -86,7 +87,7 @@ begin
 				when data_check =>
 					if (clk = '1') then
 						if ((odd_check xor data) = '1') then -- if odd_check sucesses , it's ok
-							led <= "00000001";
+							--led <= "00000001";
 							curr_state <= data_end;
 						else	-- not right
 							curr_state <=zero;
@@ -95,11 +96,11 @@ begin
 				when data_end =>
 					if (clk = '1') then
 						if (data = '1') then
-							led <= data_arr;
+							--led <= data_arr;
 							if (prev_data = "11110000") then
-								is_press = '0';
+								press <= '0';
 							else 
-								is_press = '1';
+								press <= '1';
 							end if;
 						end if;
 						curr_state <= zero;

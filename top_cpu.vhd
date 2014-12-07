@@ -348,12 +348,15 @@ end component;
 
 component keyboard
 	port(
-	clk_auto : in  STD_LOGIC;
+		clk_auto : in  STD_LOGIC;
       rst : in  STD_LOGIC;
       ps2clk : in  STD_LOGIC;
       ps2data_in : in  STD_LOGIC;
 		prev_data : in STD_LOGIC_VECTOR(7 downto 0);
+		curr_key : out STD_LOGIC_VECTOR(3 downto 0);
 		is_press : out STD_LOGIC
+	);
+end component;
 	
 
 signal enable_all, data_pause, pause, is_sp, is_sp_label, need_int, is_done, is_end : std_logic;
@@ -382,6 +385,10 @@ signal timm : std_logic_vector(7 downto 0);
 signal AA, BB : std_logic_vector(1 downto 0); 
 signal br, ih : std_logic;
 signal count : std_logic_vector(24 downto 0);
+
+signal key_press : std_logic;
+signal prev_data : std_logic_vector(7 downto 0);
+signal curr_key : std_logic_vector(3 downto 0);
 --signal rst_1 : std_logic;
 
 begin
@@ -675,6 +682,16 @@ begin
 		a_out => a_2,
 		b_out => b_2,
 		pause => pause
+	);
+	
+	keyboard_port: keyboard port map(
+	 clk_auto => clk,
+    rst => rst,
+    ps2clk => ps2clk,
+    ps2data_in => ps2data_in,
+	 prev_data => prev_data,
+	 curr_key => curr_key,
+	 is_press => key_press
 	);
 	
 end Behavioral;
