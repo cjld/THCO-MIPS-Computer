@@ -36,6 +36,7 @@ port(
 	rst : in std_logic;
 	enable : in std_logic;
 	is_done : in std_logic;
+	is_interrupt : in std_logic;
 	pc_in : in std_logic_vector(15 downto 0);
 	pc_plus : out std_logic_vector(15 downto 0);
 	pc_out : out std_logic_vector(15 downto 0)
@@ -54,7 +55,7 @@ begin
 			pc0 <= (others => '0');
 			pc1 <= (others => '0');
 		elsif (clk'event and clk = '1')then
-			if (enable = '1' and is_done = '1')then
+			if (enable = '1' and is_done = '1' and is_interrupt = '0')then
 				pc0 <= pc_in;
 				pc1 <= pc_in + 1;
 			end if;

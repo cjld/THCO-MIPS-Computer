@@ -44,6 +44,9 @@ port(
 	--t_choose : out std_logic;
 	alu_op : out std_logic_vector(3 downto 0);
 	pc_en : out std_logic;
+	j_en : out std_logic;
+	is_interrupt : out std_logic;
+	is_end : in std_logic;
 	if_mem : out std_logic;
 	mem_read : out std_logic;
 	mem_write : out std_logic
@@ -63,13 +66,14 @@ signal ftte, fztz, fstz, fftz : std_logic_vector(11 downto 0);
 signal last2, last2_2, last3, last5 : std_logic_vector(3 downto 0);
 signal sg1, sg2 : std_logic_vector(1 downto 0);
 signal a_pc_0 : std_logic;
+signal intr : std_logic;
 begin
 	----- get imm
 	with instruction_in(15 downto 11) select
 		sign_bit <= instruction_in(10) when "00010",
 						instruction_in(7) when "01001" | "01100" | "00100" | "00101" | "10010" | "01010" | "11010",
 						instruction_in(4) when "10011" | "11011",
-						instruction_in(3) when "01000",
+						instruction_in(3) when "01000" | "11111",
 						'0' when others;
 						
 	exten_sign <= (others => sign_bit);
@@ -80,7 +84,7 @@ begin
 				 exten_sign(15 downto 8) & instruction_in(7 downto 0) when "01001" | "01100" | "00100" | "00101" | "10010" | "01010" | "11010" | "01101",
 				 exten_sign(15 downto 5) & instruction_in(4 downto 0) when "10011" | "11011",
 				 "000000000000" & imm2 when "00110",
-				 exten_sign(15 downto 4) & instruction_in(3 downto 0) when "01000",
+				 exten_sign(15 downto 4) & instruction_in(3 downto 0) when "01000" | "11111",
 				 (others => '0') when others;
 	----- get rx ry and rz
 	empty <= "1111";
@@ -108,7 +112,7 @@ begin
 					ftte when "01100",
 					fztz when "11110",
 					fftz when "11101",
-					(others => '1') when others;
+					(others => '1') when others; -- INT
 	with instruction_in(10 downto 8) select
 		ftte <= sp & empty & sp when "011", -- ADDSP
 				  r10 & empty & sp when "100", -- MTSP
@@ -135,6 +139,15 @@ begin
 	rz <= rxyz(3 downto 0);
 	
 	----- control signal
+	intr <= '0' when is_end = '1' 
+					else '1';
+
+	is_interrupt <= '1' when instruction_in(15 downto 11) = "11111"
+							else intr;
+
+	j_en <= '1' when (instruction_in(15 downto 11) = "11101" and instruction_in(7 downto 0) = "11000000")
+					else '0';
+
 	pc_en <= '1' when (instruction_in(15 downto 11) = "11101" and instruction_in(7 downto 0) = "01000000")
 					else '0';
 					

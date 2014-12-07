@@ -41,6 +41,7 @@ port(
 	back_reg : in std_logic_vector(3 downto 0);
 	pc : in std_logic_vector(15 downto 0);
 	pc_en : in std_logic;
+	j_en : in std_logic;
 	A : out std_logic_vector(15 downto 0);
 	B : out std_logic_vector(15 downto 0);
 	t_en : in std_logic;
@@ -52,10 +53,14 @@ architecture Behavioral of registers is
 type reg_array	is array (integer range 0 to 15) of std_logic_vector(15 downto 0);
 signal reg : reg_array;
 signal t : std_logic;
+signal AA : std_logic_vector(15 downto 0);
 begin
 
-	A <= pc when pc_en = '1'
+	AA <= pc when pc_en = '1'
 				else reg(conv_integer(rx));
+	A <= (pc + 1) when j_en = '1'
+					else AA;
+
 	B <= reg(conv_integer(ry));
 	
 	--seg <= reg(7)(7 downto 0);
