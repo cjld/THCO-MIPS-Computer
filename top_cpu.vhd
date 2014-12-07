@@ -352,8 +352,8 @@ component keyboard
       rst : in  STD_LOGIC;
       ps2clk : in  STD_LOGIC;
       ps2data_in : in  STD_LOGIC;
-		prev_data : in STD_LOGIC_VECTOR(7 downto 0);
-		curr_key : out STD_LOGIC_VECTOR(3 downto 0);
+		curr_key : out STD_LOGIC_VECTOR(4 downto 0);
+		--led : out STD_LOGIC_VECTOR(3 downto 0);
 		is_press : out STD_LOGIC
 	);
 end component;
@@ -388,7 +388,7 @@ signal count : std_logic_vector(24 downto 0);
 
 signal key_press : std_logic;
 signal prev_data : std_logic_vector(7 downto 0);
-signal curr_key : std_logic_vector(3 downto 0);
+signal curr_key : std_logic_vector(4 downto 0);
 --signal rst_1 : std_logic;
 
 begin
@@ -689,8 +689,8 @@ begin
     rst => rst,
     ps2clk => ps2clk,
     ps2data_in => ps2data_in,
-	 prev_data => prev_data,
 	 curr_key => curr_key,
+	 --led => led(7 downto 4),
 	 is_press => key_press
 	);
 	

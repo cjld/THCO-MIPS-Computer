@@ -36,8 +36,8 @@ entity keyboard is
            rst : in  STD_LOGIC;
            ps2clk : in  STD_LOGIC;
            ps2data_in : in  STD_LOGIC;
-			  prev_data : in STD_LOGIC_VECTOR(7 downto 0);
-			  curr_key : out STD_LOGIC_VECTOR(3 downto 0);
+			  curr_key : out STD_LOGIC_VECTOR(4 downto 0);
+			  --led : out STD_LOGIC_VECTOR(3 downto 0);
 			  is_press : out STD_LOGIC
           );
 end keyboard;
@@ -49,6 +49,7 @@ architecture Behavioral of keyboard is
 	signal curr_state : state;
 	signal int : integer;
 	signal press : std_logic;
+	signal prev_data : STD_LOGIC_VECTOR(7 downto 0);
 
 begin
 	
@@ -64,6 +65,7 @@ begin
 		if (rst = '0') then
 			curr_state <= zero;
 			int <= 0;
+			prev_data <= "11110000";
 		elsif (clk_auto'event and clk_auto = '1') then
 			case curr_state is
 				when zero =>
@@ -96,12 +98,13 @@ begin
 				when data_end =>
 					if (clk = '1') then
 						if (data = '1') then
-							--led <= data_arr;
-							if (prev_data = "11110000") then
+				--			led <= data_arr(7 downto 4);
+							if (prev_data = "11110000" or data_arr = "11110000") then
 								press <= '0';
 							else 
 								press <= '1';
 							end if;
+							prev_data <= data_arr;
 						end if;
 						curr_state <= zero;
 					end if;
@@ -111,5 +114,35 @@ begin
 		end if;
 	end process;
 	
+	with prev_data select
+		curr_key <= 
+			"00001" when "00011100" , 		--A
+			"00010" when "00110010" , 		--B
+			"00011" when "00100001" , 		--C
+			"00100" when "00100011" , 		--D
+			"00101" when "00100100" , 		--E
+			"00110" when "00101011" , 		--F
+			"00111" when "00110100" , 		--G
+			"01000" when "00110011" , 		--H
+			"01001" when "01000011" , 		--I
+			"01010" when "00111011" , 		--J
+			"01011" when "01000010" , 		--K
+			"01100" when "01001011" , 		--L
+			"01101" when "00111010" , 		--M
+			"01110" when "00110001" , 		--N
+			"01111" when "01000100" , 		--O
+			"10000" when "01001101" , 		--P
+			"10001" when "00010101" , 		--Q
+			"10010" when "00101101" , 		--R
+			"10011" when "00011011" , 		--S
+			"10100" when "00101100" , 		--T
+			"10101" when "00111100" , 		--U
+			"10110" when "00101010" , 		--V
+			"10111" when "00011101" , 		--W
+			"11000" when "00100010" , 		--X
+			"11001" when "00110101" , 		--Y
+			"11010" when "00011010" , 		--Z
+			"00000" when others;
+			
 end Behavioral;
 
