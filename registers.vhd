@@ -45,7 +45,8 @@ port(
 	A : out std_logic_vector(15 downto 0);
 	B : out std_logic_vector(15 downto 0);
 	t_en : in std_logic;
-	t_data : in std_logic_vector(15 downto 0)
+	t_data : in std_logic_vector(15 downto 0);
+	ih : out std_logic
 );
 end registers;
 
@@ -55,7 +56,8 @@ signal reg : reg_array;
 signal t : std_logic;
 signal AA : std_logic_vector(15 downto 0);
 begin
-
+	ih <= reg(8)(15);
+	
 	AA <= pc when pc_en = '1'
 				else reg(conv_integer(rx));
 	A <= (pc + 1) when j_en = '1'

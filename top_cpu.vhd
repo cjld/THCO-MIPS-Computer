@@ -19,7 +19,7 @@
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
+use ieee.std_logic_unsigned.all;
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
 --use IEEE.NUMERIC_STD.ALL;
@@ -49,6 +49,7 @@ port(
 		ram1_addr	:	out std_logic_vector(17 downto 0);
 		ram1_en, ram1_oe, ram1_we	:	out std_logic;
 		
+		k1 : in std_logic;
 		hs,vs : out STD_LOGIC;
 		r,g,b : out STD_LOGIC_VECTOR(2 downto 0)
 );
@@ -76,11 +77,13 @@ component phase1
 		enable : in std_logic;
 		is_done : in std_logic;
 		is_interrupt : in std_logic;
+		imm : in std_logic_vector(7 downto 0);
 		is_end : out std_logic;
 		pc_in : in std_logic_vector(15 downto 0);
 		instruction_in : in std_logic_vector(15 downto 0);
 		pc_out : out std_logic_vector(15 downto 0);
-		instruction_out : out std_logic_vector(15 downto 0)
+		instruction_out : out std_logic_vector(15 downto 0);
+		br : in std_logic
 	);
 end component;
 
@@ -100,11 +103,22 @@ component transfer
 		alu_op : out std_logic_vector(3 downto 0);
 		pc_en : out std_logic;
 		j_en : out std_logic;
-		is_interrupt : out std_logic;
-		is_end : in std_logic;
+		is_int: out std_logic;
 		if_mem : out std_logic;
 		mem_read : out std_logic;
 		mem_write : out std_logic
+	);
+end component;
+
+component intr_control
+	port(
+		imms : in std_logic_vector(15 downto 0);
+		is_end : in std_logic;
+		soft_interrupt : in std_logic;
+		AA : in std_logic_vector(1 downto 0);
+		BB : in std_logic_vector(1 downto 0);
+		imm : out std_logic_vector(7 downto 0);
+		is_interrupt : out std_logic
 	);
 end component;
 
@@ -124,7 +138,8 @@ component registers
 		A : out std_logic_vector(15 downto 0);
 		B : out std_logic_vector(15 downto 0);
 		t_en : in std_logic;
-		t_data : in std_logic_vector
+		t_data : in std_logic_vector;
+		ih : out std_logic
 	);
 end component;
 
@@ -135,7 +150,8 @@ component branch
 		imm : in std_logic_vector(15 downto 0);
 		instruction	:	in std_logic_vector (15 downto 0);
 		A : in std_logic_vector(15 downto 0);
-		pc_next : out std_logic_vector(15 downto 0)
+		pc_next : out std_logic_vector(15 downto 0);
+		br : out std_logic
 	);
 end component;
 
@@ -327,7 +343,8 @@ component forwarding
 	);
 end component;
 
-signal enable_all, data_pause, pause, is_sp, is_sp_label, need_int, is_done, is_interrupt, is_end : std_logic;
+signal enable_all, data_pause, pause, is_sp, is_sp_label, need_int, is_done, is_end : std_logic;
+signal is_interrupt, soft_interrupt, clock_interrupt : std_logic;
 signal pc_next, pc_plus, pc0, pc1, pc2 : std_logic_vector(15 downto 0);
 signal instruction0, instruction1, instruction2 : std_logic_vector(15 downto 0);
 signal imm1, imm2 : std_logic_vector(15 downto 0);
@@ -348,6 +365,10 @@ signal ram_d : std_logic_vector(15 downto 0);
 signal ram_addr : std_logic_vector(17 downto 0);
 signal clk_count: std_logic;
 signal clock,clock_11 : std_logic;
+signal timm : std_logic_vector(7 downto 0);
+signal AA, BB : std_logic_vector(1 downto 0); 
+signal br, ih : std_logic;
+signal count : std_logic_vector(24 downto 0);
 --signal rst_1 : std_logic;
 
 begin
@@ -362,8 +383,22 @@ begin
 	begin
 		if (rst = '0') then
 			clk_count <= '0';
+			clock_interrupt <= '0';
 		elsif (clock'event and clock = '1') then
 			clk_count <= not clk_count;
+		end if;
+	end process;
+	
+	process(clk_count)
+	begin
+		if (clk_count'event and clk_count = '1')then
+			AA <= k1 & (not count(24) or not switch(13));
+			BB <= AA;
+			if (ih = '1')then
+				count <= count + 1;
+			else
+				count <= (others => '0');
+			end if;
 		end if;
 	end process;
 	
@@ -384,11 +419,13 @@ begin
 		enable => pause,
 		is_done => is_done,
 		is_interrupt => is_interrupt,
+		imm => timm,
 		is_end => is_end,
 		pc_in => pc_plus,
 		pc_out => pc1,
 		instruction_in => instruction0,
-		instruction_out => instruction1
+		instruction_out => instruction1,
+		br => br
 	);
 
 	transfer_port: transfer port map(
@@ -404,13 +441,22 @@ begin
 		alu_op => alu_op1,
 		pc_en => pc_en,
 		j_en => j_en,
-		is_interrupt => is_interrupt,
-		is_end => is_end,
+		is_int => soft_interrupt,
 		if_mem => if_mem1,
 		mem_read => mem_read1,
 		mem_write => mem_write1
 	);
-
+	
+	intr_control_port: intr_control port map(
+		imms => imm1,
+		is_end => is_end,
+		soft_interrupt => soft_interrupt,
+		AA => AA,
+		BB => BB,
+		imm => timm,
+		is_interrupt => is_interrupt
+	);
+	
 	registers_port: registers port map(
 		clk => clock,
 		rst => rst,
@@ -426,7 +472,8 @@ begin
 		A => a1,
 		B => b1,
 		t_en => t_en,
-		t_data => t_data	
+		t_data => t_data,
+		ih => ih
 	);
 
 	branch_port: branch port map(
@@ -435,7 +482,8 @@ begin
 		imm => imm1,
 		instruction	=> instruction1,
 		A => a,
-		pc_next => pc_next
+		pc_next => pc_next,
+		br => br
 	);
 
 	phase2_port: phase2 port map(

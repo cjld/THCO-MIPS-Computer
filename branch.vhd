@@ -36,7 +36,8 @@ port (
 	imm : in std_logic_vector(15 downto 0);
 	instruction	:	in std_logic_vector (15 downto 0);
 	A : in std_logic_vector(15 downto 0);
-	pc_next : out std_logic_vector(15 downto 0)
+	pc_next : out std_logic_vector(15 downto 0);
+	br : out std_logic
 	--if_branch : out std_logic
 );
 end branch;
@@ -45,23 +46,35 @@ architecture Behavioral of branch is
 signal pc_imm1 : std_logic_vector(15 downto 0);
 signal pc_imm2 : std_logic_vector(15 downto 0);
 signal zero_en : std_logic;
-signal br : std_logic;
+signal br1, br2 : std_logic;
 begin
 	zero_en <= '0' when a = "0000000000000000"
 					else '1';
-			
+	
 	with instruction(7 downto 0) select
 		pc_imm1 <=  a when "11000000" | "00000000" | "00100000",
 						pc when others;	
-	
+	with instruction(7 downto 0) select
+		br1 <=  '1' when "11000000" | "00000000" | "00100000",
+						'0' when others;	
+						
 	with instruction(10 downto 8) & zero_en select
 		pc_imm2 <= (pc1 + imm) when "0000" | "0011",
 						pc when others;
+	with instruction(10 downto 8) & zero_en select
+		br2 <= '1' when "0000" | "0011",
+						'0' when others;	
 						
 	with instruction(15 downto 11) & zero_en select
 		pc_next <= (pc1 + imm) when "001000" | "001011" | "000100" | "000101",
 					pc_imm1 when "111010" | "111011",
 					pc_imm2 when "011000" | "011001",
 					pc when others;
+	
+	with instruction(15 downto 11) & zero_en select
+		br <= '1' when "001000" | "001011" | "000100" | "000101",
+					br1 when "111010" | "111011",
+					br2 when "011000" | "011001",
+					'0' when others;
 end Behavioral;
 

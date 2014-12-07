@@ -45,8 +45,7 @@ port(
 	alu_op : out std_logic_vector(3 downto 0);
 	pc_en : out std_logic;
 	j_en : out std_logic;
-	is_interrupt : out std_logic;
-	is_end : in std_logic;
+	is_int : out std_logic;
 	if_mem : out std_logic;
 	mem_read : out std_logic;
 	mem_write : out std_logic
@@ -139,12 +138,10 @@ begin
 	rz <= rxyz(3 downto 0);
 	
 	----- control signal
-	intr <= '0' when is_end = '1' 
-					else '1';
 
-	is_interrupt <= '1' when instruction_in(15 downto 11) = "11111"
-							else intr;
-
+	is_int <= '1' when instruction_in(15 downto 11) = "11111"
+							else '0';
+	
 	j_en <= '1' when (instruction_in(15 downto 11) = "11101" and instruction_in(7 downto 0) = "11000000")
 					else '0';
 

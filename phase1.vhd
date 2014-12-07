@@ -37,11 +37,13 @@ port(
 		enable : in std_logic;
 		is_done : in std_logic;
 		is_interrupt : in std_logic;
+		imm : in std_logic_vector(7 downto 0);
 		is_end : out std_logic;
 		pc_in : in std_logic_vector(15 downto 0);
 		instruction_in : in std_logic_vector(15 downto 0);
 		pc_out : out std_logic_vector(15 downto 0);
-		instruction_out : out std_logic_vector(15 downto 0)
+		instruction_out : out std_logic_vector(15 downto 0);
+		br : in std_logic
 	);
 end phase1;
 
@@ -116,7 +118,8 @@ begin
 						when "0111" =>
 							interrupt <= "1000";
 							pc <= pc_in - 1;
-							instruction <= "0110111000000000";
+							instruction(15 downto 8) <= "01101110";
+							instruction(7 downto 0) <= imm;
 							is_end <= '0';
 						when "1000" =>
 							interrupt <= "1001";
@@ -139,6 +142,11 @@ begin
 							instruction <= (others => '0');
 							is_end <= '1';
 					end case;
+				elsif br = '1' then
+					pc <= (others => '0');
+					instruction <= (others => '0');
+					interrupt <= (others => '0');
+					is_end <= '1';
 				else
 					pc <= pc_in;
 					instruction <= instruction_in;
