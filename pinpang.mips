@@ -33,12 +33,10 @@ ADDU r0 r2 r4
 ADDU r1 r3 r5
 
 	SRA r1 r4 7
-	NOT r1 r1
-	BEQZ r1 not_ok
+	BNEZ r1 not_ok
 	NOP ; # 空指令
 	SRA r1 r5 6
-	NOT r1 r1
-	BEQZ r1 not_ok
+	BNEZ r1 not_ok
 	NOP
 
 	LI r0 0x60
@@ -48,13 +46,12 @@ ADDU r1 r3 r5
 	ADDU r0 r5 r0
 	; r0 is addr
 	LW r0 r1 0x00
-	NOT r1 r1
 
 	is_ok:
 	LI r2 0x00
 	SW r0 r2 0x0
 
-	BEQZ r1 not_ok
+	BNEZ r1 not_ok
 	NOP
 
 B all_ok
@@ -77,19 +74,19 @@ SUBU r5 r2 r2
 
 	LI r5 0x90
 	SLL r5 r5 0x00
-	LW r5 r2 0x02
-	LW r5 r3 0x03
+	SW r5 r2 0x02
+	SW r5 r3 0x03
 ; next_x = x + vx
 ADDU r0 r2 r4
 ADDU r1 r3 r5
 
 	SRA r1 r4 7
-	NOT r1 r1
-	BEQZ r1 not_ok2
+	;NOT r1 r1
+	BNEZ r1 not_ok2
 	NOP ; # 空指令
 	SRA r1 r5 6
-	NOT r1 r1
-	BEQZ r1 not_ok2
+	;NOT r1 r1
+	BNEZ r1 not_ok2
 	NOP
 
 	LI r0 0x60
@@ -99,13 +96,13 @@ ADDU r1 r3 r5
 	ADDU r0 r5 r0
 	; r0 is addr
 	LW r0 r1 0x00
-	NOT r1 r1
+	;NOT r1 r1
 
 	is_ok:
 	LI r2 0x00
 	SW r0 r2 0x0
 
-	BEQZ r1 not_ok2
+	BNEZ r1 not_ok2
 	NOP
 
 
@@ -126,23 +123,27 @@ not_ok2:
 ADDIU3 r3 r5 0x00
 SUBU r5 r3 r5
 SUBU r5 r3 r3
+; vx = -vx
+ADDIU3 r2 r5 0x00
+SUBU r5 r2 r5
+SUBU r5 r2 r2
 
 	LI r5 0x90
 	SLL r5 r5 0x00
-	LW r5 r2 0x02
-	LW r5 r3 0x03
+	SW r5 r2 0x02
+	SW r5 r3 0x03
 
 ; next_x = x + vx
 ADDU r0 r2 r4
 ADDU r1 r3 r5
 
 	SRA r1 r4 7
-	NOT r1 r1
-	BEQZ r1 not_ok3
+	;NOT r1 r1
+	BNEZ r1 not_ok3
 	NOP ; # 空指令
 	SRA r1 r5 6
-	NOT r1 r1
-	BEQZ r1 not_ok3
+	;NOT r1 r1
+	BNEZ r1 not_ok3
 	NOP
 
 	LI r0 0x60
@@ -152,13 +153,13 @@ ADDU r1 r3 r5
 	ADDU r0 r5 r0
 	; r0 is addr
 	LW r0 r1 0x00
-	NOT r1 r1
+	;NOT r1 r1
 
 	is_ok:
 	LI r2 0x00
 	SW r0 r2 0x0
 
-	BEQZ r1 not_ok3
+	BNEZ r1 not_ok3
 	NOP
 
 B all_ok
@@ -182,8 +183,8 @@ SUBU r5 r2 r2
 
 	LI r5 0x90
 	SLL r5 r5 0x00
-	LW r5 r2 0x02
-	LW r5 r3 0x03
+	SW r5 r2 0x02
+	SW r5 r3 0x03
 
 ; next_x = x + vx
 ADDU r0 r2 r4
@@ -192,12 +193,12 @@ ADDU r1 r3 r5
 
 
 	SRA r1 r4 7
-	NOT r1 r1
-	BEQZ r1 not_ok4
+	;NOT r1 r1
+	BNEZ r1 not_ok4
 	NOP ; # 空指令
 	SRA r1 r5 6
-	NOT r1 r1
-	BEQZ r1 not_ok4
+	;NOT r1 r1
+	BNEZ r1 not_ok4
 	NOP
 
 	LI r0 0x60
@@ -207,14 +208,14 @@ ADDU r1 r3 r5
 	ADDU r0 r5 r0
 	; r0 is addr
 	LW r0 r1 0x00
-	NOT r1 r1
+	;NOT r1 r1
 
 
 	is_ok:
 	LI r2 0x00
 	SW r0 r2 0x0
 
-	BEQZ r1 not_ok4
+	BNEZ r1 not_ok4
 	NOP
 
 B all_ok
@@ -233,7 +234,7 @@ all_ok:
 	LW r5 r4 0x04
 
 ; if x != 0
-BEQZ r0 b_x_eq_o
+BEQZ r1 b_x_eq_o
 NOP
 
 
@@ -377,7 +378,7 @@ NOP
 
 not_press:
 
-LI r5 0x90
+LI r5 0x60
 SLL r5 r5 0x00
 ADDU r5 r4 r2
 
@@ -404,7 +405,7 @@ save_state:
 	SW r5 r2 0x02
 	SW r5 r3 0x03
 	SW r5 r4 0x04
-	JRRA ; # PC ← RA
+	;JRRA ; # PC ← RA
 	NOP
 
 load_state:
@@ -415,5 +416,5 @@ load_state:
 	LW r5 r2 0x02
 	LW r5 r3 0x03
 	LW r5 r4 0x04
-	JRRA ; # PC ← RA
+	;JRRA ; # PC ← RA
 	NOP
