@@ -49,6 +49,9 @@ port(
 		ram1_addr	:	out std_logic_vector(17 downto 0);
 		ram1_en, ram1_oe, ram1_we	:	out std_logic;
 		
+		ps2clk : in STD_LOGIC;
+		ps2data_in : in STD_LOGIC;
+		
 		k1 : in std_logic;
 		hs,vs : out STD_LOGIC;
 		r,g,b : out STD_LOGIC_VECTOR(2 downto 0)
@@ -343,6 +346,19 @@ component forwarding
 	);
 end component;
 
+component keyboard
+	port(
+		clk_auto : in  STD_LOGIC;
+      rst : in  STD_LOGIC;
+      ps2clk : in  STD_LOGIC;
+      ps2data_in : in  STD_LOGIC;
+		curr_key : out STD_LOGIC_VECTOR(4 downto 0);
+		--led : out STD_LOGIC_VECTOR(3 downto 0);
+		is_press : out STD_LOGIC
+	);
+end component;
+	
+
 signal enable_all, data_pause, pause, is_sp, is_sp_label, need_int, is_done, is_end : std_logic;
 signal is_interrupt, soft_interrupt, clock_interrupt : std_logic;
 signal pc_next, pc_plus, pc0, pc1, pc2 : std_logic_vector(15 downto 0);
@@ -369,6 +385,10 @@ signal timm : std_logic_vector(7 downto 0);
 signal AA, BB : std_logic_vector(1 downto 0); 
 signal br, ih : std_logic;
 signal count : std_logic_vector(24 downto 0);
+
+signal key_press : std_logic;
+signal prev_data : std_logic_vector(7 downto 0);
+signal curr_key : std_logic_vector(4 downto 0);
 --signal rst_1 : std_logic;
 
 begin
@@ -662,6 +682,16 @@ begin
 		a_out => a_2,
 		b_out => b_2,
 		pause => pause
+	);
+	
+	keyboard_port: keyboard port map(
+	 clk_auto => clk,
+    rst => rst,
+    ps2clk => ps2clk,
+    ps2data_in => ps2data_in,
+	 curr_key => curr_key,
+	 --led => led(7 downto 4),
+	 is_press => key_press
 	);
 	
 end Behavioral;
