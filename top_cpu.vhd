@@ -271,7 +271,8 @@ Port (
 		ram1_en, ram1_oe, ram1_we	:	out std_logic;
 		
 		hs,vs : out STD_LOGIC;
-		r,g,b : out STD_LOGIC_VECTOR(2 downto 0)
+		r,g,b : out STD_LOGIC_VECTOR(2 downto 0);
+		keyboard_data: in std_logic_vector(5 downto 0)
 	
 );
 end component;
@@ -389,10 +390,12 @@ signal count : std_logic_vector(24 downto 0);
 signal key_press : std_logic;
 signal prev_data : std_logic_vector(7 downto 0);
 signal curr_key : std_logic_vector(4 downto 0);
+signal key_data: std_logic_vector(5 downto 0);
 --signal rst_1 : std_logic;
 
 begin
 	--led <= b3;
+	key_data <= (key_press & curr_key);
 	
 	enable_all <= '1';
 	
@@ -631,7 +634,8 @@ begin
 		ram1_we => ram1_we,
 		
 		hs=>hs ,vs=>vs,
-		r=>r, g=>g ,b=>b
+		r=>r, g=>g ,b=>b,
+		keyboard_data => key_data
 	);
 	
 	phase4_port: phase4 port map(

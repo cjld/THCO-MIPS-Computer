@@ -61,7 +61,9 @@ Port (
 		ram1_en, ram1_oe, ram1_we	:	out std_logic;
 		
 		hs,vs : out STD_LOGIC;
-		r,g,b : out STD_LOGIC_VECTOR(2 downto 0)
+		r,g,b : out STD_LOGIC_VECTOR(2 downto 0);
+		
+		keyboard_data: in std_logic_vector(5 downto 0)
 	
 );
 end IO;
@@ -170,10 +172,13 @@ architecture Behavioral of IO is
 	signal out_ram_data, my_out_data, disp_mem_addr, ram_addr_ro, ram_data_out_ro
 		: std_logic_vector(15 downto 0);
 	signal ram1_addr_tmp : std_logic_vector(17 downto 0);
+	signal is_kb: std_logic;
+	signal ck_all: std_logic_vector(1 downto 0);
 	
 begin
 	
 	use_vga_addr <= vga_refresh_run; --<= is_refrash_vga and not vga_refresh_edge;
+	is_kb <= '1' when (addr = "1011111100000010") else '0';
 	
 	ram1_addr(15 downto 0) <= pc;
 	ram1_addr(17 downto 16) <= "00";
@@ -266,8 +271,13 @@ begin
 	
 	my_out_data <= out_ram_data when (is_sp = '0')
 			else sp_output_data_ex;
+			
+	ck_all <= (is_sp_label & is_kb);
+	with ck_all select
 	out_data <=
-		(others => '1') when (is_sp_label = '1') else my_out_data;
+		(others => '1') when "10",
+		("0000000000" & keyboard_data) when "01",
+		my_out_data when others;
 			
 	ram_write <= (is_write and not is_sp) and not use_vga_addr;
 	ram_read <= (is_read and not is_sp) and not use_vga_addr;
