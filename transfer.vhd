@@ -122,7 +122,7 @@ begin
 		else r10 & empty & ih; -- MTIH
 		
 	with instruction_in(7 downto 0) select
-		fstz <= r10 & empty & ra when "11000000", -- JALR
+		fstz <= r10 & empty & empty when "11000000", -- JALR
 				  r10 & empty & empty when "00000000", --JR
 				  ra & empty & empty when "00100000", --JRRA
 				  empty & empty & r10 when "01000000", --MFPC

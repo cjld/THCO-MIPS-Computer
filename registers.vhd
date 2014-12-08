@@ -58,11 +58,9 @@ signal AA : std_logic_vector(15 downto 0);
 begin
 	ih <= reg(8)(15);
 	
-	AA <= pc when pc_en = '1'
+	A <= pc when pc_en = '1'
 				else reg(conv_integer(rx));
-	A <= (pc + 1) when j_en = '1'
-					else AA;
-
+	
 	B <= reg(conv_integer(ry));
 	
 	--seg <= reg(7)(7 downto 0);
@@ -78,6 +76,9 @@ begin
 			end if;
 			if (t_en = '1') then
 				reg(11) <= t_data;
+			end if;
+			if (j_en = '1')then
+				reg(10) <= (pc + 1);
 			end if;
 		end if;
 	end process;
