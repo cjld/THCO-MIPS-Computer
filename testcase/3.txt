@@ -1,0 +1,11 @@
+li r3 40
+sll r3 r3 0
+addiu r3 7  
+ebc0
+nop
+jr r7
+nop
+li r0 1
+li r1 1
+addu r0 r1 r2
+e820

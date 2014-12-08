@@ -1,0 +1,5 @@
+li r1 4
+slti r1 2
+bteqz 1 
+li r2 4
+jr r7

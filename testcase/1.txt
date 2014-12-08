@@ -1,0 +1,8 @@
+int 0
+li r0 1
+li r1 1
+int 0
+addu r0 r1 r2
+b 7FF
+nop
+jr r7
